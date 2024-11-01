@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4268db87361095c4ca643764150c94d6, type: 3}
   m_Name: DepthPyramid
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   depthPyramidShader: {fileID: 7200000, guid: b2ead2c2a0fb2bc4d8ff715cbf4b0403, type: 3}
 --- !u!114 &7833122117494664109
 MonoBehaviour:
