@@ -9,7 +9,7 @@ public class MainMenuUI : MonoBehaviour
     private void Awake()
     {
         playButton.onClick.AddListener(()=> {
-            SceneManager.LoadScene(1    );
+            Loader.Load(Loader.Scene.Casion);
             });
         quitButton.onClick.AddListener(() => {
             Application.Quit();
