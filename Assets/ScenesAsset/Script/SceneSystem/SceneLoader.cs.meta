@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 8cdcdb101eb3d6c4c986ea52018f2d1d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - loadingCanvas: {fileID: 3296161958334878864, guid: 0276f9ca4a0dda446bf8393e2f2bf46f, type: 3}
+  - progressText: {fileID: 3305605691877019792, guid: a8a5121cb7e51d944be0c13ff4431ca5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

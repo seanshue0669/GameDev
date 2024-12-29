@@ -7,6 +7,7 @@ public class RandomForceToAllRigidbodies : MonoBehaviour
     public float minInterval = 2f;
     public float maxInterval = 10f;
 
+    [System.Obsolete]
     void Start()
     {
         Rigidbody[] allRigidbodies = FindObjectsOfType<Rigidbody>();
