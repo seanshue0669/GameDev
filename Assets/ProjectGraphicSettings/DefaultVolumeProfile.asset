@@ -342,6 +342,9 @@ MonoBehaviour:
   skyOcclusionIntensityMultiplier:
     m_OverrideState: 1
     m_Value: 1
+  worldOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
 --- !u!114 &-1216621516061285780
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -372,7 +375,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.047169805, g: 0.047169805, b: 0.047169805, a: 1}
+    m_Value: {r: 0.047058824, g: 0.047058824, b: 0.047058824, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 0
@@ -381,7 +384,7 @@ MonoBehaviour:
     m_Value: 0
   maxIterations:
     m_OverrideState: 1
-    m_Value: 6
+    m_Value: 3
   dirtTexture:
     m_OverrideState: 1
     m_Value: {fileID: 0}

@@ -9,8 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Start/Start.unity
     guid: 66170c2076f7b9c45804a853c827be02
   - enabled: 1
-    path: Assets/Scenes/casion/Casion.unity
+    path: Assets/Scenes/Casion/Casion.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MiniGame/DiceGame/DiceScene.unity
+    guid: 203ab5006cde5514dbbe3c76bf71059c
+  - enabled: 1
+    path: Assets/Scenes/MiniGame/PokerGame/PokerScene.unity
+    guid: 1fbf4a133bc2a0d47a6d6f5c2dcb1fe1
+  - enabled: 1
+    path: Assets/Scenes/MiniGame/SlotGame/SlotScene.unity
+    guid: 88a676c282b726e4a9c5e876496a51b7
+  - enabled: 1
+    path: Assets/Scenes/MiniGame/WheelGame/WheelScene.unity
+    guid: 7409c2a386b458a4286e49350d9f630a
   - enabled: 1
     path: Assets/Scenes/Loading/Loading.unity
     guid: b5cee482cc3cb6e4d8a2bbb787f9c50d

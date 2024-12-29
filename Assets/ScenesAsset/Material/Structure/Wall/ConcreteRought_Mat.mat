@@ -25,10 +25,13 @@ Material:
   m_Parent: {fileID: 2100000, guid: 617431b40a2e9c44caec554ff8158a1b, type: 2}
   m_ModifiedSerializedProperties: 6
   m_ValidKeywords:
+  - _EMISSION
+  - _ENVIRONMENTREFLECTIONS_OFF
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
+  - _SPECULARHIGHLIGHTS_OFF
   m_InvalidKeywords: []
-  m_LightmapFlags: 6
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
