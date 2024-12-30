@@ -6,6 +6,11 @@ TagManager:
   tags:
   - DiceGameUI
   - PokerGameUI
+  tags:
+  - Dicegame
+  - Blackjack
+  - RouletteGame
+  - SlotGame
   layers:
   - Default
   - TransparentFX
@@ -14,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Diffrent_Bloom
-  - 
+  - MiniGame
   - 
   - 
   - 
