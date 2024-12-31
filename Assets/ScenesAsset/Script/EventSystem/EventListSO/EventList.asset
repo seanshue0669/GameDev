@@ -13,13 +13,6 @@ MonoBehaviour:
   m_Name: EventList
   m_EditorClassIdentifier: 
   Categories:
-  - CategoryName: DiceGame
-    Events: []
-  - CategoryName: PokerGame
-    Events: []
-  - CategoryName: SlotGame
-    Events: []
-  - CategoryName: WheelGame
-    Events: []
-  - CategoryName: SceneEvent
-    Events: []
+  - CategoryName: Scene
+    Events:
+    - {fileID: 11400000, guid: c17c891f989cbfe4683c098e5957e3be, type: 2}
