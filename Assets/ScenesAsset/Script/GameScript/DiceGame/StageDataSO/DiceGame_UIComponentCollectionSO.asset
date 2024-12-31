@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b3708c77fae0042bb74001488b5333, type: 3}
+  m_Name: DiceGame_UIComponentCollectionSO
+  m_EditorClassIdentifier: 
+  m_gameName: DiceGame
+  uiComponents:
+  - Key: GameStatusText
+    Type: 1
+    ButtonComponent: {fileID: 0}
+    TextComponent: {fileID: 6774463932431401825, guid: 4f38fec8bf7434e4daac26ed08c283b3, type: 3}
+    InputFieldComponent: {fileID: 0}
+  - Key: BetInputField
+    Type: 2
+    ButtonComponent: {fileID: 0}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 8071063168747366292, guid: ed05749c312da264e98e7973c6bc437a, type: 3}
+  - Key: ConfirmButton
+    Type: 0
+    ButtonComponent: {fileID: 2508742901854878874, guid: 30e85f8b70cef7f4b90bb86f55c1a4eb, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
