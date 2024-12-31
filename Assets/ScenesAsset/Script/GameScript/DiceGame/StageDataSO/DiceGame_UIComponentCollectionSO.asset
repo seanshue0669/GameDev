@@ -29,3 +29,18 @@ MonoBehaviour:
     ButtonComponent: {fileID: 2508742901854878874, guid: 30e85f8b70cef7f4b90bb86f55c1a4eb, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
+  - Key: BetOptionLarger
+    Type: 0
+    ButtonComponent: {fileID: 1633518967098019559, guid: d93ec16ff18dce349a8172275ee6b3b7, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
+  - Key: BetOptionEqual
+    Type: 0
+    ButtonComponent: {fileID: 392560044453552106, guid: 946d1341d0773c84bb0d8caed05f6c5c, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
+  - Key: BetOptionSmaller
+    Type: 0
+    ButtonComponent: {fileID: 1371465075342439204, guid: ea957650d99019644a6d726840d2ca9a, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}

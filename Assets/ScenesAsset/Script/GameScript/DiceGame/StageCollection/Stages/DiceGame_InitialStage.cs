@@ -14,7 +14,11 @@ public class DiceGame_InitialStage : IStage
     //UI
     private TMP_Text statusText;
     private TMP_InputField inputField;
+
     private Button confirmButton;
+    private Button largerButton;
+    private Button equalButton;
+    private Button smallerButton;
     private TaskCompletionSource<bool> phaseCompletionSource;
     private Action currentValidationAction;
     private string betOptions;
@@ -24,7 +28,8 @@ public class DiceGame_InitialStage : IStage
     #endregion
 
     #region Constructor
-    public DiceGame_InitialStage() {
+    public DiceGame_InitialStage()
+    {
         //Init the variable here
     }
     #endregion
@@ -38,15 +43,17 @@ public class DiceGame_InitialStage : IStage
         await ShowDialogAsync(instructionMessage);
 
         // Phase 1: Input Bet Amount
+        await DisableOptionButton();
         await ShowDialogAsync("Please Enter your Bet Amount:");
         currentValidationAction = () => ValidateBetAmountInput(sharedData);
         InputDelegate = null;
         await WaitForPhaseCompletionAsync();
 
         // Phase 2: Select Bet Option
+        await EnableOptionButton();
         await ShowDialogAsync("Please Choose your Bet Option:");
         currentValidationAction = () => ValidateOptionInput();
-        InputDelegate = Option;
+        InputDelegate = null;
         await WaitForPhaseCompletionAsync();
 
         // Finalize
@@ -72,6 +79,9 @@ public class DiceGame_InitialStage : IStage
         inputField = uiComponents.CreateUIComponent<TMP_InputField>("BetInputField", canvas.transform);
         confirmButton = uiComponents.CreateUIComponent<Button>("ConfirmButton", canvas.transform);
 
+        largerButton = uiComponents.CreateUIComponent<Button>("BetOptionLarger", canvas.transform);
+        equalButton = uiComponents.CreateUIComponent<Button>("BetOptionEqual", canvas.transform);
+        smallerButton = uiComponents.CreateUIComponent<Button>("BetOptionSmaller", canvas.transform);
         if (statusText == null || inputField == null || confirmButton == null)
         {
             Debug.LogError("Required UI components are not correctly created.");
@@ -88,6 +98,9 @@ public class DiceGame_InitialStage : IStage
         GameObject.Destroy(statusText.gameObject);
         GameObject.Destroy(inputField.gameObject);
         GameObject.Destroy(confirmButton.gameObject);
+        GameObject.Destroy(smallerButton.gameObject);
+        GameObject.Destroy(largerButton.gameObject);
+        GameObject.Destroy(equalButton.gameObject);
     }
     #endregion
 
@@ -95,11 +108,23 @@ public class DiceGame_InitialStage : IStage
     private void RegisterButtonListeners()
     {
         confirmButton.onClick.RemoveAllListeners();
+        smallerButton.onClick.RemoveAllListeners();
+        largerButton.onClick.RemoveAllListeners();
+        equalButton.onClick.RemoveAllListeners();
+
         confirmButton.onClick.AddListener(OnClick);
+        smallerButton.onClick.AddListener(() => OptionsOnClick("smaller"));
+        largerButton.onClick.AddListener(() => OptionsOnClick("bigger"));
+        equalButton.onClick.AddListener(() => OptionsOnClick("equal"));
     }
 
     private void OnClick()
     {
+        currentValidationAction?.Invoke();
+    }
+    private void OptionsOnClick(string p_option)
+    {
+        betOptions = p_option;
         currentValidationAction?.Invoke();
     }
     #endregion
@@ -142,24 +167,34 @@ public class DiceGame_InitialStage : IStage
 
     public async Task InputAsync()
     {
-        if(InputDelegate!=null)
+        if (InputDelegate != null)
             await InputDelegate();
-    }
-    public async void stop()
-    {
-
-        await Task.Delay(1000);
     }
     private async Task ShowDialogAsync(string text)
     {
         statusText.text = text;
         await Task.Delay(1000);
     }
+    private async Task DisableOptionButton()
+    {
+        largerButton.enabled = false;
+        equalButton.enabled = false;
+        smallerButton.enabled = false;
+        await Task.Delay(10);
+    }
+    private async Task EnableOptionButton()
+    {
+        largerButton.enabled = true;
+        equalButton.enabled = true;
+        smallerButton.enabled = true;
+        await Task.Delay(10);
+    }
     #endregion
 
     #region Custom InputAsync
     private async Task Option()
     {
+
     }
     #endregion
 }
