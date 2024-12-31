@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InitialStage : IStage
+public class DiceGame_InitialStage : IStage
 {
     #region Fields and Properties
     private readonly string instructionMessage = "Welcome To Dice Game";
@@ -24,7 +24,7 @@ public class InitialStage : IStage
     #endregion
 
     #region Constructor
-    public InitialStage() {
+    public DiceGame_InitialStage() {
         //Init the variable here
     }
     #endregion
@@ -160,12 +160,6 @@ public class InitialStage : IStage
     #region Custom InputAsync
     private async Task Option()
     {
-        if (isWaiting)
-            return;
-        isWaiting = true;
-        var tcs = EventSystem.Instance.WaitForCallBack("DiceGame", "Options");
-        betOptions = (string)await tcs;
-        isWaiting = false;
     }
     #endregion
 }

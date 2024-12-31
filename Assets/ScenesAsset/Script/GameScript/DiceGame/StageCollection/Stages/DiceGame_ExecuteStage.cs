@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class ExecuteStage : IStage
+public class DiceGame_ExecuteStage : IStage
 {
     #region Fields and Properties
     //Properties 
@@ -22,7 +22,7 @@ public class ExecuteStage : IStage
     #endregion
 
     #region Constructor
-    public ExecuteStage()
+    public DiceGame_ExecuteStage()
     {
         //Init the variable here
         Properties = "ExecuteStage Construct";
