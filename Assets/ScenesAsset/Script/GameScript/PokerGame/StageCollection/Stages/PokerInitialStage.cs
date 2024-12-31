@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PokerInitialStage : IStage
 {
     #region Fields and Properties
-    private readonly string instructionMessage = "Welcome To Dice Game";
+    private readonly string instructionMessage = "Welcome To Black Jack";
     private readonly int maxBetAmount = 1000;
     private readonly int minBetAmount = 1;
 

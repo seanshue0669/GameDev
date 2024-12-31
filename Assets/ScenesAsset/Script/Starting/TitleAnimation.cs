@@ -6,7 +6,6 @@ public class TitleAnimation : MonoBehaviour
 {
     [SerializeField] private RawImage title;
 
-    [SerializeField] private float minScale = 0.9f; 
     [SerializeField] private float maxScale = 1.1f; 
     [SerializeField] private float animationDuration = 2.0f; 
 
