@@ -51,7 +51,7 @@ public class RouletteGameExecuteStage : IStage
         }
         else if (event_type >= 91 && event_type <= 95)
         {
-            EventSystem.Instance.TriggerEvent("Roulette", "throwout", 9f);
+            EventSystem.Instance.TriggerEvent("Roulette", "throwout", 5f);
 
             await ShowDialogAsync("oops! it seems like the ball flew away");
 

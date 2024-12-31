@@ -89,7 +89,7 @@ public class RouletteSpinListener : MonoBehaviour
         isSpinning = true;
 
         // 重置球的位置
-        GameObject.Find("ball").transform.localPosition = new Vector3(0.128900006f, -0.068599999f, -0.2861f);
+        GameObject.Find("ball").transform.localPosition = new Vector3(0.294522166f, -0.127312273f, -0.652947962f);
         rouletteWheel.transform.localEulerAngles = new Vector3(-90f,0f,0f);
         rouletteBall.transform.localEulerAngles = Vector3.zero;
 
@@ -103,14 +103,13 @@ public class RouletteSpinListener : MonoBehaviour
         // (1) 假旋轉階段 - CCW only
         // ===========================
         float spinSpeed = 360f; // 初始旋轉速度（度/秒）
-        float ballSpeed = 720f; // 初始旋轉速度（度/秒）
+        float ballSpeed = 480f; // 初始旋轉速度（度/秒）
         float deceleration = spinSpeed / spinDuration; // 每秒減速量
         float currentTime = 0f;
 
         // 確保球的物理屬性為 kinematic 且不受重力影響
         rb.isKinematic = true;
         rb.useGravity = false;
-
 
         totalBallY = 0;
         while (currentTime < spinDuration)
@@ -132,7 +131,6 @@ public class RouletteSpinListener : MonoBehaviour
         totalBallY += ballSpeed * Time.deltaTime;
 
         float finalAngleWheel = rouletteWheel.localEulerAngles.z;
-        Debug.Log("Step1 結束，輪盤 Z = " + finalAngleWheel);
 
         // ===========================
         // (2) 只旋轉球 - CCW only，使用自訂角度插值
@@ -168,9 +166,6 @@ public class RouletteSpinListener : MonoBehaviour
         // 最終 Y 角度 = 起始 + 正向差
         float endBallY = startBallY + rawDiff;
 
-        Debug.Log($"Winning Number Angle Difference: {rawDiff} 度");
-        Debug.Log($"Start Ball Y: {startBallY} 度, End Ball Y: {endBallY} 度");
-
         while (elapsed <= rotateDuration)
         {
             elapsed += Time.deltaTime;
@@ -198,8 +193,6 @@ public class RouletteSpinListener : MonoBehaviour
         */
         // 更新累計旋轉角度
         totalBallY = endBallY;
-
-        Debug.Log($"Step2 結束，球 Y = {rouletteBall.localEulerAngles.y} 度");
 
         // ===========================
         // (3) 開啟球的重力

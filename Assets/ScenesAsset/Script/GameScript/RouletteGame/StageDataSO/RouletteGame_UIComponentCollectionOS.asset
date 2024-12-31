@@ -17,35 +17,35 @@ MonoBehaviour:
   - Key: GameStatusText
     Type: 1
     ButtonComponent: {fileID: 0}
-    TextComponent: {fileID: 6774463932431401825, guid: b5c6f7196fc4219469092e3d9915031d, type: 3}
+    TextComponent: {fileID: 5981384914086826905, guid: ed9c4971fbb24264c9eb38c3342b0069, type: 3}
     InputFieldComponent: {fileID: 0}
   - Key: BetInputField
     Type: 2
     ButtonComponent: {fileID: 0}
     TextComponent: {fileID: 0}
-    InputFieldComponent: {fileID: 8071063168747366292, guid: faf3760832c2c304b99e00d61c2334f3, type: 3}
+    InputFieldComponent: {fileID: 7678699160840879361, guid: 9f7fe9da0e2974a4eb48d90a59a0e5d9, type: 3}
   - Key: ConfirmButton
     Type: 0
-    ButtonComponent: {fileID: 2508742901854878874, guid: 062912bf9bce13045b1f7a3e5bb3c78d, type: 3}
+    ButtonComponent: {fileID: 4430155509392579518, guid: d22651d69372cbc48a2edd18652e634e, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: red
     Type: 0
-    ButtonComponent: {fileID: 2721905480619450700, guid: 39b01e87d1e87224998bf5b508549df9, type: 3}
+    ButtonComponent: {fileID: 351439442626136412, guid: 473b7ea17d6b10644818369f98d36e73, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: black
     Type: 0
-    ButtonComponent: {fileID: 1813766424704878021, guid: eab209b19075a684689f60f7d303c405, type: 3}
+    ButtonComponent: {fileID: 7707154886494353167, guid: 92f83ea41de5581418e16878041586b5, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: low
     Type: 0
-    ButtonComponent: {fileID: 6575092237463699773, guid: d4a5c2d73a86e5a47be132baf61a6676, type: 3}
+    ButtonComponent: {fileID: 9000164251811733213, guid: 6fad4192fc2fb624584df9b949c53ad8, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: high
     Type: 0
-    ButtonComponent: {fileID: 2053502356585919789, guid: aa6d0c17688e8de4d8917be99b4cafa8, type: 3}
+    ButtonComponent: {fileID: 5952759017896647391, guid: 07dad8841214aef42bdccfcad7470cfa, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
