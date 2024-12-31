@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PokerGameEvent : MonoBehaviour
 {
     private static PokerGameEvent _instance;
-    public static PokerGameEvent Instance => _instance ??= new PokerGameEvent();
+    public static PokerGameEvent Instance;
 
     private bool isWaiting = false;
 
@@ -21,8 +21,6 @@ public class PokerGameEvent : MonoBehaviour
         Debug.Log("Init PokerGameEvent");
         Objects = p_objects.ToArray();
 
-        EventSystem.Instance.RegisterCallBack<string, string>("DiceGame", "Options", ProcessDiceGameEvent);
-
         EventSystem.Instance.RegisterEvent<string>("BJgame", "CardSpawn", CreateCard);
 
         EventSystem.Instance.RegisterEvent<bool>("BJgame", "CheckPlayer", SwapSlot);
@@ -35,11 +33,7 @@ public class PokerGameEvent : MonoBehaviour
 
         isPlayer = true;
     }
-    private async Task<string> ProcessDiceGameEvent(string data)
-    {
-        await Task.Delay(100);
-        return data;
-    }
+
     private void CreateCard(string card)
     {
         GameObject cardModel;

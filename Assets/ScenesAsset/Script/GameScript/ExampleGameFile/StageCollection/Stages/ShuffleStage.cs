@@ -8,8 +8,6 @@ public class ShuffleStage : IStage
 {
     #region Fields and Properties
     private readonly string instructionMessage = "Shuffling";
-    private readonly int maxBetAmount = 1000;
-    private readonly int minBetAmount = 1;
 
     //UI
     private TMP_Text statusText;
