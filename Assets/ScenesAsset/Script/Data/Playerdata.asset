@@ -15,13 +15,7 @@ MonoBehaviour:
   Data:
   - Key: coin
     Type: 0
-    IntValue: 0
+    IntValue: 66
     BoolValue: 0
     FloatValue: 0
     StringValue: 
-    IntList: 
-    FloatList: []
-    test:
-      id: 
-      isUnlocked: 0
-      currentValue: 0

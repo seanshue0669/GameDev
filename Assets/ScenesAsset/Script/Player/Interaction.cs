@@ -107,12 +107,12 @@ public class Interaction : MonoBehaviour
                 if (ChatText != null)
                 {
                     ChatText.gameObject.SetActive(true);
-                    ChatText.text = "Would you be willing to mortgage your house in exchange for $1,000?\n(Press F for Saying Yes)";
+                    ChatText.text = "Press E to exchange";
                 }
 
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    DataManager.Instance.playerData.SetValue("coin", 1000);
+                    DataManager.Instance.playerData.SubValue("coin", 1000);
                 }
                 return;
             }
