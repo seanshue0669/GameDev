@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PokerGameEvent : MonoBehaviour
 {
     private static PokerGameEvent _instance;
-    public static PokerGameEvent Instance;
+    public static PokerGameEvent Instance => _instance ??= new PokerGameEvent();
 
     private bool isWaiting = false;
 
