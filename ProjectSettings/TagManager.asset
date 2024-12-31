@@ -6,12 +6,12 @@ TagManager:
   tags:
   - DiceGameUI
   - PokerGameUI
-  tags:
+  - staff
   - Dicegame
+  - SlotGame
   - Blackjack
   - RouletteGame
-  - SlotGame
-  - staff
+  - RouletteGameUI
   layers:
   - Default
   - TransparentFX
