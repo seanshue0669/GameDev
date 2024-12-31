@@ -9,10 +9,8 @@ public class SlotGameListener : MonoBehaviour
     public static SlotGameListener Instance => _instance ??= new SlotGameListener();
     private bool isWaiting = false;
     public void Init()
-    {
-        EventSystem.Instance.RegisterCallBack<string, string>("DiceGame", "Options", ProcessDiceGameEvent);
-        
-        EventSystem.Instance.RegisterEvent<int>("Dosomthing", "rotate", Test);
+    {      
+        //EventSystem.Instance.RegisterEvent<int>("Dosomthing", "rotate", Test);
     }
 
     private async void Update()
@@ -41,14 +39,5 @@ public class SlotGameListener : MonoBehaviour
     {
         await Task.Delay(100);
         return data;
-    }
-    private void Test(int angle)
-    {
-        //Rotation
-        //add logic<---
-        //
-
-        //Stop at xxx 
-        //Debug.Log($"Rotate {angle} deg");
     }
 }
