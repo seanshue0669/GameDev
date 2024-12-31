@@ -2512,10 +2512,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objPath:
-  - Assets/ScenesAsset/Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
-  - Assets/ScenesAsset/Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
-  - Assets/ScenesAsset/Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
-  - Assets/ScenesAsset/Mesh/Playable/Prefabe/Individual Pieces/Cards/Spades
+  - Clubs
+  - Diamonds
+  - Hearts
+  - Spades
+  - Specials
 --- !u!114 &1809423101
 MonoBehaviour:
   m_ObjectHideFlags: 0

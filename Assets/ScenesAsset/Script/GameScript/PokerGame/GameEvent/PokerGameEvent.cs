@@ -16,10 +16,10 @@ public class PokerGameEvent : MonoBehaviour
 
     private GameObject[] Objects;
 
-    public void Init(GameObject[] p_objects)
+    public void Init(List<GameObject> p_objects)
     {
         Debug.Log("Init PokerGameEvent");
-        Objects = p_objects;
+        Objects = p_objects.ToArray();
         Debug.Log(Objects.Length);
 
         EventSystem.Instance.RegisterEvent<string>("BJgame", "CardSpawn", CreateCard);
