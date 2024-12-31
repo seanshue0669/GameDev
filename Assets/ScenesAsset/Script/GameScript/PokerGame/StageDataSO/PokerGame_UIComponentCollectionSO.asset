@@ -17,35 +17,35 @@ MonoBehaviour:
   - Key: GameStatusText
     Type: 1
     ButtonComponent: {fileID: 0}
-    TextComponent: {fileID: 6774463932431401825, guid: 9776596aedee3fe489cbfaf1c32e5a9f, type: 3}
+    TextComponent: {fileID: 5019969661212160124, guid: 7233895bf259cb54b8f9ceafcfb9464b, type: 3}
     InputFieldComponent: {fileID: 0}
   - Key: BetInputField
     Type: 2
     ButtonComponent: {fileID: 0}
     TextComponent: {fileID: 0}
-    InputFieldComponent: {fileID: 8071063168747366292, guid: 8ae0ee8576a82e84ea1d40e60c4407a9, type: 3}
+    InputFieldComponent: {fileID: 4119166097279296456, guid: 4c3110a492a8f964d8333b4060ec6dcb, type: 3}
   - Key: ConfirmButton
     Type: 0
-    ButtonComponent: {fileID: 2508742901854878874, guid: e6f8e51fcd529cc458690cd6a2de0b92, type: 3}
+    ButtonComponent: {fileID: 8199128278031152050, guid: fe7190d2debceb8479d1e7889bd6fd10, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: HitButton
     Type: 0
-    ButtonComponent: {fileID: 6905571996649129898, guid: bddf512033ae25d42ad267da4ecfc120, type: 3}
+    ButtonComponent: {fileID: 3880741091027627547, guid: 1185091967937b243a9151dfa812f91b, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: StandButton
     Type: 0
-    ButtonComponent: {fileID: 8191505425245563591, guid: 3d97e8118b422b44ebf6f26006cd762a, type: 3}
+    ButtonComponent: {fileID: 4508961087837556298, guid: ddb2ec9343b00f4478242c75febd8e7a, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: PlayerScoreDisplay
     Type: 1
     ButtonComponent: {fileID: 8191505425245563591, guid: aca20ac9cb6441046bc78ec026cc981b, type: 3}
-    TextComponent: {fileID: 8456296807655708240, guid: 7f157044009999e4b9c5f694b4825cbb, type: 3}
+    TextComponent: {fileID: 6072447909522420456, guid: 47f5ba568270bad47b6f49ae3c497055, type: 3}
     InputFieldComponent: {fileID: 0}
   - Key: HostScoreDisplay
     Type: 1
     ButtonComponent: {fileID: 8191505425245563591, guid: aca20ac9cb6441046bc78ec026cc981b, type: 3}
-    TextComponent: {fileID: 8619291013202645, guid: 3e33fa4802685164fabf85de3be439a3, type: 3}
+    TextComponent: {fileID: 8041763011965405428, guid: 19962c06388a409498507fa732dbfcce, type: 3}
     InputFieldComponent: {fileID: 0}

@@ -17,15 +17,30 @@ MonoBehaviour:
   - Key: GameStatusText
     Type: 1
     ButtonComponent: {fileID: 0}
-    TextComponent: {fileID: 6774463932431401825, guid: 4f38fec8bf7434e4daac26ed08c283b3, type: 3}
+    TextComponent: {fileID: 4892459744098120755, guid: cb065f34ad959eb4d9bbde6a05e54b28, type: 3}
     InputFieldComponent: {fileID: 0}
   - Key: BetInputField
     Type: 2
     ButtonComponent: {fileID: 0}
     TextComponent: {fileID: 0}
-    InputFieldComponent: {fileID: 8071063168747366292, guid: ed05749c312da264e98e7973c6bc437a, type: 3}
+    InputFieldComponent: {fileID: 2958206403816377981, guid: 74277edb03ff9944b80ac52d4b42f714, type: 3}
   - Key: ConfirmButton
     Type: 0
-    ButtonComponent: {fileID: 2508742901854878874, guid: 30e85f8b70cef7f4b90bb86f55c1a4eb, type: 3}
+    ButtonComponent: {fileID: 4555319231972089100, guid: 39787fbf7941c4845857e6f3381d96b9, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
+  - Key: BetOptionLarger
+    Type: 0
+    ButtonComponent: {fileID: 742925683823941120, guid: e53c3ba125a190d4eaef3d026d919287, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
+  - Key: BetOptionEqual
+    Type: 0
+    ButtonComponent: {fileID: 4209504985938069696, guid: 99f7c5c6091ea7d41bfe48202d24e1f8, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
+  - Key: BetOptionSmaller
+    Type: 0
+    ButtonComponent: {fileID: 7557729135731575195, guid: fa61ca1ada70f424b836136f0ece00f0, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}

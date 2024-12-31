@@ -6,24 +6,23 @@ using UnityEngine;
 public class PokerGameInitalizer : MonoBehaviour
 {
     [SerializeField]
-    string[] objPath;
+    GameObject[] Objects;
 
     private void Awake()
     {
-        PokerGameEvent.Instance.Init(LoadObjectByFilePath());
+        PokerGameEvent.Instance.Init(Objects);
     }
-    private List<GameObject> LoadObjectByFilePath()
+    /*private List<GameObject> LoadObjectByFilePath()
     {
-        List <GameObject> passingData=new List<GameObject>(); 
+        List <GameObject> passingData=new List<GameObject>();
         for (int i=0;i<objPath.Length;i++)
         {
-            GameObject[] prefabs = Resources.LoadAll<GameObject>(objPath[i]);
-
+            Object[] prefabs = Resources.LoadAll<GameObject>(objPath[i]);
             foreach (GameObject prefab in prefabs)
             {
                 passingData.Add(prefab);
             }
         }
         return passingData;
-    }
+    }*/
 }
