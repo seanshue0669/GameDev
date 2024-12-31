@@ -110,14 +110,15 @@ public class ExecuteStage : IStage
     #endregion
 
     #region Custom InputAsync
-    private async Task Option()
+    private Task Option()
     {
         if (isWaiting)
-            return;
+            return Task.CompletedTask;
         isWaiting = true;
         /*var tcs = EventSystem.Instance.WaitForCallBack("DiceGame", "Options");
         betOptions = (string)await tcs;*/
         isWaiting = false;
+        return Task.CompletedTask;
     }
     #endregion
 }

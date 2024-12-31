@@ -8,7 +8,6 @@ public class LightController : MonoBehaviour
     [SerializeField] private float maxAngle = 30.0f;
     [SerializeField] private Color startColor = Color.red;
     [SerializeField] private Color endColor = Color.blue;
-    [SerializeField] private float colorChangeSpeed = 1.0f;
 
     private Light lightComponent;
 
