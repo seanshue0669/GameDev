@@ -19,3 +19,6 @@ MonoBehaviour:
   - CategoryName: PokerEvent
     Events:
     - {fileID: 11400000, guid: 68d2f0f38b90b6447a2e75bb3d1869f1, type: 2}
+  - CategoryName: RouletteEvent
+    Events:
+    - {fileID: 11400000, guid: 72fb39e5b6557744987be790af2537d3, type: 2}
