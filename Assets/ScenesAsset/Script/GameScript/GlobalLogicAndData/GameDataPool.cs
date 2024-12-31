@@ -17,6 +17,7 @@ public static class GameDataPool
         // Manually adding more stage collection here
         _stageCollections["DiceGame"] = new DiceGameStageCollection();
         _stageCollections["PokerGame"] = new PokerGameStageCollection();
+        _stageCollections["WheelGame"] = new RouletteGameStageCollection();
         _stageCollections["SlotGame"] = new SlotGameStageCollection();
 
 
