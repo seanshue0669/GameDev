@@ -1,0 +1,73 @@
+# 
+# Created by : Leo Calventus (@Jetstorm_477) - October 2014
+# http://www.turbosquid.com/Search/Artists/Jetstorm_477
+# 
+
+newmtl default
+illum 1
+Ka 0.011764706 0.047058824 0.28627452
+Kd 0.011764706 0.047058824 0.28627452
+Ks 0.0 0.0 0.0
+Ns 0.0
+
+newmtl default_default_1_2
+illum 2
+Ka 0.6039216 0.46666667 0.043137256
+Kd 0.6039216 0.46666667 0.043137256
+Ks 0.5 0.5 0.5
+Ns 64.0
+
+newmtl default_default_1_3
+illum 1
+Ka 1.0 0.99607843 0.99607843
+Kd 1.0 0.99607843 0.99607843
+Ks 0.0 0.0 0.0
+Ns 0.0
+
+newmtl bottom
+illum 1
+Ka 0.2 0.2 0.2
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+Ns 0.0
+map_Kd SD_Card_bottom.png
+
+newmtl top
+illum 1
+Ka 0.2 0.2 0.2
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+Ns 0.0
+map_Kd SD_Card_bottom.png
+
+newmtl left
+illum 1
+Ka 0.2 0.2 0.2
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+Ns 0.0
+map_Kd SD_Card_bottom.png
+
+newmtl right
+illum 1
+Ka 0.2 0.2 0.2
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+Ns 0.0
+map_Kd SD_Card_bottom.png
+
+newmtl back
+illum 1
+Ka 0.2 0.2 0.2
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+Ns 0.0
+map_Kd SD_Card_bottom.png
+
+newmtl front
+illum 1
+Ka 0.2 0.2 0.2
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+Ns 0.0
+map_Kd SD_Card_bottom.png
