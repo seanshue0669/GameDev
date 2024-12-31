@@ -12,11 +12,12 @@ namespace Scene
     {
         private Dictionary<string, string> SceneTypeToGameName = new Dictionary<string, string>
         {
-            { "DiceScecne", "DiceGame" },
-            { "PokerScecne", "PokerGame" },
-            { "SlotScecne", "SlotGame" },
-            { "WheelScecne", "WheelGame" }
+            { "DiceScene", "DiceGame" },
+            { "PokerScene", "PokerGame" },
+            { "SlotScene", "SlotGame" },
+            { "WheelScene", "WheelGame" }
         };
+        
         public async void LoadScene(string p_sceneTypeString)
         {
             SceneType sceneEnum= PhasingString2Enum(p_sceneTypeString);
@@ -25,7 +26,6 @@ namespace Scene
                 Debug.LogWarning("SceneType Error or SceneType No Exist!");
                 return;
             }
-            SceneManager.LoadScene(6);
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
             Debug.Log($"LoadScene: {p_sceneTypeString}");
             await loadOperation;
@@ -34,7 +34,7 @@ namespace Scene
             if (SceneTypeToGameName.TryGetValue(p_sceneTypeString, out string gameName))
             {
                 Debug.Log($"StartGame:{gameName}");
-                //EventSystem.Instance.TriggerEvent("SwitchScene", "StartGame", gameName);
+                EventSystem.Instance.TriggerEvent("SwitchScene", "StartGame", gameName);
             }           
         }
 

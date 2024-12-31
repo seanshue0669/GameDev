@@ -6,9 +6,9 @@ public class TitleAnimation : MonoBehaviour
 {
     [SerializeField] private RawImage title;
 
-    [SerializeField] private float minScale = 0.9f; // 最小縮放比例
-    [SerializeField] private float maxScale = 1.1f; // 最大縮放比例
-    [SerializeField] private float animationDuration = 2.0f; // 完成一個縮放循環的時間
+    [SerializeField] private float minScale = 0.9f; 
+    [SerializeField] private float maxScale = 1.1f; 
+    [SerializeField] private float animationDuration = 2.0f; 
 
     void Start()
     {
