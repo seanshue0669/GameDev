@@ -13,9 +13,11 @@ public static class GameDataPool
         UnityEngine.Debug.Log("GameDataPool initialized successfully");
         #region InitStage
 
-        _stageCollections["DiceGame"] = new DiceGameStageCollection();
+
         // Manually adding more stage collection here
+        _stageCollections["DiceGame"] = new DiceGameStageCollection();
         _stageCollections["PokerGame"] = new PokerGameStageCollection();
+        _stageCollections["SlotGame"] = new SlotGameStageCollection();
 
 
         //Dont touch!
