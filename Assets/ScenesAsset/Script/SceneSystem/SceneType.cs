@@ -5,10 +5,10 @@ namespace Scene
     {
         Start,
         Casion,
-        DiceScecne,
-        PokerScecne,
-        SlotScecne,
-        WheelScecne,
+        DiceScene,
+        PokerScene,
+        SlotScene,
+        WheelScene,
         Deflaut
     }
 }
