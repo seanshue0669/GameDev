@@ -2055,6 +2055,22 @@ PrefabInstance:
       propertyPath: m_eventListSO
       value: 
       objectReference: {fileID: 11400000, guid: 55d336e774f94874a80d9fceb1ee18d1, type: 2}
+    - target: {fileID: 8510892754755492323, guid: 111bb769ae57f2148a618e7b84cf5090, type: 3}
+      propertyPath: m_sharedDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510892754755492323, guid: 111bb769ae57f2148a618e7b84cf5090, type: 3}
+      propertyPath: 'm_sharedDatas.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 631043812c8575246b06268b932f308f, type: 2}
+    - target: {fileID: 8510892754755492323, guid: 111bb769ae57f2148a618e7b84cf5090, type: 3}
+      propertyPath: m_uiComponentCollections.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510892754755492323, guid: 111bb769ae57f2148a618e7b84cf5090, type: 3}
+      propertyPath: 'm_uiComponentCollections.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d019f4e36ea5df94191d3ecd44d55ec1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
