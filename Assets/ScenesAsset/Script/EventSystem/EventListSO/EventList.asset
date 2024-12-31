@@ -16,3 +16,6 @@ MonoBehaviour:
   - CategoryName: Scene
     Events:
     - {fileID: 11400000, guid: c17c891f989cbfe4683c098e5957e3be, type: 2}
+  - CategoryName: PokerEvent
+    Events:
+    - {fileID: 11400000, guid: 68d2f0f38b90b6447a2e75bb3d1869f1, type: 2}
