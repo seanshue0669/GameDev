@@ -980,7 +980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
+  m_UseGraphicAlpha: 0
 --- !u!114 &984485303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,6 +2055,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8510892754755492323, guid: 111bb769ae57f2148a618e7b84cf5090, type: 3}
+      propertyPath: 'm_sharedDatas.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e22c4fb37dcf4054dbcbbe7385c83f60, type: 2}
+    - target: {fileID: 8510892754755492323, guid: 111bb769ae57f2148a618e7b84cf5090, type: 3}
       propertyPath: 'm_sharedDatas.Array.data[1]'
       value: 
       objectReference: {fileID: 11400000, guid: 631043812c8575246b06268b932f308f, type: 2}
@@ -2066,6 +2070,10 @@ PrefabInstance:
       propertyPath: m_uiComponentCollections.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8510892754755492323, guid: 111bb769ae57f2148a618e7b84cf5090, type: 3}
+      propertyPath: 'm_uiComponentCollections.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b5c0a85114ac4894d92eb3480933f155, type: 2}
     - target: {fileID: 8510892754755492323, guid: 111bb769ae57f2148a618e7b84cf5090, type: 3}
       propertyPath: 'm_uiComponentCollections.Array.data[1]'
       value: 
@@ -2504,10 +2512,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objPath:
-  - Assets/ScenesAsset/Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
-  - Assets/ScenesAsset/Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
-  - Assets/ScenesAsset/Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
-  - Assets/ScenesAsset/Mesh/Playable/Prefabe/Individual Pieces/Cards/Spades
+  - Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
+  - Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
+  - Mesh/Playable/Prefabe/Individual Pieces/Cards/Clubs
+  - Mesh/Playable/Prefabe/Individual Pieces/Cards/Spades
 --- !u!114 &1809423103
 MonoBehaviour:
   m_ObjectHideFlags: 0
