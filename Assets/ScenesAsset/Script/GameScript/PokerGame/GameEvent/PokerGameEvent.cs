@@ -21,7 +21,6 @@ public class PokerGameEvent : MonoBehaviour
         Debug.Log("Init PokerGameEvent");
         Objects = p_objects.ToArray();
 
-        EventSystem.Instance.RegisterCallBack<string, string>("DiceGame", "Options", ProcessDiceGameEvent);
 
         EventSystem.Instance.RegisterEvent<string>("BJgame", "CardSpawn", CreateCard);
 
@@ -35,11 +34,7 @@ public class PokerGameEvent : MonoBehaviour
 
         isPlayer = true;
     }
-    private async Task<string> ProcessDiceGameEvent(string data)
-    {
-        await Task.Delay(100);
-        return data;
-    }
+   
     private void CreateCard(string card)
     {
         GameObject cardModel;
