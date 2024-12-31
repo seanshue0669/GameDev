@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using TMPro;
 
+
 public class Interaction : MonoBehaviour
 {
     public float interactDistance = 3f; // 交互距离
-    public LayerMask Layer; // 设置箱子所在的 Layer
+    public LayerMask miniGameLayer;
+    public LayerMask npcLayer;
     public TextMeshProUGUI interactText; // UI 文本，拖拽到 Inspector 中
+    public TextMeshProUGUI ChatText;
     public Scene.SceneLoader sceneLoader;
 
     private GameObject currentBox = null; // 当前目标箱子
@@ -14,11 +17,10 @@ public class Interaction : MonoBehaviour
     {
         RaycastHit hit;
         // 从摄像机的位置向前发射射线
-        if (Physics.Raycast(transform.position, transform.forward, out hit, interactDistance, Layer))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, interactDistance, miniGameLayer))
         {
             string tag = hit.collider.tag;
 
-            // 如果射线命中并且命中的是箱子
             if (tag == "Dicegame")
             {
                 currentBox = hit.collider.gameObject;
@@ -93,11 +95,39 @@ public class Interaction : MonoBehaviour
             }
         }
 
+        if (Physics.Raycast(transform.position, transform.forward, out hit, interactDistance, npcLayer))
+        {
+            string tag = hit.collider.tag;
+
+            
+            if (tag == "staff")
+            {
+                currentBox = hit.collider.gameObject;
+
+                if (ChatText != null)
+                {
+                    ChatText.gameObject.SetActive(true);
+                    ChatText.text = "Would you be willing to mortgage your house in exchange for $1,000?\n(Press F for Saying Yes)";
+                }
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    DataManager.Instance.playerData.SetValue("coin", 1000);
+                }
+                return;
+            }
+        }
+
         // 如果没有命中箱子，隐藏交互提示
         currentBox = null;
         if (interactText != null)
         {
             interactText.gameObject.SetActive(false);
+        }
+
+        if (ChatText != null)
+        {
+            ChatText.gameObject.SetActive(false);
         }
     }
 }
