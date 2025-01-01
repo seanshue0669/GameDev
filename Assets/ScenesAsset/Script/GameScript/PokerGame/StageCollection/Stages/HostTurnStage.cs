@@ -71,7 +71,7 @@ public class HostTurnStage : IStage
 
         for (int i=0; i < drawnCard; i++)
         {
-            if (i != 2 || i != 3)
+            if (i != 3 && i != 2)
             {
                 if (deck[i] == "FM")
                 {
@@ -126,16 +126,47 @@ public class HostTurnStage : IStage
             //phaseCompletionSource?.SetResult(true);
         }
 
-        if (playerScore < otherpointLimit)
+        if (playerScore <= otherpointLimit)
         {
             sharedData.SetInt("playerBust", 0);
         }
+        else sharedData.SetInt("playerBust", 1);
 
 
 
 
         await ShowDialogAsync("Host turn end");
 
+        int playerBust = sharedData.GetInt("playerBust");
+        int hostBust = sharedData.GetInt("hostBust");
+
+        if (playerBust == 1 || (playerScore < hostScore && hostBust == 0))
+        {
+
+            await ShowDialogAsync("You lose...");
+        }
+        else if (sharedData.GetInt("playerHasFive") == 1)
+        {
+            DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount") * 5);
+            await ShowDialogAsync("You got a five card win!!!");
+        }
+
+        else if (playerScore > hostScore && playerScore == otherpointLimit)
+        {
+            DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount") * 3);
+            await ShowDialogAsync("You got a black jack win!!!");
+        }
+
+        else if (playerScore > hostScore)
+        {
+            DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount") * 2);
+            await ShowDialogAsync("You win!!");
+        }
+        else
+        {
+            DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount"));
+            await ShowDialogAsync("It's a tie");
+        }
 
 
         sharedData.SetInt("drawnCard", drawnCard);

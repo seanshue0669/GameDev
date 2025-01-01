@@ -124,11 +124,16 @@ public class PokerInitialStage : IStage
     private void ValidateBetAmountInput(SharedDataSO sharedData)
     {
         string input = inputField.text;
-        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount)
+        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount && DataManager.Instance.playerData.GetValue<int>("chips") > 0)
         {
             sharedData.SetInt("BetAmount", betAmount);
+            DataManager.Instance.playerData.SubValue("chips", betAmount);
             statusText.text = "Bet amount accepted!";
             phaseCompletionSource?.SetResult(true);
+        }
+        else if(DataManager.Instance.playerData.GetValue<int>("chips") <= 0)
+        {
+            statusText.text = "You're too broke, sorry";
         }
         else
         {
