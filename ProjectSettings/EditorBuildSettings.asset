@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Start/Start.unity
     guid: 66170c2076f7b9c45804a853c827be02
   - enabled: 1
-    path: Assets/Scenes/Casion/Casion.unity
+    path: Assets/Scenes/casion/Casion.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/MiniGame/DiceGame/DiceScene.unity
@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGame/WheelGame/WheelScene.unity
     guid: 7409c2a386b458a4286e49350d9f630a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Loading/Loading.unity
     guid: b5cee482cc3cb6e4d8a2bbb787f9c50d
   m_configObjects:
