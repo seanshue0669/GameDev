@@ -23,10 +23,10 @@ MonoBehaviour:
     Type: 2
     ButtonComponent: {fileID: 0}
     TextComponent: {fileID: 0}
-    InputFieldComponent: {fileID: 2958206403816377981, guid: 74277edb03ff9944b80ac52d4b42f714, type: 3}
+    InputFieldComponent: {fileID: 9020643771899031918, guid: 5b913f69a5b03fa4ba24e8e79248b4dc, type: 3}
   - Key: ConfirmButton
     Type: 0
-    ButtonComponent: {fileID: 4555319231972089100, guid: 39787fbf7941c4845857e6f3381d96b9, type: 3}
+    ButtonComponent: {fileID: 3930195291482448990, guid: 8e08b65224c9504499b12e28e4c66988, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: BetOptionLarger
@@ -46,11 +46,11 @@ MonoBehaviour:
     InputFieldComponent: {fileID: 0}
   - Key: PlayingNextRound
     Type: 0
-    ButtonComponent: {fileID: 3681461671447354368, guid: 28788485b3c036b4a9f164aaf0f867eb, type: 3}
+    ButtonComponent: {fileID: 8694936979178015379, guid: f9017e157be9e014a8e6f69d46166a1c, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
   - Key: Quit
     Type: 0
-    ButtonComponent: {fileID: 7518123641050371761, guid: 7dc8047bc2d058d4fb38d865c4ca5c4b, type: 3}
+    ButtonComponent: {fileID: 2981757591151127099, guid: 8d912efec5071e04e944e8c495f4a496, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}

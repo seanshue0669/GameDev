@@ -49,7 +49,7 @@ public class DiceGame_ExecuteStage : IStage
         //Rolling Event
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup",0);
         await Task.Delay(1000);
-        EventSystem.Instance.TriggerEvent<string>("DiceGameEvent", "MoveCup", passingOperation);
+        EventSystem.Instance.TriggerEvent<string>("DiceGameEvent", "RollDice", passingOperation);
         await Task.Delay(1000);
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup", 1);
 
