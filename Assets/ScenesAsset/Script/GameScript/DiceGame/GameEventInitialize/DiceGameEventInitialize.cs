@@ -28,7 +28,7 @@ namespace UnityEngine
             EventSystem.Instance.RegisterEvent<string>("DiceGameEvent", "RollDice", RollingDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCup", MoveCup);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCamera", MoveCamera);
-            //EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "SpwanDice", SpwanDice());
+            EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "SpanwDice", SpawnDice);
             Debug.Log("Reg Rolling Event");
         }
         #region register function

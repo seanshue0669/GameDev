@@ -56,7 +56,7 @@ public class DiceGame_ExecuteStage : IStage
         if (diceOneResult == 7 || diceTwoResult == 7)
         {
             sharedData.SetInt("Result", -1);
-            EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpwanDice", 1);
+            EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpawnDice", 1);
         }
         else
             sharedData.SetInt("Result", diceOneResult + diceTwoResult);
