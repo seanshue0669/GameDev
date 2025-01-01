@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f322a442efbf9624f89d56274fb96989
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151624
+  packageName: Achievement System
+  packageVersion: 1.0
+  assetPath: Assets/AchievementSystem/Scripts/DataTypes.cs
+  uploadId: 371754
