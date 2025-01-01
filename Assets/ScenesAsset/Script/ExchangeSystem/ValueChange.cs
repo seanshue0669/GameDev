@@ -1,14 +1,47 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
+using Unity.VisualScripting;
+using Unity.VisualScripting.ReorderableList.Internal;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.StandaloneInputModule;
+
 namespace UnityEngine
 {
     public class ValueChange : MonoBehaviour
     {
         private static ValueChange _instance;
-        public static ValueChange Instance => _instance ??= new ValueChange();
+        public static ValueChange Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    // 嘗試去找場景中的實例
+                    _instance = Object.FindAnyObjectByType<ValueChange>();
+
+                    // 如果找不到就自己想辦法生成，或是直接報錯，都可
+                    if (_instance == null)
+                    {
+                        Debug.LogError("There is no ValueChange in the scene!");
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        private void Awake()
+        {
+            // 保證場上只有一個實例
+            if (_instance != null && _instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            _instance = this;
+        }
 
         public GameObject canvasObject;
 
@@ -25,39 +58,33 @@ namespace UnityEngine
         public Button exchangeMoney;
         public TMP_InputField inputChips;
 
+        public Button exit;
+
         private Dictionary<string, int> itemPrices; // 字典存儲選項與價格對應關係
 
         public void Init()
         {
             GameObject FindObject = GameObject.FindWithTag("ExchangeUI");
             canvasObject = FindObject;
-            if (canvasObject != null)
+            if (canvasObject == null)
             {
-                Debug.LogError("cant find exchange ui!!!");
+                Debug.LogError("cant find exchange ui!!!????");
             }
             EventSystem.Instance.RegisterEvent<int>("Exchange", "callUI", Initialize);
 
             canvasObject.GetComponent<Canvas>().enabled = false;
         }
 
-        private void Initialize(int tmp)
+        public void Initialize(int tmp)
         {
-            /*canvasObject = GameObject.FindWithTag("ExchangeUI");
-            if (canvasObject != null)
-            {
-                Debug.LogError("cant find exchange ui!!!");
-            }*/
 
             Debug.Log("Enter Initialize");
-            GameObject FindObject = GameObject.FindWithTag("ExchangeUI");
-            canvasObject = FindObject;
-            if (canvasObject != null)
+
+            if (canvasObject == null)
             {
-                Debug.LogError("cant find exchange ui!!!");
+                Debug.LogError("cant find exchange ui!!!!!!!!");
             }
             canvasObject.GetComponent<Canvas>().enabled = true;
-            //canvasObject.gameObject.GetComponent<Renderer>().enabled = true;
-
 
             // 初始化字典
             itemPrices = new Dictionary<string, int>
@@ -66,6 +93,11 @@ namespace UnityEngine
                 { "kidney", 2000 },
                 { "dignity", 50 }
             };
+
+            selling.onClick.AddListener(SellingOnClick);
+            exchangeChips.onClick.AddListener(exchangeChipsOnClick);
+            exchangeMoney.onClick.AddListener(exchangeMoneyOnClick);
+            exit.onClick.AddListener(exitOnClick);
 
             // 初始化 UI
             if (dropdown.options.Count > 0)
@@ -78,11 +110,12 @@ namespace UnityEngine
                 dropdown.onValueChanged.AddListener(UpdateText);
             }
 
-            selling.onClick.AddListener(SellingOnClick);
-            exchangeChips.onClick.AddListener(exchangeChipsOnClick);
-            exchangeMoney.onClick.AddListener(exchangeMoneyOnClick);
+            DataManager.Instance.playerData.SetValue("canMoving", false);
 
-            Cursor.lockState = CursorLockMode.None;
+            inputChips.text = "";
+            inputMoney.text = "";
+
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
         }
 
         #region selling
@@ -98,7 +131,7 @@ namespace UnityEngine
                 }
                 else
                 {
-                    uiText.text = ""; // 若選項不在字典中，設置為空
+                    uiText.text = ""; 
                 }
             }
         }
@@ -143,25 +176,72 @@ namespace UnityEngine
         #region Exchange
         void exchangeChipsOnClick()
         {
-            int chips = int.Parse(inputMoney.text);
-
-            if (chips <= DataManager.Instance.playerData.GetValue<int>("money"))
+            if (IsInteger(inputMoney.text))
             {
-                DataManager.Instance.playerData.SubValue("money", chips);
-                DataManager.Instance.playerData.AddValue("chips", chips);
+                int chips = int.Parse(inputMoney.text);
+
+                if (chips <= DataManager.Instance.playerData.GetValue<int>("money"))
+                {
+                    DataManager.Instance.playerData.SubValue("money", chips);
+                    DataManager.Instance.playerData.AddValue("chips", chips);
+                }
             }
+
+            inputMoney.text = "";
         }
 
         void exchangeMoneyOnClick()
         {
-            int money = int.Parse(inputMoney.text);
-
-            if (money <= DataManager.Instance.playerData.GetValue<int>("chips"))
+            if (IsInteger(inputChips.text))
             {
-                DataManager.Instance.playerData.SubValue("chips", money);
-                DataManager.Instance.playerData.AddValue("money", money);
+                int money = int.Parse(inputChips.text);
+
+                if (money <= DataManager.Instance.playerData.GetValue<int>("chips"))
+                {
+                    DataManager.Instance.playerData.SubValue("chips", money);
+                    DataManager.Instance.playerData.AddValue("money", money);
+                }
             }
+
+            inputChips.text = "";
+        }
+
+        public bool IsInteger(string input)
+        {
+            // 移除輸入字串前後的空白字符
+            string trimmedInput = input.Trim();
+
+            // 嘗試將字串轉換為整數
+            int result;
+            bool isInteger = int.TryParse(trimmedInput, out result);
+
+            return isInteger;
         }
         #endregion
+
+        private void exitOnClick()
+        {
+            DataManager.Instance.playerData.SetValue("canMoving", true);
+
+            GameObject FindObject = GameObject.FindWithTag("ExchangeUI");
+            canvasObject = FindObject;
+
+            if (canvasObject == null)
+            {
+                Debug.LogError("cant find exchange ui!!!");
+            }
+
+            canvasObject.GetComponent<Canvas>().enabled = false;
+
+            selling.onClick.RemoveListener(SellingOnClick);
+            exchangeChips.onClick.RemoveListener(exchangeChipsOnClick);
+            exchangeMoney.onClick.RemoveListener(exchangeMoneyOnClick);
+            exit.onClick.RemoveListener(exitOnClick);
+
+            dropdown.onValueChanged.RemoveListener(UpdateText);
+
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        }
     }
+
 }

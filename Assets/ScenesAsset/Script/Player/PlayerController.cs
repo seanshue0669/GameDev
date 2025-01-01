@@ -23,14 +23,19 @@ public class move : MonoBehaviour
 
     void Start()
     {
+        DataManager.Instance.playerData.SetValue("canMoving", true);
+
         controller = GetComponent<CharacterController>();
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        character_movement();
-        character_rotate();
+        if (DataManager.Instance.playerData.GetValue<bool>("canMoving"))
+        {
+            character_movement();
+            character_rotate();
+        }
     }
 
     void character_rotate()
