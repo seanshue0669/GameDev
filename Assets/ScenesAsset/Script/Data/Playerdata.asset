@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: Playerdata
   m_EditorClassIdentifier: 
   Data:
-  - Key: coin
+  - Key: money
     Type: 0
-    IntValue: 66
+    IntValue: 3050
+    BoolValue: 0
+    FloatValue: 0
+    StringValue: 
+  - Key: chips
+    Type: 0
+    IntValue: 0
     BoolValue: 0
     FloatValue: 0
     StringValue: 

@@ -22,3 +22,6 @@ MonoBehaviour:
   - CategoryName: RouletteEvent
     Events:
     - {fileID: 11400000, guid: 72fb39e5b6557744987be790af2537d3, type: 2}
+  - CategoryName: ExchangeEvent
+    Events:
+    - {fileID: 11400000, guid: 506ca578a8f986347bf3820af90d4167, type: 2}

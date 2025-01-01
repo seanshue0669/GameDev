@@ -454,8 +454,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 134.2, y: 10.1}
-  m_SizeDelta: {x: 310.24, y: 31.48}
+  m_AnchoredPosition: {x: -1.945, y: 11.97}
+  m_SizeDelta: {x: 31.15, y: 27.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &83423729
 MonoBehaviour:
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
+  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0.79607844}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1927,8 +1927,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.6, y: 158}
-  m_SizeDelta: {x: 165.3, y: 31.6}
+  m_AnchoredPosition: {x: 292, y: 163.1}
+  m_SizeDelta: {x: 82.16, y: 35.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &342792022
 MonoBehaviour:
@@ -3149,7 +3149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110.2, y: 13.899876}
+  m_AnchoredPosition: {x: -107.7, y: 13.899876}
   m_SizeDelta: {x: 165.3, y: 31.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470726365
@@ -4271,7 +4271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4885,7 +4885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.49999, y: -148.80025}
+  m_AnchoredPosition: {x: 20, y: -138.6}
   m_SizeDelta: {x: 165.3, y: 31.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699349109
@@ -5066,7 +5066,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143.30016, y: -62.2}
+  m_AnchoredPosition: {x: -147.7, y: -67}
   m_SizeDelta: {x: 310.24, y: 31.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &717958299
@@ -5089,7 +5089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: exchange chips by money
+  m_text: exchange money for chips
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6282,7 +6282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -141.60016, y: 10.1}
+  m_AnchoredPosition: {x: -147.70006, y: 10.1}
   m_SizeDelta: {x: 310.24, y: 31.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &878918000
@@ -7134,14 +7134,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034663174}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 807a9e76bb06b284fb621e104c8b86bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 5
-  jumpSpeed: 8
   gravity: 10
   mouseSensitivity: 3.4
 --- !u!1 &1052564392 stripped
@@ -8949,7 +8948,7 @@ GameObject:
   - component: {fileID: 1294573592}
   - component: {fileID: 1294573591}
   m_Layer: 5
-  m_Name: SellingHouse
+  m_Name: Selling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10771,51 +10770,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511628708}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1512716644
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1512716646}
-  - component: {fileID: 1512716645}
-  m_Layer: 0
-  m_Name: DataManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1512716645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512716644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 099a4f1bf4eb09f4fa271fab8f4d7d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: bc2392c6d45a76e4d92d494c3c476716, type: 2}
---- !u!4 &1512716646
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512716644}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9301553, y: 3.8054032, z: 27.905813}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1521220749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11018,6 +10972,57 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1755478904}
   m_SourcePrefab: {fileID: 100100000, guid: 13472b848450d0641a21a53d37c3e1fc, type: 3}
+--- !u!1 &1544676088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544676089}
+  - component: {fileID: 1544676090}
+  m_Layer: 0
+  m_Name: ExchangeUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1544676089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544676088}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -104.42485}
+  m_LocalScale: {x: 973.8988, y: 973.8988, z: 973.8988}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1612004221}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1544676090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544676088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6df0c28b838b8448278700ffe7a164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 470726365}
+  uiText: {fileID: 1415040131}
+  selling: {fileID: 1294573591}
+  exchangeChips: {fileID: 1420390830}
+  inputMoney: {fileID: 130138082}
+  exchangeMoney: {fileID: 1653755177}
+  inputChips: {fileID: 699349109}
 --- !u!1 &1554389385
 GameObject:
   m_ObjectHideFlags: 0
@@ -11749,6 +11754,7 @@ RectTransform:
   - {fileID: 699349108}
   - {fileID: 1475587261}
   - {fileID: 342792021}
+  - {fileID: 1544676089}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12139,7 +12145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233, y: -148.10023}
+  m_AnchoredPosition: {x: 233, y: -138.6}
   m_SizeDelta: {x: 165.3, y: 31.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1653755177
@@ -12258,7 +12264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144.30016, y: -139.6}
+  m_AnchoredPosition: {x: -147.7, y: -145}
   m_SizeDelta: {x: 310.24, y: 31.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665932668
@@ -12281,7 +12287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: exchange money by chips
+  m_text: exchange chips for money
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16255,4 +16261,3 @@ SceneRoots:
   - {fileID: 1904137749}
   - {fileID: 267232901}
   - {fileID: 1612004221}
-  - {fileID: 1512716646}
