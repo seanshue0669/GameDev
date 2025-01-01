@@ -70,7 +70,7 @@ public class Interaction : MonoBehaviour
                 // 检测是否按下 E 键
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //sceneLoader.LoadScene("DiceScecne");
+                    //sceneLoader.LoadScene("WheelScene");
                     Debug.Log("RouletteGame");
                 }
                 return; // 如果有命中，结束 Update

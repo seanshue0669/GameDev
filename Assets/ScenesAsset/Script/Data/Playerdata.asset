@@ -25,15 +25,9 @@ MonoBehaviour:
     BoolValue: 0
     FloatValue: 0
     StringValue: 
-  - Key: chips
-    Type: 0
+  - Key: canMoving
+    Type: 1
     IntValue: 66
-    BoolValue: 0
-    FloatValue: 0
-    StringValue: 
-  - Key: chips
-    Type: 0
-    IntValue: 0
     BoolValue: 0
     FloatValue: 0
     StringValue: 

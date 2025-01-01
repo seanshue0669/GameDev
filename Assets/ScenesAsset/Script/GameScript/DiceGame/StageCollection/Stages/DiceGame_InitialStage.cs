@@ -37,6 +37,7 @@ public class DiceGame_InitialStage : IStage
     public async Task ExecuteAsync(SharedDataSO sharedData, UIComponentCollectionSO uiComponents)
     {
         if (!InitializeUI(uiComponents)) return;
+        EventSystem.Instance.TriggerEvent<string>("DiceGameEvent", "RollDice", "1 1");
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCamera", 0);
         RegisterButtonListeners();
         await ShowDialogAsync(instructionMessage);
@@ -48,9 +49,9 @@ public class DiceGame_InitialStage : IStage
         InputDelegate = null;
         await WaitForPhaseCompletionAsync();
 
-        // Phase 2: Select Bet Option
         await EnableOptionButton();
-        await ShowDialogAsync($"You Bet{sharedData.GetInt("BetAmount")}$");
+        // Phase 2: Select Bet Option
+        await ShowDialogAsync($"You Bet {sharedData.GetInt("BetAmount")}$");
         await ShowDialogAsync("Please Choose your Bet Option:");
         currentValidationAction = () => ValidateOptionInput();
         InputDelegate = null;

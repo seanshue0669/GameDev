@@ -18,4 +18,5 @@ MonoBehaviour:
   - RollDice
   - MoveCup
   - MoveCamera
-  - Spawn
+  - StopSpawn
+  - SpawnDice

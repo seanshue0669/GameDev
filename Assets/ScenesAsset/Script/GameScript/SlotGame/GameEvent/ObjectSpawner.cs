@@ -8,7 +8,7 @@ public class ObjectSpawner : MonoBehaviour
     public static ObjectSpawner Instance => _instance ??= new ObjectSpawner();
 
     [SerializeField]
-    public GameObject[] objectPrefab;
+    public GameObject objectPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Init()
@@ -24,12 +24,12 @@ public class ObjectSpawner : MonoBehaviour
     private IEnumerator GenerateObjectCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        if (objectPrefab[0] != null)
+        if (objectPrefab != null)
         {
             Vector3 spawnPosition = new Vector3(0.00800000038f, 0.741999984f, -9.22999954f);
             Quaternion spawnRotation = Quaternion.identity;
 
-            GameObject spawnedObject = Instantiate(objectPrefab[0], spawnPosition, spawnRotation);
+            GameObject spawnedObject = Instantiate(objectPrefab, spawnPosition, spawnRotation);
             Debug.Log("Generated object: " + spawnedObject.name);
         }
         else

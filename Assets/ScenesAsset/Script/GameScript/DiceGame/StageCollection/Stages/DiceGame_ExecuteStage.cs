@@ -53,10 +53,10 @@ public class DiceGame_ExecuteStage : IStage
         await Task.Delay(1000);
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup", 1);
 
-        if (diceOneResult == 7 || diceTwoResult == 7)
+        if (diceOneResult ==  7|| diceTwoResult == 7)
         {
             sharedData.SetInt("Result", -1);
-            EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpawnDice", 1);
+            EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpawnDice", 2);
         }
         else
             sharedData.SetInt("Result", diceOneResult + diceTwoResult);
