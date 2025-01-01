@@ -4,10 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PokerInitialStage : IStage
+public class SlotGameInitialStage : IStage
 {
     #region Fields and Properties
-    private readonly string instructionMessage = "Welcome To Black Jack";
+    private readonly string instructionMessage = "Welcome To Slot Game";
     private readonly int maxBetAmount = 1000;
     private readonly int minBetAmount = 1;
 
@@ -15,7 +15,6 @@ public class PokerInitialStage : IStage
     private TMP_Text statusText;
     private TMP_InputField inputField;
     private Button confirmButton;
-    private Button hitButton;
 
     private TaskCompletionSource<bool> phaseCompletionSource;
     private Action currentValidationAction;
@@ -26,27 +25,15 @@ public class PokerInitialStage : IStage
     #endregion
 
     #region Constructor
-    
+    public SlotGameInitialStage() {
+        //Init the variable here
+    }
     #endregion
 
     #region Execute Phase Logic
     public async Task ExecuteAsync(SharedDataSO sharedData, UIComponentCollectionSO uiComponents)
     {
         if (!InitializeUI(uiComponents)) return;
-
-        for (int i = 0; i < sharedData.GetInt("drawnCard"); i++)
-        {
-            await Task.Delay(1);
-            EventSystem.Instance.TriggerEvent("BJgame", "DestroyCards", sharedData.GetInt("drawnCard"));
-        }
-        sharedData.SetInt("playerScore", 0);
-        sharedData.SetInt("hostScore", 0);
-        sharedData.SetInt("drawnCard", 0);
-        sharedData.SetInt("playerHasA", 0);
-        sharedData.SetInt("hostHasA", 0);
-        sharedData.SetInt("playerBust", 0);
-        sharedData.SetInt("hostBust", 0);
-        sharedData.SetInt("playerHasFive", 0);
 
         RegisterButtonListeners();
         await ShowDialogAsync(instructionMessage);
@@ -57,15 +44,6 @@ public class PokerInitialStage : IStage
         InputDelegate = null;
         await WaitForPhaseCompletionAsync();
 
-        // Phase 2: Select Bet Option
-        //await ShowDialogAsync("Please Choose your Bet Option:");
-        //currentValidationAction = () => ValidateOptionInput();
-        //InputDelegate = Option;
-        //await WaitForPhaseCompletionAsync();
-
-        // Finalize
-        //sharedData.SetString("BetOption", betOptions);
-        //await ShowDialogAsync($"You Chose'{betOptions}'");
         await ShowDialogAsync("All inputs are completed!");
         CleanupUI();
     }
@@ -74,7 +52,7 @@ public class PokerInitialStage : IStage
     #region UI Management
     private bool InitializeUI(UIComponentCollectionSO uiComponents)
     {
-        string UITag = "PokerGameUI";
+        string UITag = "SlotGameUI";
         var canvas = uiComponents.FindCanvasByTag(UITag);
         if (canvas == null)
         {
@@ -85,7 +63,6 @@ public class PokerInitialStage : IStage
         statusText = uiComponents.CreateUIComponent<TMP_Text>("GameStatusText", canvas.transform);
         inputField = uiComponents.CreateUIComponent<TMP_InputField>("BetInputField", canvas.transform);
         confirmButton = uiComponents.CreateUIComponent<Button>("ConfirmButton", canvas.transform);
-        //hitButton = uiComponents.CreateUIComponent<Button>("HitButton", canvas.transform);
 
         if (statusText == null || inputField == null || confirmButton == null)
         {
@@ -103,7 +80,6 @@ public class PokerInitialStage : IStage
         GameObject.Destroy(statusText.gameObject);
         GameObject.Destroy(inputField.gameObject);
         GameObject.Destroy(confirmButton.gameObject);
-        //GameObject.Destroy(hitButton.gameObject);
     }
     #endregion
 

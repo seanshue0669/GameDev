@@ -126,7 +126,12 @@ public class HostTurnStage : IStage
             //phaseCompletionSource?.SetResult(true);
         }
 
-        
+        if (playerScore < otherpointLimit)
+        {
+            sharedData.SetInt("playerBust", 0);
+        }
+
+
 
 
         await ShowDialogAsync("Host turn end");
