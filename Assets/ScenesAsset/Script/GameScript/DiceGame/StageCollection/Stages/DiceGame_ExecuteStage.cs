@@ -53,6 +53,7 @@ public class DiceGame_ExecuteStage : IStage
         await Task.Delay(1000);
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup", 1);
 
+        EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCamera", 1);
         //Passing the Result to Next Stage
         CleanupUI();
     }

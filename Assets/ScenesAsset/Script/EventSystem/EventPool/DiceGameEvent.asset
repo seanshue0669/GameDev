@@ -17,3 +17,4 @@ MonoBehaviour:
   Identifiers:
   - RollDice
   - MoveCup
+  - MoveCamera

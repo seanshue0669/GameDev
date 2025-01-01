@@ -11,10 +11,13 @@ namespace UnityEngine
         public GameObject Cup;
         private GameObject Dice1;
         private GameObject Dice2;
-
+        public GameObject mainCam;
         // Position objects
-        [SerializeField] public Transform postionUP;
-        [SerializeField] public Transform postionDOWN;
+        [SerializeField] 
+        public Transform postionUP;
+        public Transform postionDOWN;
+        public Transform postitionStart;
+        public Transform postitionEnd;
 
         // Duration for smooth movement
         [SerializeField] public float duration = 1.0f;
@@ -24,9 +27,10 @@ namespace UnityEngine
         {
             EventSystem.Instance.RegisterEvent<string>("DiceGameEvent", "RollDice", RollingDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCup", MoveCup);
+            EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCamera", MoveCup);
             Debug.Log("Reg Rolling Event");
         }
-
+        #region register function
         void RollingDice(string p_DiceCase)
         {
             // Implementation for RollingDice
@@ -39,8 +43,20 @@ namespace UnityEngine
             RotateDice(Dice1.transform, dice1Value);
             RotateDice(Dice2.transform, dice2Value);
         }
-
         void MoveCup(int p_Options)
+        {
+            if (p_Options == 1)
+            {
+                mainCam.transform.position = postitionStart.position;
+                mainCam.transform.rotation = postitionStart.rotation;
+            }
+            else if (p_Options == 0)
+            {
+                mainCam.transform.position = postitionEnd.position;
+                mainCam.transform.rotation = postitionEnd.rotation;
+            }
+        }
+        void MoveCamera(int p_Options)
         {
             if (p_Options == 1)
             {
@@ -51,7 +67,10 @@ namespace UnityEngine
                 StartCoroutine(SmoothMove(Cup.transform, postionDOWN.position));
             }
         }
-        // Tool Function
+        #endregion
+
+
+        #region support fuction
         private IEnumerator SmoothMove(Transform p_objectToMove, Vector3 p_targetPosition)
         {
             Vector3 startPosition = p_objectToMove.position;
@@ -85,5 +104,6 @@ namespace UnityEngine
             Debug.Log($"Rotating {diceTransform.name} to face {faceValue}");
             diceTransform.rotation = targetRotation;
         }
+        #endregion
     }
 }

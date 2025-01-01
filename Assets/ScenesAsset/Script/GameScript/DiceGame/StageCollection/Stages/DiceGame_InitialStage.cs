@@ -37,7 +37,7 @@ public class DiceGame_InitialStage : IStage
     public async Task ExecuteAsync(SharedDataSO sharedData, UIComponentCollectionSO uiComponents)
     {
         if (!InitializeUI(uiComponents)) return;
-
+        EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCamera", 1);
         RegisterButtonListeners();
         await ShowDialogAsync(instructionMessage);
 
