@@ -18,6 +18,7 @@ public static class GameDataPool
         _stageCollections["DiceGame"] = new DiceGameStageCollection();
         _stageCollections["PokerGame"] = new PokerGameStageCollection();
         _stageCollections["WheelGame"] = new RouletteGameStageCollection();
+        _stageCollections["SlotGame"] = new SlotGameStageCollection();
 
 
         //Dont touch!

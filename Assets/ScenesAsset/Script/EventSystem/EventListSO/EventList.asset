@@ -28,3 +28,9 @@ MonoBehaviour:
   - CategoryName: DiceEvent
     Events:
     - {fileID: 11400000, guid: 4c6cec47723119e439f3c65258d7c85b, type: 2}
+  - CategoryName: SlotEvent
+    Events:
+    - {fileID: 11400000, guid: 3dafce4626d5f5f47adda7ddf28d6b65, type: 2}
+    - {fileID: 11400000, guid: bc9ee7af00367aa4a811408504823a44, type: 2}
+    - {fileID: 11400000, guid: c6f104918982db548bbe185f89ac4afd, type: 2}
+    - {fileID: 11400000, guid: fea2f879f55bd57488a7b706578b19fc, type: 2}
