@@ -21,6 +21,8 @@ public class PlayerData : ScriptableObject
     [SerializeField]
     public List<PlayerDataEntry> Data = new List<PlayerDataEntry>();
 
+
+    //dont use these 4 functions in the Constructor of your game stages(so far)!!!
     #region basic function
     // Get Value by Key
     public T GetValue<T>(string key)

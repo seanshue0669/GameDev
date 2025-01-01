@@ -38,8 +38,6 @@ public class RouletteGameInitialStage : IStage
     public RouletteGameInitialStage() {
         currentInput = new Action[10];
         isValid = false;
-
-        DataManager.Instance.playerData.SetValue("coin", 100);
     }
     #endregion
 
