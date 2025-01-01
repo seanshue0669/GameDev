@@ -15,7 +15,13 @@ MonoBehaviour:
   Data:
   - Key: money
     Type: 0
-    IntValue: 4344
+    IntValue: 430
+    BoolValue: 0
+    FloatValue: 0
+    StringValue: 
+  - Key: chips
+    Type: 0
+    IntValue: 66
     BoolValue: 0
     FloatValue: 0
     StringValue: 

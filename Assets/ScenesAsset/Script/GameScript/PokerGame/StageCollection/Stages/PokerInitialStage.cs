@@ -34,6 +34,11 @@ public class PokerInitialStage : IStage
     {
         if (!InitializeUI(uiComponents)) return;
 
+        for (int i = 0; i < sharedData.GetInt("drawnCard"); i++)
+        {
+            await Task.Delay(1);
+            EventSystem.Instance.TriggerEvent("BJgame", "DestroyCards", sharedData.GetInt("drawnCard"));
+        }
         sharedData.SetInt("playerScore", 0);
         sharedData.SetInt("hostScore", 0);
         sharedData.SetInt("drawnCard", 0);
