@@ -22,7 +22,6 @@ public class DiceGame_InitialStage : IStage
     private TaskCompletionSource<bool> phaseCompletionSource;
     private Action currentValidationAction;
     private string betOptions;
-    private bool isWaiting = false;
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
     #endregion
@@ -55,10 +54,6 @@ public class DiceGame_InitialStage : IStage
         currentValidationAction = () => ValidateOptionInput();
         InputDelegate = null;
         await WaitForPhaseCompletionAsync();
-
-        // !>Testing : Should be remove
-        EventSystem.Instance.TriggerEvent<string>("DiceGameEventTest", "Sendmsg", "Testing1");
-        EventSystem.Instance.TriggerEvent<string>("DiceGameEventTest", "Sendmsg", "Testing2");
 
         // Finalize
         sharedData.SetString("BetOption", betOptions);
@@ -196,9 +191,6 @@ public class DiceGame_InitialStage : IStage
     #endregion
 
     #region Custom InputAsync
-    private async Task Option()
-    {
 
-    }
     #endregion
 }

@@ -7,7 +7,6 @@ public class DiceGame_ExecuteStage : IStage
 {
     #region Fields and Properties
     //Properties 
-    private string Properties;
 
     //UI
     string UITag = "DiceGameUI";
@@ -25,7 +24,6 @@ public class DiceGame_ExecuteStage : IStage
     public DiceGame_ExecuteStage()
     {
         //Init the variable here
-        Properties = "ExecuteStage Construct";
     }
     #endregion
 
