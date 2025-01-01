@@ -1,36 +1,44 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndingDisplay : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject EndingScreen;
     public GameObject Ending1;
     public GameObject Ending2;
     public GameObject Ending3;
     private GameObject Ending;
 
-    // Update is called once per frame
-    void Update()
+    private int richEnding = 2000;
+    private int poorEnding = 0;
+
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (DataManager.Instance.playerData.GetValue<int>("money") > richEnding)
         {
             Ending = Ending1;
             Ending.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (DataManager.Instance.playerData.GetValue<int>("money") < poorEnding)
         {
             Ending = Ending2;
             Ending.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        else
         {
             Ending = Ending3;
             Ending.SetActive(true);
         }
+    }
+    void Update()
+    {
+        
 
         if (Input.GetMouseButtonDown(0))
         {
             Ending.SetActive(false);
+            SceneManager.LoadSceneAsync("casion");
         }
     }
 }
