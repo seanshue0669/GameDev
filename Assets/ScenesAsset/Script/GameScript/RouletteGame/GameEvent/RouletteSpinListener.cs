@@ -56,9 +56,6 @@ public class RouletteSpinListener : MonoBehaviour
         { 26, 350.28f }
     };
 
-    // 球的初始角度（當輪盤 Z=0 時，球位於 8 號角度 155.68f）
-    private float ballPositionAngle = 155.68f;
-
     // 追蹤累計的 Y 軸旋轉角度
     private float totalBallY = 0f;
 

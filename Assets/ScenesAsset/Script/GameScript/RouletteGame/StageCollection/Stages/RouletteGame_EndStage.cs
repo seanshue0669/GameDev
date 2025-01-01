@@ -25,7 +25,7 @@ public class RouletteGameEndStage : IStage
 
     // Core
     private TaskCompletionSource<bool> phaseCompletionSource;
-    private bool isWaiting = false;
+    //private bool isWaiting = false;
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
 
