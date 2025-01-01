@@ -15,25 +15,21 @@ public class EndingDisplay : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Ending = Ending1;
-            EndingScreen.SetActive(true);
             Ending.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Ending = Ending2;
-            EndingScreen.SetActive(true);
             Ending.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Ending = Ending3;
-            EndingScreen.SetActive(true);
             Ending.SetActive(true);
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            EndingScreen.SetActive(false);
             Ending.SetActive(false);
         }
     }

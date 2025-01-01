@@ -7,10 +7,11 @@ public class PokerGameEvent : MonoBehaviour
     private static PokerGameEvent _instance;
     public static PokerGameEvent Instance => _instance ??= new PokerGameEvent();
 
-    private bool isWaiting = false;
 
     private Vector3 cardPosPlayer;
     private Vector3 cardPosHost;
+    private float playerOffset;
+    private float hostOffset;
 
     private bool isPlayer;
 
@@ -28,9 +29,11 @@ public class PokerGameEvent : MonoBehaviour
 
         EventSystem.Instance.RegisterEvent<int>("BJgame", "DestroyCards", destroyCards);
 
-        cardPosPlayer = new Vector3(-0.3f, 1f, -9.5f);
+        cardPosPlayer = new Vector3(-0.34f, 0.95f, -9.15f);
 
-        cardPosHost = new Vector3(0.18f, 1f, -9.14f);
+        cardPosHost = new Vector3(-0.34f, 0.95f, -8.72f);
+        playerOffset = 0.13f;
+        hostOffset = 0.13f;
 
         isPlayer = true;
     }
@@ -49,15 +52,15 @@ public class PokerGameEvent : MonoBehaviour
                 }
                 if (isPlayer)
                 {
-                    var cards = Instantiate(cardModel, cardPosPlayer, new Quaternion(-35f, 180f, 0, 1));
+                    var cards = Instantiate(cardModel, cardPosPlayer + new Vector3(playerOffset, 0, 0), new Quaternion(-35f, 180f, 0, 1));
                     cards.gameObject.tag = "spawnedCards";
-                    cardPosPlayer.x += 0.03f;
+                    playerOffset += 0.13f;
                 }
                 else
                 {
-                    var cards = Instantiate(cardModel, cardPosHost, new Quaternion(-35f, 180f, 0, 1));
+                    var cards = Instantiate(cardModel, cardPosHost + new Vector3(hostOffset, 0, 0), new Quaternion(-35f, 180f, 0, 1));
                     cards.gameObject.tag = "spawnedCards";
-                    cardPosHost.x += 0.03f;
+                    hostOffset += 0.13f;
                 }
                 if (card == "Card_FunnyMemory")
                 {
@@ -70,7 +73,8 @@ public class PokerGameEvent : MonoBehaviour
     }
     private void destroyCards(int cards)
     {
-
+        playerOffset = 0.13f;
+        hostOffset = 0.13f;
         Destroy(GameObject.FindWithTag("spawnedCards"));
     }
     private void SwapSlot(bool p)
