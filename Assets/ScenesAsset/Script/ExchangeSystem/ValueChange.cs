@@ -9,6 +9,8 @@ public class ValueChange : MonoBehaviour
     private static ValueChange _instance;
     public static ValueChange Instance => _instance ??= new ValueChange();
 
+    private GameObject canvasObject;
+
     public TMP_Dropdown dropdown;
     public TMP_Text uiText;
 
@@ -26,16 +28,27 @@ public class ValueChange : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("loadedededd");
+        canvasObject = GameObject.FindWithTag("ExchangeUI");
+        if (canvasObject != null)
+        {
+            Debug.LogError("cant find exchange ui!!!");
+        }
         EventSystem.Instance.RegisterEvent<int>("Exchange", "callUI", Initialize);
 
-        //transform.parent.gameObject.SetActive(false);
+        canvasObject.transform.gameObject.SetActive(false);
     }
 
     private void Initialize(int tmp)
     {
+        canvasObject = GameObject.FindWithTag("ExchangeUI");
+        if (canvasObject != null)
+        {
+            Debug.LogError("cant find exchange ui!!!");
+        }
+
         Debug.Log("hihi");
-        transform.parent.gameObject.SetActive(true);
+        canvasObject.transform.gameObject.SetActive(true);
+
 
         // ªì©l¤Æ¦r¨å
         itemPrices = new Dictionary<string, int>
