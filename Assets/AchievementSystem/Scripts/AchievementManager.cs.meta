@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 23953d3cc6573c745b3dc7bc5720c369
+timeCreated: 1538435283
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151624
+  packageName: Achievement System
+  packageVersion: 1.0
+  assetPath: Assets/AchievementSystem/Scripts/AchievementManager.cs
+  uploadId: 371754

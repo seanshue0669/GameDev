@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Linq;
 
 public class PokerGameInitalizer : MonoBehaviour
 {
@@ -14,15 +15,16 @@ public class PokerGameInitalizer : MonoBehaviour
     }
     private List<GameObject> LoadObjectByFilePath()
     {
-        List <GameObject> passingData=new List<GameObject>(); 
+        List <GameObject> passingData=new List<GameObject>();
         for (int i=0;i<objPath.Length;i++)
         {
-            GameObject[] prefabs = Resources.LoadAll<GameObject>(objPath[i]);
+            Object[] prefabs = Resources.LoadAll(objPath[i]);
 
-            foreach (GameObject prefab in prefabs)
+            foreach (var prefab in prefabs)
             {
-                passingData.Add(prefab);
+                passingData.Add(prefab as GameObject);
             }
+            
         }
         return passingData;
     }
