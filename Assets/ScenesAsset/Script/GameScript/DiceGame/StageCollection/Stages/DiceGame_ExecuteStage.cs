@@ -41,8 +41,8 @@ public class DiceGame_ExecuteStage : IStage
         InputDelegate = null;
 
         //Generate Dice Reault
-        int diceOneResult = UnityEngine.Random.Range(0,8);
-        int diceTwoResult = UnityEngine.Random.Range(0,8);
+        int diceOneResult = UnityEngine.Random.Range(0,7);//0->stand 7->alot of dice
+        int diceTwoResult = UnityEngine.Random.Range(0,7);
         string passingOperation = diceOneResult.ToString()+" "+diceTwoResult.ToString();
         //>! should be remove
         Debug.Log($"Dice:{passingOperation}");
@@ -53,7 +53,19 @@ public class DiceGame_ExecuteStage : IStage
         await Task.Delay(1000);
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup", 1);
 
-        //Passing the Result to Next Stage
+        if (diceOneResult == 7 || diceTwoResult == 7)
+        {
+            sharedData.SetInt("Result", -1);
+            EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpawnDice", 1);
+        }
+        else
+            sharedData.SetInt("Result", diceOneResult + diceTwoResult);
+
+        // Moving
+        await Task.Delay(1000);
+        EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCamera", 1);
+        // Passing the Result to Next Stage
+
         CleanupUI();
     }
     #endregion

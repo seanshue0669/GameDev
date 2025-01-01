@@ -3,18 +3,21 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.InputSystem.DefaultInputActions;
 
 public class DiceGame_EndStage : IStage
 {
     #region Fields and Properties
     private readonly string instructionMessage = "Welcome To Dice Game";
-
-
+    private string playerOptions;
+    private int playerBetAmount;
+    private int diceResult;
     //UI
     private TMP_Text statusText;
 
     private Button quitButton;
     private Button continueButton;
+
 
     private Action currentValidationAction;
     private TaskCompletionSource<bool> phaseCompletionSource;
@@ -35,6 +38,12 @@ public class DiceGame_EndStage : IStage
         if (!InitializeUI(uiComponents)) return;
 
         RegisterButtonListeners();
+        //Calulate result
+        playerOptions = sharedData.GetString("BetOption");
+        playerBetAmount = sharedData.GetInt("BetAmount");
+        diceResult = sharedData.GetInt("Result");
+        await ShowDialogAsync("The Dice Result is"+ TranslateResult(diceResult));
+
 
         await ShowDialogAsync("Playing Again?");
         await WaitForPhaseCompletionAsync();
@@ -89,6 +98,13 @@ public class DiceGame_EndStage : IStage
     {
         statusText.text = text;
         await Task.Delay(1000);
+    }
+    private string TranslateResult(int p_Diceresult)
+    {
+        if (p_Diceresult == -1)
+            return "integer overflow!";
+        else
+            return p_Diceresult.ToString();
     }
     #endregion
 

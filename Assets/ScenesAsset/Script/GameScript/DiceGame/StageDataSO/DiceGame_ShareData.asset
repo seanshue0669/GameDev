@@ -24,8 +24,8 @@ MonoBehaviour:
     StringValue: smaller
     IntValue: 20
     FloatValue: 0
-  - Key: Test
-    Type: 2
+  - Key: Result
+    Type: 1
     StringValue: Smaller
-    IntValue: 20
+    IntValue: 0
     FloatValue: 0
