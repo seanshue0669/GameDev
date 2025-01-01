@@ -38,8 +38,23 @@ public class DiceGame_ExecuteStage : IStage
         // Phase 1: Input Bet Amount
         await ShowDialogAsync("Please Enter your Bet Amount:");
         currentValidationAction = () => ValidateInput();
-        InputDelegate = Option;
-        //InputDelegate = null;
+        InputDelegate = null;
+
+        //Generate Dice Reault
+        int diceOneResult = UnityEngine.Random.Range(0,8);
+        int diceTwoResult = UnityEngine.Random.Range(0,8);
+        string passingOperation = diceOneResult.ToString()+" "+diceTwoResult.ToString();
+        //>! should be remove
+        Debug.Log($"Dice:{passingOperation}");
+        //Rolling Event
+        EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup",0);
+        await Task.Delay(1000);
+        EventSystem.Instance.TriggerEvent<string>("DiceGameEvent", "MoveCup", passingOperation);
+        await Task.Delay(1000);
+        EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup", 1);
+
+        //Passing the Result to Next Stage
+
         await WaitForPhaseCompletionAsync();
 
         CleanupUI();

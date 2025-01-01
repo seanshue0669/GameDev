@@ -18,6 +18,8 @@ namespace UnityEngine
         // Duration for smooth movement
         [SerializeField] public float duration = 1.0f;
 
+
+
         void Awake()
         {
             EventSystem.Instance.RegisterEvent<string>("DiceGameEvent", "RollDice", RollingDice);
@@ -28,7 +30,17 @@ namespace UnityEngine
         void RollingDice(string p_DiceCase)
         {
             // Implementation for RollingDice
-
+            Debug.Log("Rolling Dice 1&2");
+            var result = AnalyisCase(p_DiceCase);
+            if (result != null)
+            {
+                RotateDice(Dice1.transform, result.Item1);
+                RotateDice(Dice2.transform, result.Item2);
+            }
+            else
+            {
+                Debug.LogError("Invalid Dice Case format");
+            }
         }
 
         void MoveCup(int p_Options)
@@ -56,6 +68,47 @@ namespace UnityEngine
             }
             // Ensure the object reaches the target position
             p_objectToMove.position = p_targetPosition;
+        }
+        private (int, int)? AnalyisCase(string p_Case)
+        {
+            string[] parts = p_Case.Split(' ');
+            if (int.TryParse(parts[0], out int dice1Value) &&int.TryParse(parts[1], out int dice2Value))
+            {
+                return (dice1Value, dice2Value);
+            }
+            else
+                return null;
+        }
+        private void RotateDice(Transform diceTransform, int faceValue)
+        {
+            // Define rotation for each face
+            Quaternion targetRotation = Quaternion.identity;
+            switch (faceValue)
+            {
+                case 1:
+                    targetRotation = Quaternion.Euler(0, 0, 0); // 1 facing up
+                    break;
+                case 2:
+                    targetRotation = Quaternion.Euler(0, 0, 90); // 2 facing up
+                    break;
+                case 3:
+                    targetRotation = Quaternion.Euler(90, 0, 0); // 3 facing up
+                    break;
+                case 4:
+                    targetRotation = Quaternion.Euler(-90, 0, 0); // 4 facing up
+                    break;
+                case 5:
+                    targetRotation = Quaternion.Euler(0, 0, -90); // 5 facing up
+                    break;
+                case 6:
+                    targetRotation = Quaternion.Euler(180, 0, 0); // 6 facing up
+                    break;
+                default:
+                    //Should be modify
+                    targetRotation = Quaternion.Euler(0, 0, 0); // 1 facing up
+                    break;
+            }
+            diceTransform.rotation = targetRotation;
         }
     }
 }

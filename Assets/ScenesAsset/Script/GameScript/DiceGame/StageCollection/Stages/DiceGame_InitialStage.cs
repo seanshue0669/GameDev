@@ -54,6 +54,7 @@ public class DiceGame_InitialStage : IStage
         currentValidationAction = () => ValidateOptionInput();
         InputDelegate = null;
         await WaitForPhaseCompletionAsync();
+        await DisableOptionButton();
 
         // Finalize
         sharedData.SetString("BetOption", betOptions);

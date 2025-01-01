@@ -7,6 +7,6 @@ public class PersistenceObject : MonoBehaviour
     {
 
         DontDestroyOnLoad(gameObject);
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
     }
 }
