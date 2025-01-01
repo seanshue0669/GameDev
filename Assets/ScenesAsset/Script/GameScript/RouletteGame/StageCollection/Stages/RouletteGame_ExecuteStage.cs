@@ -7,7 +7,6 @@ public class RouletteGameExecuteStage : IStage
 {
     #region Fields and Properties
     //Properties 
-    private string Properties;
     private int ball;
 
     //UI
@@ -16,7 +15,7 @@ public class RouletteGameExecuteStage : IStage
     //Core
     private TaskCompletionSource<bool> phaseCompletionSource;
 
-    private bool isWaiting = false;
+    //private bool isWaiting = false;
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
     #endregion
@@ -25,7 +24,7 @@ public class RouletteGameExecuteStage : IStage
     public RouletteGameExecuteStage()
     {
         //Init the variable here
-        Properties = "TemplateStage Construct";
+        
     }
     #endregion
 
@@ -127,15 +126,5 @@ public class RouletteGameExecuteStage : IStage
     }
     #endregion
 
-    #region Custom InputAsync
-    private async Task Option()
-    {
-        if (isWaiting)
-            return;
-        isWaiting = true;
-        /*var tcs = EventSystem.Instance.WaitForCallBack("DiceGame", "Options");
-        betOptions = (string)await tcs;*/
-        isWaiting = false;
-    }
-    #endregion
+
 }
