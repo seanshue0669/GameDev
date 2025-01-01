@@ -29,8 +29,16 @@ namespace Scene
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
             Debug.Log($"LoadScene: {p_sceneTypeString}");
             loadOperation.allowSceneActivation = false;
+            while (!loadOperation.isDone)
+            {
+                if (loadOperation.progress >= 0.9f)
+                {
+                    Debug.Log("Scene resources loaded, activating scene...");
+                    loadOperation.allowSceneActivation = true;
+                }
+                await Task.Yield();
+            }
             await loadOperation;
-            loadOperation.allowSceneActivation = true;
             Debug.Log("Scene fully loaded");
             await Task.Delay(500);
             if (SceneTypeToGameName.TryGetValue(p_sceneTypeString, out string gameName))
