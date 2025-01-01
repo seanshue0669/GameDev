@@ -9,8 +9,8 @@ public class RouletteGameInitialStage : IStage
 {
     #region Fields and Properties
     private readonly string instructionMessage = "Welcome To Roulette Game";
-    private readonly int maxBetAmount = 1000;
     private readonly int minBetAmount = 1;
+    private int maxBetAmount = 1000;
 
     //UI
     private TMP_Text statusText;
@@ -26,9 +26,10 @@ public class RouletteGameInitialStage : IStage
     private Action[] currentInput;
 
     private bool isValid;
-    private int actionIdx;
     private string betOptions;
     private bool isWaiting = false;
+    private int currentCoin;
+
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
     #endregion
@@ -37,7 +38,6 @@ public class RouletteGameInitialStage : IStage
     public RouletteGameInitialStage() {
         currentInput = new Action[10];
         isValid = false;
-        actionIdx = 0;
     }
     #endregion
 
@@ -225,7 +225,9 @@ public class RouletteGameInitialStage : IStage
     {
         isValid = false;
         string input = inputField.text;
-        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount)
+        maxBetAmount = Math.Min(maxBetAmount, DataManager.Instance.playerData.GetValue<int>("coin"));
+
+        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount) 
         {
             statusText.text = "Bet amount accepted!";
             isValid = true;

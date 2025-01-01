@@ -41,7 +41,6 @@ public class RouletteGameEndStage : IStage
         int betType = sharedData.GetInt("type");
         int betAmount = sharedData.GetInt("BetAmount");
         int ball = sharedData.GetInt("ball");
-        int currentBalance = sharedData.GetInt("balance");
 
         if (ball != -1 && ball!=0)
         {
@@ -51,17 +50,15 @@ public class RouletteGameEndStage : IStage
             // 更新用戶餘額
             if (isWin)
             {
-                // 根據不同的投注類型，計算贏取的金額
-                int payoutMultiplier = GetPayoutMultiplier(betType);
-                int winnings = betAmount * payoutMultiplier;
-                currentBalance += winnings;
-                sharedData.SetInt("balance", currentBalance);
+                int winnings = betAmount;
+
+                DataManager.Instance.playerData.AddValue("coin", winnings);
+
                 await ShowDialogAsync($"Congratulation!You won {winnings}$");
             }
             else
             {
-                currentBalance -= betAmount;
-                sharedData.SetInt("balance", currentBalance);
+                DataManager.Instance.playerData.SubValue("coin", betAmount);
                 await ShowDialogAsync($"Sorry, You loss {betAmount}$");
             }
         }
@@ -71,8 +68,7 @@ public class RouletteGameEndStage : IStage
             float tmp = betAmount;
             int winnings = (int)(tmp * payoutMultiplier+0.5);
 
-            currentBalance += winnings;
-            sharedData.SetInt("balance", currentBalance); 
+            DataManager.Instance.playerData.AddValue("coin", winnings);
 
             await ShowDialogAsync($"Yay! You’ve just won 1.5 times your money—no strings attached!");
 
@@ -111,21 +107,6 @@ public class RouletteGameEndStage : IStage
         }
     }
 
-    private int GetPayoutMultiplier(int betType)
-    {
-        // 根據投注類型設定賠率
-        switch (betType)
-        {
-            case 0: // 紅色
-            case 1: // 黑色
-                return 2; // 雙倍
-            case 2: // 小
-            case 3: // 大
-                return 2; // 雙倍
-            default:
-                return 1;
-        }
-    }
     #endregion
 
     #region UI Management
