@@ -15,7 +15,7 @@ namespace UnityEngine
             {
                 { "DiceScene", "DiceGame" },
                 { "PokerScene", "PokerGame" },
-                { "SlotScene", "RouletteGame" },
+                { "SlotScene", "SlotGame" },
                 { "WheelScene", "WheelGame" }
             };
 

@@ -15,6 +15,7 @@ TagManager:
   - RouletteGame
   - RouletteGame
   - ExchangeUI
+  - SlotGameUI
   layers:
   - Default
   - TransparentFX
