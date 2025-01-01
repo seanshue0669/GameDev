@@ -19,3 +19,4 @@ MonoBehaviour:
   - MoveCup
   - MoveCamera
   - Spawn
+  - StopSpawn

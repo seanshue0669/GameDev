@@ -12896,14 +12896,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExchangeUI
       objectReference: {fileID: 0}
-    - target: {fileID: 983317072314369331, guid: 0782dbdca64140146b4d9b86144903b9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1729716017813551139, guid: 0782dbdca64140146b4d9b86144903b9, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 4924215428939404374, guid: 0782dbdca64140146b4d9b86144903b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6482486791928488391, guid: 0782dbdca64140146b4d9b86144903b9, type: 3}
       propertyPath: m_Pivot.x
       value: 0

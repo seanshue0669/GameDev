@@ -42,7 +42,7 @@ public class DiceGame_ExecuteStage : IStage
 
         //Generate Dice Reault
         int diceOneResult = UnityEngine.Random.Range(0,7);//0->stand 7->alot of dice
-        int diceTwoResult = UnityEngine.Random.Range(0,7);
+        int diceTwoResult = -1;// UnityEngine.Random.Range(0,7);
         string passingOperation = diceOneResult.ToString()+" "+diceTwoResult.ToString();
         //>! should be remove
         Debug.Log($"Dice:{passingOperation}");
@@ -56,7 +56,7 @@ public class DiceGame_ExecuteStage : IStage
         if (diceOneResult == 7 || diceTwoResult == 7)
         {
             sharedData.SetInt("Result", -1);
-            EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpawnDice", 1);
+            EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpawnDice", 2);
         }
         else
             sharedData.SetInt("Result", diceOneResult + diceTwoResult);
