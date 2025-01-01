@@ -11,8 +11,9 @@ TagManager:
   - Blackjack
   - SlotGame
   - spawnedCards
-  - RouletteGame
   - RouletteGameUI
+  - RouletteGame
+  - RouletteGame
   layers:
   - Default
   - TransparentFX
