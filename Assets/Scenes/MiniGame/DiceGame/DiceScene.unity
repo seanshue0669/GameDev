@@ -1821,8 +1821,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd637b1b04b22e48827f722e29f1866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dice1: {fileID: 4377088488550497766, guid: a7ae37a959ac5f048a600e8151162575, type: 3}
-  Dice2: {fileID: 918607534516449827, guid: e0dbfd4a2333f7c4385bb85a8b6328c7, type: 3}
   Cup: {fileID: 197957408}
   postionUP: {fileID: 90023096}
   postionDOWN: {fileID: 550713285}
@@ -4355,7 +4353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4032228437731092316, guid: a7ae37a959ac5f048a600e8151162575, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.485
+      value: 1.4845
       objectReference: {fileID: 0}
     - target: {fileID: 4032228437731092316, guid: a7ae37a959ac5f048a600e8151162575, type: 3}
       propertyPath: m_LocalPosition.z

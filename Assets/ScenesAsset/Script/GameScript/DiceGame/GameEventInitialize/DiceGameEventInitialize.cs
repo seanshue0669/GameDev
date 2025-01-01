@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace UnityEngine
@@ -7,9 +8,9 @@ namespace UnityEngine
     {
         [SerializeField]
         // Gambling objects
-        public GameObject Dice1;
-        public GameObject Dice2;
         public GameObject Cup;
+        private GameObject Dice1;
+        private GameObject Dice2;
 
         // Position objects
         [SerializeField] public Transform postionUP;
@@ -17,7 +18,6 @@ namespace UnityEngine
 
         // Duration for smooth movement
         [SerializeField] public float duration = 1.0f;
-
 
 
         void Awake()
@@ -30,18 +30,14 @@ namespace UnityEngine
         void RollingDice(string p_DiceCase)
         {
             // Implementation for RollingDice
+            Dice1 = GameObject.Find("dice1");
+            Dice2 = GameObject.Find("dice2");
             Debug.Log("Rolling Dice 1&2");
-            var result = AnalyisCase(p_DiceCase);
-            if (result.HasValue) 
-            {
-                var (dice1Value, dice2Value) = result.Value;
-                RotateDice(Dice1.transform, dice1Value);
-                RotateDice(Dice2.transform, dice2Value);
-            }
-            else
-            {
-                Debug.LogError("Invalid Dice Case format");
-            }
+            string[] parts = p_DiceCase.Split(' ');
+            int dice1Value = int.Parse(parts[0]);
+            int dice2Value = int.Parse(parts[1]);
+            RotateDice(Dice1.transform, dice1Value);
+            RotateDice(Dice2.transform, dice2Value);
         }
 
         void MoveCup(int p_Options)
@@ -70,45 +66,23 @@ namespace UnityEngine
             // Ensure the object reaches the target position
             p_objectToMove.position = p_targetPosition;
         }
-        private (int, int)? AnalyisCase(string p_Case)
-        {
-            string[] parts = p_Case.Split(' ');
-            if (int.TryParse(parts[0], out int dice1Value) &&int.TryParse(parts[1], out int dice2Value))
-            {
-                return (dice1Value, dice2Value);
-            }
-            else
-                return null;
-        }
+        
         private void RotateDice(Transform diceTransform, int faceValue)
         {
-            // Define rotation for each face
             Quaternion targetRotation = Quaternion.identity;
             switch (faceValue)
             {
-                case 1:
-                    targetRotation = Quaternion.Euler(0, 0, 0); // 1 facing up
-                    break;
-                case 2:
-                    targetRotation = Quaternion.Euler(0, 0, 90); // 2 facing up
-                    break;
-                case 3:
-                    targetRotation = Quaternion.Euler(90, 0, 0); // 3 facing up
-                    break;
-                case 4:
-                    targetRotation = Quaternion.Euler(-90, 0, 0); // 4 facing up
-                    break;
-                case 5:
-                    targetRotation = Quaternion.Euler(0, 0, -90); // 5 facing up
-                    break;
-                case 6:
-                    targetRotation = Quaternion.Euler(180, 0, 0); // 6 facing up
-                    break;
-                default:
-                    //Should be modify
-                    targetRotation = Quaternion.Euler(0, 0, 0); // 1 facing up
-                    break;
+                case 1: targetRotation = Quaternion.Euler(0, 0, 0); break;
+                case 2: targetRotation = Quaternion.Euler(0, 0, 90); break;
+                case 3: targetRotation = Quaternion.Euler(90, 0, 0); break;
+                case 4: targetRotation = Quaternion.Euler(-90, 0, 0); break;
+                case 5: targetRotation = Quaternion.Euler(0, 0, -90); break;
+                case 6: targetRotation = Quaternion.Euler(180, 0, 0); break;
+                //Special Case
+
+                default: targetRotation = Quaternion.Euler(0, 0, 0); break;
             }
+            Debug.Log($"Rotating {diceTransform.name} to face {faceValue}");
             diceTransform.rotation = targetRotation;
         }
     }

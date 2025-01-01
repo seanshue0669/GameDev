@@ -35,6 +35,7 @@ public class DiceGame_EndStage : IStage
         if (!InitializeUI(uiComponents)) return;
 
         RegisterButtonListeners();
+
         await ShowDialogAsync("Playing Again?");
         await WaitForPhaseCompletionAsync();
         await ShowDialogAsync("Preepare Next Round!");

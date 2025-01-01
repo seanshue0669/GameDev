@@ -50,6 +50,7 @@ public class DiceGame_InitialStage : IStage
 
         // Phase 2: Select Bet Option
         await EnableOptionButton();
+        await ShowDialogAsync($"You Bet{sharedData.GetInt("BetAmount")}$");
         await ShowDialogAsync("Please Choose your Bet Option:");
         currentValidationAction = () => ValidateOptionInput();
         InputDelegate = null;
@@ -136,7 +137,6 @@ public class DiceGame_InitialStage : IStage
         if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount)
         {
             sharedData.SetInt("BetAmount", betAmount);
-            statusText.text = "Bet amount accepted!";
             phaseCompletionSource?.SetResult(true);
         }
         else
