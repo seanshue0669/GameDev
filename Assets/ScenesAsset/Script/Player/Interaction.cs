@@ -112,7 +112,8 @@ public class Interaction : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    DataManager.Instance.playerData.SubValue("coin", 1000);
+                    EventSystem.Instance.TriggerEvent("Exchange", "callUI", 0);
+                    Debug.Log("hi");
                 }
                 return;
             }

@@ -25,3 +25,9 @@ MonoBehaviour:
     BoolValue: 0
     FloatValue: 0
     StringValue: 
+  - Key: chips
+    Type: 0
+    IntValue: 0
+    BoolValue: 0
+    FloatValue: 0
+    StringValue: 

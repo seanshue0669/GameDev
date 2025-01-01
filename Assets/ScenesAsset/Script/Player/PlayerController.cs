@@ -17,8 +17,6 @@ public class move : MonoBehaviour
     [SerializeField]
     float runSpeed = 5.0f;
     [SerializeField]
-    float jumpSpeed = 8.0f;
-    [SerializeField]
     float gravity = 10f;
     [SerializeField]
     float mouseSensitivity = 3.4f;
@@ -52,11 +50,9 @@ public class move : MonoBehaviour
     {
         if (controller.isGrounded)
         {
-            float horizon = Input.GetAxis("Horizontal");    //A 輸出 -1，D 輸出 1
-            float vertical = Input.GetAxis("Vertical");     //S 輸出 -1，W 輸出 1
+            float horizon = Input.GetAxis("Horizontal");    
+            float vertical = Input.GetAxis("Vertical");     
             Player_Move = new Vector3(horizon, 0, vertical);
-
-            //Player_Move.Normalize();
 
             Player_Move = transform.TransformDirection(Player_Move);
 
