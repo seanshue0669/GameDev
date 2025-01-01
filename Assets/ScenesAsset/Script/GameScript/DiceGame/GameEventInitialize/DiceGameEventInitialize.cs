@@ -27,7 +27,8 @@ namespace UnityEngine
         {
             EventSystem.Instance.RegisterEvent<string>("DiceGameEvent", "RollDice", RollingDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCup", MoveCup);
-            EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCamera", MoveCup);
+            EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCamera", MoveCamera);
+            //EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "SpwanDice", SpwanDice());
             Debug.Log("Reg Rolling Event");
         }
         #region register function
@@ -43,20 +44,20 @@ namespace UnityEngine
             RotateDice(Dice1.transform, dice1Value);
             RotateDice(Dice2.transform, dice2Value);
         }
-        void MoveCup(int p_Options)
+        void MoveCamera(int p_Options)
         {
-            if (p_Options == 1)
+            if (p_Options == 0)
             {
                 mainCam.transform.position = postitionStart.position;
                 mainCam.transform.rotation = postitionStart.rotation;
             }
-            else if (p_Options == 0)
+            else if (p_Options == 1)
             {
                 mainCam.transform.position = postitionEnd.position;
                 mainCam.transform.rotation = postitionEnd.rotation;
             }
         }
-        void MoveCamera(int p_Options)
+        void MoveCup(int p_Options)
         {
             if (p_Options == 1)
             {
@@ -66,6 +67,10 @@ namespace UnityEngine
             {
                 StartCoroutine(SmoothMove(Cup.transform, postionDOWN.position));
             }
+        }
+        void SpawnDice(int p_lifeTime)
+        {
+
         }
         #endregion
 
@@ -91,6 +96,7 @@ namespace UnityEngine
             Quaternion targetRotation = Quaternion.identity;
             switch (faceValue)
             {
+                case 0: targetRotation = Quaternion.Euler(45, 0, 45);break;
                 case 1: targetRotation = Quaternion.Euler(0, 0, 0); break;
                 case 2: targetRotation = Quaternion.Euler(0, 0, 90); break;
                 case 3: targetRotation = Quaternion.Euler(90, 0, 0); break;
@@ -98,7 +104,7 @@ namespace UnityEngine
                 case 5: targetRotation = Quaternion.Euler(0, 0, -90); break;
                 case 6: targetRotation = Quaternion.Euler(180, 0, 0); break;
                 //Special Case
-
+                case 7: targetRotation = Quaternion.Euler(0, 0, 0); break;
                 default: targetRotation = Quaternion.Euler(0, 0, 0); break;
             }
             Debug.Log($"Rotating {diceTransform.name} to face {faceValue}");
