@@ -20,7 +20,7 @@ namespace UnityEngine
         public Transform postitionStart;
         public Transform postitionEnd;
 
-        private bool spwaning=false;
+        private bool spwaning= false;
         // Duration for smooth movement
         [SerializeField] public float duration = 1.0f;
 
@@ -30,7 +30,7 @@ namespace UnityEngine
             EventSystem.Instance.RegisterEvent<string>("DiceGameEvent", "RollDice", RollingDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCup", MoveCup);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCamera", MoveCamera);
-            EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "SpanwDice", SpawnDice);
+            EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "SpawnDice", SpawnDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "StopSpawn", StopSpawn);
             Debug.Log("Reg Rolling Event");
         }
@@ -73,7 +73,7 @@ namespace UnityEngine
         }
         void SpawnDice(int p_lifeTime)
         {
-            spwaning=true;
+            spwaning = true;
             StartCoroutine(SpawnDiceCoroutine(p_lifeTime));
         }       
         #endregion
@@ -108,7 +108,8 @@ namespace UnityEngine
                 case 5: targetRotation = Quaternion.Euler(0, 0, -90); break;
                 case 6: targetRotation = Quaternion.Euler(180, 0, 0); break;
                 //Special Case
-                case 7: targetRotation = Quaternion.Euler(0, 0, 0); break;
+                case 7: targetRotation = Quaternion.Euler(45, 0, 45); break;
+
                 default: targetRotation = Quaternion.Euler(0, 0, 0); break;
             }
             Debug.Log($"Rotating {diceTransform.name} to face {faceValue}");
@@ -120,10 +121,11 @@ namespace UnityEngine
             {
                 GameObject newDice = Instantiate(DicePrefab, postionDOWN.position, Quaternion.identity);
                 newDice.name = "Dice";
-                newDice.transform.position = new Vector3(Random.Range(-5f, 5f), 5f, Random.Range(-5f, 5f));
+                newDice.transform.position = postionDOWN.position;
                 int randomFace = Random.Range(1, 7);
                 RotateDice(newDice.transform, randomFace);
                 Destroy(newDice, p_lifeTime);
+                Debug.Log($"Spawned Dice with Face {randomFace}. It will be destroyed in {p_lifeTime} seconds.");
                 yield return new WaitForSeconds(0.01f);
             }
         }

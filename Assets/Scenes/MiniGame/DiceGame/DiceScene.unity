@@ -1853,6 +1853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cup: {fileID: 197957408}
+  DicePrefab: {fileID: 3735311867731500419, guid: 0758fdc15b64a4f4f9b8d759b0cba092, type: 3}
   mainCam: {fileID: 1861596790}
   postionUP: {fileID: 90023096}
   postionDOWN: {fileID: 550713285}
