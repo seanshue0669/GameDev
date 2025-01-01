@@ -1,11 +1,18 @@
+using System.Diagnostics;
 using UnityEngine;
-
-public class DiceGameEventInitiler : MonoBehaviour
+namespace UnityEngine
 {
-    [SerializeField]
-    //Add some stuff here
-    void Awake()
+    public class DiceGameEventInitiler : MonoBehaviour
     {
-        //Call the singleton instance init function
+        void Awake()
+        {
+            EventSystem.Instance.RegisterEvent<string>("DiceGameEventTest", "Sendmsg", Sendmsg);
+            Debug.Log("Reg Sendmsg Event");
+            EventSystem.Instance.TriggerEvent<string>("DiceGameEventTest", "Sendmsg", "Testing1");
+        }
+        void Sendmsg(string p_msg)
+        {
+            Debug.Log(p_msg);
+        }
     }
 }

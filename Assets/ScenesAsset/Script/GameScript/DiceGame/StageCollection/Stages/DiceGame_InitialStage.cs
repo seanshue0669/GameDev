@@ -56,6 +56,10 @@ public class DiceGame_InitialStage : IStage
         InputDelegate = null;
         await WaitForPhaseCompletionAsync();
 
+        // !>Testing : Should be remove
+        EventSystem.Instance.TriggerEvent<string>("DiceGameEventTest", "Sendmsg", "Testing1");
+        EventSystem.Instance.TriggerEvent<string>("DiceGameEventTest", "Sendmsg", "Testing2");
+
         // Finalize
         sharedData.SetString("BetOption", betOptions);
         await ShowDialogAsync($"You Chose'{betOptions}'");

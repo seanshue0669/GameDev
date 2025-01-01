@@ -22,3 +22,6 @@ MonoBehaviour:
   - CategoryName: RouletteEvent
     Events:
     - {fileID: 11400000, guid: 72fb39e5b6557744987be790af2537d3, type: 2}
+  - CategoryName: DiceEvent
+    Events:
+    - {fileID: 11400000, guid: 3d9a5869ce0641c4e8540b6ca660cb49, type: 2}
