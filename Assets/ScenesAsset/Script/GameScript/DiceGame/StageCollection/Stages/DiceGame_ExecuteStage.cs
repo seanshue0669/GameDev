@@ -36,7 +36,7 @@ public class DiceGame_ExecuteStage : IStage
         //await ShowDialogAsync(instructionMessage);
 
         // Phase 1: Input Bet Amount
-        await ShowDialogAsync("Please Enter your Bet Amount:");
+        await ShowDialogAsync("Rolliing!!");
         currentValidationAction = () => ValidateInput();
         InputDelegate = null;
 
@@ -54,9 +54,6 @@ public class DiceGame_ExecuteStage : IStage
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup", 1);
 
         //Passing the Result to Next Stage
-
-        await WaitForPhaseCompletionAsync();
-
         CleanupUI();
     }
     #endregion

@@ -32,10 +32,11 @@ namespace UnityEngine
             // Implementation for RollingDice
             Debug.Log("Rolling Dice 1&2");
             var result = AnalyisCase(p_DiceCase);
-            if (result != null)
+            if (result.HasValue) 
             {
-                RotateDice(Dice1.transform, result.Item1);
-                RotateDice(Dice2.transform, result.Item2);
+                var (dice1Value, dice2Value) = result.Value;
+                RotateDice(Dice1.transform, dice1Value);
+                RotateDice(Dice2.transform, dice2Value);
             }
             else
             {

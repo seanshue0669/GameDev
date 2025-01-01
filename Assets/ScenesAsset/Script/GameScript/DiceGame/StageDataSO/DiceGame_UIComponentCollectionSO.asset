@@ -44,3 +44,13 @@ MonoBehaviour:
     ButtonComponent: {fileID: 7557729135731575195, guid: fa61ca1ada70f424b836136f0ece00f0, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
+  - Key: PlayingNextRound
+    Type: 0
+    ButtonComponent: {fileID: 3681461671447354368, guid: 28788485b3c036b4a9f164aaf0f867eb, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
+  - Key: Quit
+    Type: 0
+    ButtonComponent: {fileID: 7518123641050371761, guid: 7dc8047bc2d058d4fb38d865c4ca5c4b, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
