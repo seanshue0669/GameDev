@@ -1875,6 +1875,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[0].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[1].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[2].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[3].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[4].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[5].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[0].Description
       value: Leave the casino with 2000 dollars or above
       objectReference: {fileID: 0}
@@ -1922,6 +1946,30 @@ PrefabInstance:
       propertyPath: AchievementList.Array.data[5].DisplayName
       value: It doesn't worth much...
       objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[0].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d6c69d3c5886e848b686d1231de4013, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[1].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 70ebea94d438b0944a65f1623b5e73cd, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[2].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 0ebd99f312b4dd5469db3eab88a0b621, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[3].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: aeaf90ea6bbeac841b7ee9996e6d8669, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[4].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b7494a78538aec4c82c93cc993cf580, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[5].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: e63b9f45c2f9fd24f8d4f7ecd8e0dc9e, type: 3}
     - target: {fileID: 5869893064832991961, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: m_LocalPosition.x
       value: 522

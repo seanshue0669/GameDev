@@ -30,7 +30,7 @@ public class EffectSpawner : MonoBehaviour
         {
             for (int i = 0; i < 50; i++)
             {
-                Vector3 spawnPosition = new Vector3(0.0f, 1.0f, -9.5f);
+                Vector3 spawnPosition = new Vector3(0.0149999997f, 0.458365202f, -6.34700012f); //Vector3(0.0f, 1.0f, -9.5f);
                 Vector3 spawnRotation = new Vector3(90.0f, 90.0f, -90.0f);
                 GameObject instance = Instantiate(effectPrefab, spawnPosition, Quaternion.Euler(spawnRotation));
                 StartCoroutine(MoveObject(instance));

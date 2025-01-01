@@ -41,7 +41,9 @@ public class SlotGameEndStage : IStage
         string reels2 = sharedData.GetInt("Reel2").ToString();
         string reels3 = sharedData.GetInt("Reel3").ToString();
         string result = SlotResult(reels1, reels2, reels3);
-        //result = "Boom";
+        result = "Boom";
+        //result = "QuitGambling";
+        //result = "QuitGamblingFor5s";
         await ShowResultAsync(result);
 
         await ShowDialogAsync("Game finished!");
