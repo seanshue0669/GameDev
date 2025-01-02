@@ -120,7 +120,7 @@ public class HostTurnStage : IStage
 
         else if (hostScore > pointLimit && hostHasA == 0)
         {
-            //sharedData.SetInt("playerBust", 1);
+            sharedData.SetInt("hostBust", 1);
             //statusText.text = "You Busted...";
             await ShowDialogAsync("Host Busted...");
             //phaseCompletionSource?.SetResult(true);
@@ -151,13 +151,13 @@ public class HostTurnStage : IStage
             await ShowDialogAsync("You got a five card win!!!");
         }
 
-        else if (playerScore > hostScore && playerScore == otherpointLimit)
+        else if ((playerScore > hostScore && playerScore == otherpointLimit) || (playerScore == otherpointLimit && hostBust == 1))
         {
             DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount") * 3);
             await ShowDialogAsync("You got a black jack win!!!");
         }
 
-        else if (playerScore > hostScore)
+        else if (playerScore > hostScore || (playerBust == 0 && hostBust == 1))
         {
             DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount") * 2);
             await ShowDialogAsync("You win!!");

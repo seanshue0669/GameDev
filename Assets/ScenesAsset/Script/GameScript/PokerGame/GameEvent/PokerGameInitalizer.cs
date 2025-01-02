@@ -8,10 +8,12 @@ public class PokerGameInitalizer : MonoBehaviour
 {
     [SerializeField]
     string[] objPath;
-
+    bool des = true;
     private void Awake()
     {
-        PokerGameEvent.Instance.Init(LoadObjectByFilePath());
+        if (des)
+            PokerGameEvent.Instance.Init(LoadObjectByFilePath());
+        des = false;
     }
     private List<GameObject> LoadObjectByFilePath()
     {

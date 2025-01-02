@@ -12,6 +12,7 @@ public class PokerGameEvent : MonoBehaviour
     private Vector3 cardPosHost;
     private float playerOffset;
     private float hostOffset;
+    private int des = -1;
 
     private bool isPlayer;
 
@@ -21,6 +22,7 @@ public class PokerGameEvent : MonoBehaviour
     {
         Debug.Log("Init PokerGameEvent");
         Objects = p_objects.ToArray();
+        des++;
         Debug.Log(Objects.Length);
 
         EventSystem.Instance.RegisterEvent<string>("BJgame", "CardSpawn", CreateCard);
@@ -45,6 +47,7 @@ public class PokerGameEvent : MonoBehaviour
         {
             if (card == Objects[i].name)
             {
+                
                 cardModel = Objects[i];
                 if (card == "Card_FunnyMemory")
                 {
@@ -76,7 +79,27 @@ public class PokerGameEvent : MonoBehaviour
                 break;
             }
         }
+
+        /*for (int i=0; i<des; i++)
+        {
+            if (isPlayer)
+            {
+                playerOffset -= 0.13f;
+                destroyRepetedCards(card);
+            }
+            else
+            {
+                hostOffset -= 0.13f;
+                destroyRepetedCards(card);
+            }
+        }*/
     }
+
+    private void destroyRepetedCards(string card)
+    {
+        Destroy(GameObject.Find(card + "(clone)"));
+    }
+
     private void destroyCards(int cards)
     {
         playerOffset = 0.13f;
