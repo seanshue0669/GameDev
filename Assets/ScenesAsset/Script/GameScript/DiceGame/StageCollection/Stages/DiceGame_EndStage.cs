@@ -58,7 +58,8 @@ public class DiceGame_EndStage : IStage
         else if (playerOptions == "equal" && isEqual == 0)
             DataManager.Instance.playerData.SubValue("money", playerBetAmount * 7);
 
-        await ShowDialogAsync("The Dice Result is "+ TranslateResult(diceResult) + "\nPlaying Again?)");
+        await ShowDialogAsync("The Dice Result is "+ TranslateResult(diceResult) + "\nPlaying Again?");
+
         await WaitForPhaseCompletionAsync();
         await ShowDialogAsync("Preepare Next Round!");
         EventSystem.Instance.TriggerEvent("DiceGameEvent", "StopSpawn", 0);
