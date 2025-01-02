@@ -49,6 +49,9 @@ public class PokerGameEvent : MonoBehaviour
                 if (card == "Card_FunnyMemory")
                 {
                     cardPosPlayer.y = 0f;
+                    cardPosPlayer.x += 0.4f;
+                    cardPosHost.y = 0f;
+                    cardPosHost.x += 0.4f;
                 }
                 if (isPlayer)
                 {
@@ -65,6 +68,9 @@ public class PokerGameEvent : MonoBehaviour
                 if (card == "Card_FunnyMemory")
                 {
                     cardPosPlayer.y = 1f;
+                    cardPosPlayer.x -= 0.4f;
+                    cardPosHost.y = 1f;
+                    cardPosHost.x -= 0.4f;
                 }
 
                 break;

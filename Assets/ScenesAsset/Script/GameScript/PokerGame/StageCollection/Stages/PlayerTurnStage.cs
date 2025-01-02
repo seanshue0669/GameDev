@@ -96,6 +96,8 @@ public class PlayerTurnStage : IStage
 
         EventSystem.Instance.TriggerEvent("BJgame", "CheckPlayer", true);
 
+        await ShowDialogAsync(instructionMessage);
+
         RegisterButtonListeners();
         if (playerScore >= pointLimit)
         {
@@ -103,13 +105,13 @@ public class PlayerTurnStage : IStage
             GameObject.Destroy(standButton.gameObject);
         }
 
-        await ShowDialogAsync(instructionMessage);
+        
 
         // Phase 1: player choose to hit or stand
 
         if (playerScore < pointLimit)
         {
-            await ShowDialogAsync("Hit or stand");
+            statusText.text = "Hit or stand";
             currentValidationAction = () => HitPressed(sharedData);
             stand = () => StandPressed(sharedData);
             InputDelegate = null;
@@ -273,9 +275,9 @@ public class PlayerTurnStage : IStage
         playerScoreText.text = playerScore + "/" + pointLimit;
         hostScoreText.text = hostScore + "/" + otherpointLimit;
 
-        if (playerScore == pointLimit)
+        if (playerScore == pointLimit && fiveCard != 5)
         {
-            statusText.text = "BLACK JACK!!!";
+            //statusText.text = "BLACK JACK!!!";
             phaseCompletionSource?.SetResult(true);
             GameObject.Destroy(hitButton.gameObject);
             GameObject.Destroy(standButton.gameObject);
@@ -284,7 +286,7 @@ public class PlayerTurnStage : IStage
         else if (playerScore > pointLimit && playerHasA == 0)
         {
             sharedData.SetInt("playerBust", 1);
-            statusText.text = "You Busted...";
+            //statusText.text = "You Busted...";
             phaseCompletionSource?.SetResult(true);
             GameObject.Destroy(hitButton.gameObject);
             GameObject.Destroy(standButton.gameObject);
@@ -293,7 +295,7 @@ public class PlayerTurnStage : IStage
         else if (playerScore <= pointLimit && fiveCard == 5)
         {
             sharedData.SetInt("playerHasFive", 1);
-            statusText.text = "You Have Five Cards!!!";
+            //statusText.text = "You Have Five Cards!!!";
             phaseCompletionSource?.SetResult(true);
             GameObject.Destroy(hitButton.gameObject);
             GameObject.Destroy(standButton.gameObject);

@@ -17,7 +17,7 @@ MonoBehaviour:
   - Key: BetAmount
     Type: 1
     StringValue: 
-    IntValue: 654
+    IntValue: 32
     FloatValue: 0
   - Key: BetOption
     Type: 0
@@ -32,17 +32,17 @@ MonoBehaviour:
   - Key: playerScore
     Type: 1
     StringValue: Smaller
-    IntValue: 0
+    IntValue: 10
     FloatValue: 0
   - Key: hostScore
     Type: 1
     StringValue: Smaller
-    IntValue: 0
+    IntValue: 19
     FloatValue: 0
   - Key: drawnCard
     Type: 1
     StringValue: Smaller
-    IntValue: 0
+    IntValue: 4
     FloatValue: 0
   - Key: playerHasA
     Type: 1
@@ -71,8 +71,8 @@ MonoBehaviour:
     FloatValue: 0
   - Key: deck
     Type: 0
-    StringValue: HK CT H9 H2 S9 S4 FR SK D3 C2 HJ DK FN DJ FN S7 C7 CJ C9 CK HT D6
-      CA D4 D2 S6 H4 SJ D9 SQ DT C8 S2 ST C3 H6 CQ FM C6 H8 DA D5 S8 H7 S3 D8 SA
-      C4 S5 C5 HQ FM H5 D7 HA DQ FR H3
+    StringValue: HK CT H9 FM H2 S9 S4 FR SK D3 C2 HJ DK FN DJ FN S7 C7 CJ C9 CK HT
+      D6 CA D4 D2 S6 H4 SJ D9 SQ DT C8 S2 ST C3 H6 CQ FM C6 H8 DA D5 S8 H7 S3 D8
+      SA C4 S5 C5 HQ FM H5 D7 HA DQ FR H3
     IntValue: 0
     FloatValue: 0

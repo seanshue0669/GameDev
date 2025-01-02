@@ -12,6 +12,7 @@ namespace UnityEngine
 {
     public class ValueChange : MonoBehaviour
     {
+        #region Define Variable
         private static ValueChange _instance;
         public static ValueChange Instance
         {
@@ -19,10 +20,10 @@ namespace UnityEngine
             {
                 if (_instance == null)
                 {
-                    // ¹Á¸Õ¥h§ä³õ´º¤¤ªº¹ê¨Ò
+                    // å˜—è©¦å»æ‰¾å ´æ™¯ä¸­çš„å¯¦ä¾‹
                     _instance = Object.FindAnyObjectByType<ValueChange>();
 
-                    // ¦pªG§ä¤£¨ì´N¦Û¤v·Q¿ìªk¥Í¦¨¡A©Î¬Oª½±µ³ø¿ù¡A³£¥i
+                    // å¦‚æœæ‰¾ä¸åˆ°å°±è‡ªå·±æƒ³è¾¦æ³•ç”Ÿæˆï¼Œæˆ–æ˜¯ç›´æ¥å ±éŒ¯ï¼Œéƒ½å¯
                     if (_instance == null)
                     {
                         Debug.LogError("There is no ValueChange in the scene!");
@@ -34,7 +35,7 @@ namespace UnityEngine
 
         private void Awake()
         {
-            // «OÃÒ³õ¤W¥u¦³¤@­Ó¹ê¨Ò
+            // ä¿è­‰å ´ä¸Šåªæœ‰ä¸€å€‹å¯¦ä¾‹
             if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
@@ -50,18 +51,20 @@ namespace UnityEngine
 
         public Button selling;
 
-        //§I´«Äw½X
+        //å…Œæ›ç±Œç¢¼
         public Button exchangeChips;
         public TMP_InputField inputMoney;
 
-        //´«¦^¿ú
+        //æ›å›éŒ¢
         public Button exchangeMoney;
         public TMP_InputField inputChips;
 
         public Button exit;
 
-        private Dictionary<string, int> itemPrices; // ¦r¨å¦sÀx¿ï¶µ»P»ù®æ¹ïÀ³Ãö«Y
+        private Dictionary<string, int> itemPrices; // å­—å…¸å­˜å„²é¸é …èˆ‡åƒ¹æ ¼å°æ‡‰é—œä¿‚
+        #endregion
 
+        #region init
         public void Init()
         {
             GameObject FindObject = GameObject.FindWithTag("ExchangeUI");
@@ -72,21 +75,92 @@ namespace UnityEngine
             }
             EventSystem.Instance.RegisterEvent<int>("Exchange", "callUI", Initialize);
 
+            selling = FindChildComponent<Button>(canvasObject.transform, "Selling");
+            exchangeChips = FindChildComponent<Button>(canvasObject.transform, "ExchangeChips");
+            exchangeMoney = FindChildComponent<Button>(canvasObject.transform, "ExchangeMoney");
+            exit = FindChildComponent<Button>(canvasObject.transform, "exit");
+
+            dropdown = FindChildComponent<TMP_Dropdown>(canvasObject.transform, "Question/Dropdown"); // æ›¿æ› "DropdownName" ç‚ºå¯¦éš›åç¨±
+            uiText = FindChildComponent<TMP_Text>(canvasObject.transform, "Question/value"); // æ›¿æ› "UITextName" ç‚ºå¯¦éš›åç¨±
+            inputMoney = FindChildComponent<TMP_InputField>(canvasObject.transform, "InputMoney"); // æ›¿æ› "InputMoneyName" ç‚ºå¯¦éš›åç¨±
+            inputChips = FindChildComponent<TMP_InputField>(canvasObject.transform, "InputChips"); // æ›¿æ› "InputChipsName" ç‚ºå¯¦éš›åç¨±
+
+
             canvasObject.GetComponent<Canvas>().enabled = false;
         }
 
+        public static T FindChildComponent<T>(Transform parent, string path) where T : Component
+        {
+            if (parent == null)
+            {
+                Debug.LogError("Parent Transform is null!");
+                return null;
+            }
+
+            Transform child = parent.Find(path);
+            if (child != null)
+            {
+                T component = child.GetComponent<T>();
+                if (component != null)
+                {
+                    return component;
+                }
+                else
+                {
+                    Debug.LogError($"å­ç‰©ä»¶ '{path}' æ²’æœ‰æ‰¾åˆ°çµ„ä»¶ {typeof(T)}ï¼");
+                    return null;
+                }
+            }
+            else
+            {
+                Debug.LogError($"ç„¡æ³•åœ¨ '{parent.name}' ä¸‹æ‰¾åˆ°å­ç‰©ä»¶ '{path}'ï¼");
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region buttonListener
+        private void AddButtonListeners()
+        {
+            // ç¢ºä¿ä¸é‡è¤‡æ·»åŠ ç›£è½å™¨
+            selling.onClick.RemoveListener(SellingOnClick);
+            selling.onClick.AddListener(SellingOnClick);
+
+            exchangeChips.onClick.RemoveListener(exchangeChipsOnClick);
+            exchangeChips.onClick.AddListener(exchangeChipsOnClick);
+
+            exchangeMoney.onClick.RemoveListener(exchangeMoneyOnClick);
+            exchangeMoney.onClick.AddListener(exchangeMoneyOnClick);
+
+            exit.onClick.RemoveListener(exitOnClick);
+            exit.onClick.AddListener(exitOnClick);
+        }
+
+        private void RemoveButtonListeners()
+        {
+            selling.onClick.RemoveListener(SellingOnClick);
+            exchangeChips.onClick.RemoveListener(exchangeChipsOnClick);
+            exchangeMoney.onClick.RemoveListener(exchangeMoneyOnClick);
+            exit.onClick.RemoveListener(exitOnClick);
+        }
+        #endregion
+
+        #region ExchangeRegisteredEvent
         public void Initialize(int tmp)
         {
-
+            GetComponent<AudioSource>().Play(0); // play dave sound
             Debug.Log("Enter Initialize");
 
             if (canvasObject == null)
             {
-                Debug.LogError("cant find exchange ui!!!!!!!!");
+                Debug.LogError("ExchangeUI æœªæ‰¾åˆ°ï¼");
+                return;
             }
+
             canvasObject.GetComponent<Canvas>().enabled = true;
 
-            // ªì©l¤Æ¦r¨å
+            // åˆå§‹åŒ–å­—å…¸
             itemPrices = new Dictionary<string, int>
             {
                 { "house", 1000 },
@@ -94,31 +168,37 @@ namespace UnityEngine
                 { "dignity", 50 }
             };
 
-            selling.onClick.AddListener(SellingOnClick);
-            exchangeChips.onClick.AddListener(exchangeChipsOnClick);
-            exchangeMoney.onClick.AddListener(exchangeMoneyOnClick);
-            exit.onClick.AddListener(exitOnClick);
+            // åˆå§‹åŒ– Dropdown
+            dropdown.onValueChanged.RemoveAllListeners();
+            dropdown.onValueChanged.AddListener(UpdateText);
 
-            // ªì©l¤Æ UI
+            RebuildDropdownOptions();
+
             if (dropdown.options.Count > 0)
             {
-                uiText.text = $"{itemPrices[dropdown.options[0].text]}$";
+                dropdown.value = 0;
+                UpdateText(dropdown.value);
+            }
+            else
+            {
+                uiText.text = "0";
             }
 
-            if (dropdown != null)
-            {
-                dropdown.onValueChanged.AddListener(UpdateText);
-            }
+            // æ·»åŠ æŒ‰éˆ•ç›£è½
+            AddButtonListeners();
 
             DataManager.Instance.playerData.SetValue("canMoving", false);
 
             inputChips.text = "";
             inputMoney.text = "";
 
-            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
         }
+        #endregion
 
         #region selling
+
+        //change the value of each goods
         public void UpdateText(int index)
         {
             if (uiText != null && dropdown.options.Count > 0)
@@ -131,46 +211,80 @@ namespace UnityEngine
                 }
                 else
                 {
-                    uiText.text = ""; 
+                    uiText.text = "0";
                 }
+            }
+            else
+            {
+                uiText.text = "0";
             }
         }
 
-        public void SellingOnClick()
+        // add unsold goods onto dropdown
+        private void RebuildDropdownOptions()
         {
-            if (dropdown.options.Count > 0)
+            if (dropdown == null)
+            {
+                Debug.LogError("Dropdown nullï¼");
+                return;
+            }
+
+            dropdown.ClearOptions();
+            List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
+
+            foreach (var item in itemPrices)
+            {
+                if (DataManager.Instance.playerData.GetValue<bool>(item.Key))
+                {
+                    options.Add(new TMP_Dropdown.OptionData(item.Key));
+                }
+            }
+
+            if (options.Count == 0)
+            {
+                options.Add(new TMP_Dropdown.OptionData("nothing"));
+            }
+
+            dropdown.AddOptions(options);
+            dropdown.RefreshShownValue();
+        }
+
+        private void SellingOnClick()
+        {
+            if (dropdown.options.Count > 0 && dropdown.value >= 0)
             {
                 string selectedText = dropdown.options[dropdown.value].text;
 
-                if (itemPrices.ContainsKey(selectedText))
+                if (itemPrices.TryGetValue(selectedText, out int price))
                 {
-                    // ®Ú¾Ú¿ï¶µ²K¥[ª÷ÃB
-                    DataManager.Instance.playerData.AddValue("money", itemPrices[selectedText]);
+                    DataManager.Instance.playerData.AddValue("money", price);
+                    DataManager.Instance.playerData.SetValue(selectedText, false);
 
-                    // §R°£¿ï¶µ
-                    dropdown.options.RemoveAt(dropdown.value);
+                    RebuildDropdownOptions();
 
-                    // ½T«OÅã¥Ü§ó·s
-                    if (dropdown.options.Count > 0)
+                    if (dropdown.options.Count > 0 && !dropdown.options[0].text.Equals("æš‚æ— å¯å”®ç‰©å“"))
                     {
-                        dropdown.value = 0; // ¿ï¾Ü²Ä¤@­Ó¿ï¶µ
-                        UpdateText(dropdown.value); // §ó·s¤å¦r
+                        dropdown.value = 0;
+                        UpdateText(dropdown.value);
                     }
                     else
                     {
-                        dropdown.value = -1; // ³]¸m¬°µL®Ä­È
-                        uiText.text = "nothing"; // Åã¥Ü´£¥Ü¤å¦r
+                        uiText.text = "Nothing";
                     }
 
-                    // ¨ê·sÅã¥Ü
                     dropdown.RefreshShownValue();
                 }
                 else
                 {
-                    Debug.LogWarning("¥¼³B²zªº¿ï¶µ¤å¦r¤º®e: " + selectedText);
+                    Debug.LogWarning($"æœªè™•ç†çš„é¸é …: {selectedText}");
                 }
             }
+            else
+            {
+                Debug.LogWarning("æ²’æœ‰å¯å”®ç‰©å“æˆ–é¸é …ç´¢å¼•ç„¡æ•ˆï¼");
+            }
         }
+
         #endregion
 
         #region Exchange
@@ -208,10 +322,10 @@ namespace UnityEngine
 
         public bool IsInteger(string input)
         {
-            // ²¾°£¿é¤J¦r¦ê«e«áªºªÅ¥Õ¦r²Å
+            // ç§»é™¤è¼¸å…¥å­—ä¸²å‰å¾Œçš„ç©ºç™½å­—ç¬¦
             string trimmedInput = input.Trim();
 
-            // ¹Á¸Õ±N¦r¦êÂà´«¬°¾ã¼Æ
+            // å˜—è©¦å°‡å­—ä¸²è½‰æ›ç‚ºæ•´æ•¸
             int result;
             bool isInteger = int.TryParse(trimmedInput, out result);
 
@@ -219,6 +333,7 @@ namespace UnityEngine
         }
         #endregion
 
+        #region exit
         private void exitOnClick()
         {
             DataManager.Instance.playerData.SetValue("canMoving", true);
@@ -233,15 +348,12 @@ namespace UnityEngine
 
             canvasObject.GetComponent<Canvas>().enabled = false;
 
-            selling.onClick.RemoveListener(SellingOnClick);
-            exchangeChips.onClick.RemoveListener(exchangeChipsOnClick);
-            exchangeMoney.onClick.RemoveListener(exchangeMoneyOnClick);
-            exit.onClick.RemoveListener(exitOnClick);
-
+            RemoveButtonListeners();
+            
             dropdown.onValueChanged.RemoveListener(UpdateText);
 
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         }
+        #endregion
     }
-
 }

@@ -19,16 +19,19 @@ public class EndingDisplay : MonoBehaviour
         {
             Ending = Ending1;
             Ending.SetActive(true);
+            AchievementManager.instance.Unlock("Big money");
         }
         else if (DataManager.Instance.playerData.GetValue<int>("money") < poorEnding)
         {
             Ending = Ending2;
             Ending.SetActive(true);
+            AchievementManager.instance.Unlock("Be poor");
         }
         else
         {
             Ending = Ending3;
             Ending.SetActive(true);
+            AchievementManager.instance.Unlock("Financially responsible");
         }
     }
     void Update()
