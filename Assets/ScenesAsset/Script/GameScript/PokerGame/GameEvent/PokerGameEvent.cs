@@ -12,7 +12,7 @@ public class PokerGameEvent : MonoBehaviour
     private Vector3 cardPosHost;
     private float playerOffset;
     private float hostOffset;
-    private int des = -1;
+    private bool des = true;
 
     private bool isPlayer;
 
@@ -22,14 +22,19 @@ public class PokerGameEvent : MonoBehaviour
     {
         Debug.Log("Init PokerGameEvent");
         Objects = p_objects.ToArray();
-        des++;
+        Debug.Log(des);
         Debug.Log(Objects.Length);
 
-        EventSystem.Instance.RegisterEvent<string>("BJgame", "CardSpawn", CreateCard);
+        if (des)
+        {
+            EventSystem.Instance.RegisterEvent<string>("BJgame", "CardSpawn", CreateCard);
 
-        EventSystem.Instance.RegisterEvent<bool>("BJgame", "CheckPlayer", SwapSlot);
+            EventSystem.Instance.RegisterEvent<bool>("BJgame", "CheckPlayer", SwapSlot);
 
-        EventSystem.Instance.RegisterEvent<int>("BJgame", "DestroyCards", destroyCards);
+            EventSystem.Instance.RegisterEvent<int>("BJgame", "DestroyCards", destroyCards);
+            des = false;
+        }
+        
 
         cardPosPlayer = new Vector3(-0.34f, 0.95f, -9.15f);
 

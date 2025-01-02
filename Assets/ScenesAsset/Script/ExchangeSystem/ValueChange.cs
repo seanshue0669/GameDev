@@ -222,7 +222,10 @@ namespace UnityEngine
 
                 if (itemPrices.TryGetValue(selectedText, out int price))
                 {
-                    DataManager.Instance.AddAndDisplayValue("money", price);
+                    if (selectedText == "house") AchievementManager.instance.Unlock("Moving here");
+                    else if (selectedText == "kidney") AchievementManager.instance.Unlock("Home alone");
+                    else if (selectedText == "dignity") AchievementManager.instance.Unlock("That's it...");
+                    DataManager.Instance.playerData.AddValue("money", price);
                     DataManager.Instance.playerData.SetValue(selectedText, false);
 
                     RebuildDropdownOptions();
