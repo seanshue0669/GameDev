@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 
-
 namespace UnityEngine
 {
     public class ValueChange : MonoBehaviour
@@ -280,6 +279,7 @@ namespace UnityEngine
                 {
                     DataManager.Instance.playerData.SubValue("chips", money);
                     DataManager.Instance.playerData.AddValue("money", money);
+                    
                 }
             }
 

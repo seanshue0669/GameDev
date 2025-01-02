@@ -8,7 +8,6 @@ public class Interaction : MonoBehaviour
     public LayerMask miniGameLayer;
     public LayerMask npcLayer;
     public TextMeshProUGUI interactText; // UI 文本，拖拽到 Inspector 中
-    public TextMeshProUGUI ChatText;
     public Scene.SceneLoader sceneLoader;
 
     private GameObject currentBox = null; // 当前目标箱子
@@ -34,8 +33,9 @@ public class Interaction : MonoBehaviour
                 // 检测是否按下 E 键
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //sceneLoader.LoadScene("DiceScecne");
-                    Debug.Log("DiceScecne");
+                    UnityEngine.Cursor.lockState = CursorLockMode.None;
+                    sceneLoader.LoadScene("DiceScene");
+                    //Debug.Log("DiceScecne");
                 }
                 return; // 如果有命中，结束 Update
             }
@@ -52,8 +52,9 @@ public class Interaction : MonoBehaviour
                 // 检测是否按下 E 键
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //sceneLoader.LoadScene("DiceScecne");
-                    Debug.Log("Black");
+                    UnityEngine.Cursor.lockState = CursorLockMode.None;
+                    sceneLoader.LoadScene("PokerScene");
+                    //Debug.Log("Black");
                 }
                 return; // 如果有命中，结束 Update
             }
@@ -89,8 +90,9 @@ public class Interaction : MonoBehaviour
                 // 检测是否按下 E 键
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //sceneLoader.LoadScene("DiceScecne");
-                    Debug.Log("SlotGame");
+                    UnityEngine.Cursor.lockState = CursorLockMode.None;
+                    sceneLoader.LoadScene("SlotScene");
+                    //Debug.Log("SlotGame");
                 }
                 return; // 如果有命中，结束 Update
             }
@@ -105,10 +107,10 @@ public class Interaction : MonoBehaviour
             {
                 currentBox = hit.collider.gameObject;
 
-                if (ChatText != null)
+                if (interactText != null)
                 {
-                    ChatText.gameObject.SetActive(true);
-                    ChatText.text = "Press E to exchange";
+                    interactText.gameObject.SetActive(true);
+                    interactText.text = "Press E to exchange";
                 }
 
                 if (Input.GetKeyDown(KeyCode.E))
@@ -125,11 +127,6 @@ public class Interaction : MonoBehaviour
         if (interactText != null)
         {
             interactText.gameObject.SetActive(false);
-        }
-
-        if (ChatText != null)
-        {
-            ChatText.gameObject.SetActive(false);
         }
     }
 }
