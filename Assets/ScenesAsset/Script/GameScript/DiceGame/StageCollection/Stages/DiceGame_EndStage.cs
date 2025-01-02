@@ -12,6 +12,7 @@ public class DiceGame_EndStage : IStage
     private string playerOptions;
     private int playerBetAmount;
     private int diceResult;
+    private int isEqual;
     //UI
     private TMP_Text statusText;
 
@@ -42,8 +43,22 @@ public class DiceGame_EndStage : IStage
         playerOptions = sharedData.GetString("BetOption");
         playerBetAmount = sharedData.GetInt("BetAmount");
         diceResult = sharedData.GetInt("Result");
+        isEqual = sharedData.GetInt("IsEqual");
 
-        await ShowDialogAsync("The Dice Result is "+ TranslateResult(diceResult)+ "\nPlaying Again?)");
+        if (playerOptions == "smaller" && diceResult < 7)
+            DataManager.Instance.playerData.AddValue("money", playerBetAmount * 2);
+        else if(playerOptions == "smaller" && diceResult >= 7)
+            DataManager.Instance.playerData.SubValue("money", playerBetAmount * 2);
+        else if (playerOptions == "bigger" && diceResult >= 7)
+            DataManager.Instance.playerData.AddValue("money", playerBetAmount * 2);
+        else if (playerOptions == "bigger" && diceResult < 7)
+            DataManager.Instance.playerData.SubValue("money", playerBetAmount * 2);
+        else if (playerOptions == "equal" && isEqual == 1)
+            DataManager.Instance.playerData.AddValue("money", playerBetAmount * 7);
+        else if (playerOptions == "equal" && isEqual == 0)
+            DataManager.Instance.playerData.SubValue("money", playerBetAmount * 7);
+
+        await ShowDialogAsync("The Dice Result is "+ TranslateResult(diceResult) + "\nPlaying Again?)");
         await WaitForPhaseCompletionAsync();
         await ShowDialogAsync("Preepare Next Round!");
         EventSystem.Instance.TriggerEvent("DiceGameEvent", "StopSpawn", 0);
@@ -101,7 +116,9 @@ public class DiceGame_EndStage : IStage
     private string TranslateResult(int p_Diceresult)
     {
         if (p_Diceresult == -1)
+        {
             return "integer overflow!";
+        }
         else
             return p_Diceresult.ToString();
     }

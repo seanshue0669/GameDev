@@ -138,6 +138,8 @@ public class DiceGame_InitialStage : IStage
         if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount)
         {
             sharedData.SetInt("BetAmount", betAmount);
+            DataManager.Instance.playerData.SubValue("money", betAmount);
+            Debug.Log("bet amount");
             phaseCompletionSource?.SetResult(true);
         }
         else

@@ -57,9 +57,16 @@ public class DiceGame_ExecuteStage : IStage
         {
             sharedData.SetInt("Result", -1);
             EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpawnDice", 2);
+            sharedData.SetInt("IsEqual", 0);
+        }
+        else if(diceOneResult == diceTwoResult)
+        {
+            sharedData.SetInt("Result", diceOneResult + diceTwoResult);
+            sharedData.SetInt("IsEqual", 1);
         }
         else
             sharedData.SetInt("Result", diceOneResult + diceTwoResult);
+            sharedData.SetInt("IsEqual", 0);
 
         // Moving
         await Task.Delay(1000);
