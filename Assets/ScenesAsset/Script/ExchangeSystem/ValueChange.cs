@@ -222,7 +222,7 @@ namespace UnityEngine
 
                 if (itemPrices.TryGetValue(selectedText, out int price))
                 {
-                    DataManager.Instance.playerData.AddValue("money", price);
+                    DataManager.Instance.AddAndDisplayValue("money", price);
                     DataManager.Instance.playerData.SetValue(selectedText, false);
 
                     RebuildDropdownOptions();
@@ -261,8 +261,8 @@ namespace UnityEngine
 
                 if (chips <= DataManager.Instance.playerData.GetValue<int>("money"))
                 {
-                    DataManager.Instance.playerData.SubValue("money", chips);
-                    DataManager.Instance.playerData.AddValue("chips", chips);
+                    DataManager.Instance.SubAndDisplayValue("money", chips);
+                    DataManager.Instance.AddAndDisplayValue("chips", chips);
                 }
             }
 
@@ -277,8 +277,8 @@ namespace UnityEngine
 
                 if (money <= DataManager.Instance.playerData.GetValue<int>("chips"))
                 {
-                    DataManager.Instance.playerData.SubValue("chips", money);
-                    DataManager.Instance.playerData.AddValue("money", money);
+                    DataManager.Instance.SubAndDisplayValue("chips", money);
+                    DataManager.Instance.AddAndDisplayValue("money", money);
                     
                 }
             }

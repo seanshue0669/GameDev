@@ -33,4 +33,55 @@ public class DataManager : MonoBehaviour
             Destroy(gameObject); // 確保只有一個 DataManager 實例
         }
     }
+
+    public void SetAndDisplayValue(string key, object value)
+    {
+        try
+        {
+            playerData.SetValue(key, value);
+
+            if (key == "money" || key == "chips")
+            {
+                EventSystem.Instance.TriggerEvent("Assetdisplay", "display", 0);
+            }
+        }
+        catch
+        {
+            Debug.LogError("data type with key is wrong");
+        }
+    }
+
+    public void AddAndDisplayValue(string key, object value)
+    {
+        try
+        {
+            playerData.AddValue(key, value);
+
+            if (key == "money" || key == "chips")
+            {
+                EventSystem.Instance.TriggerEvent("Assetdisplay", "display", 0);
+            }
+        }
+        catch
+        {
+            Debug.LogError("data type with key is wrong");
+        }
+    }
+
+    public void SubAndDisplayValue(string key, object value)
+    {
+        try
+        {
+            playerData.SubValue(key, value);
+
+            if (key == "money" || key == "chips")
+            {
+                EventSystem.Instance.TriggerEvent("Assetdisplay", "display", 0);
+            }
+        }
+        catch
+        {
+            Debug.LogError("data type with key is wrong");
+        }
+    }
 }
