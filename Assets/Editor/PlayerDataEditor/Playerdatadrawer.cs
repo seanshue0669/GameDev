@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
-
+using PlayerDataSO;
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(PlayerData.PlayerDataEntry))]
-public class SharedDataEntryDrawer : PropertyDrawer
+public class PlayerDataEntryDrawer : PropertyDrawer
 {
     private const float padding = 2f;
 
@@ -60,3 +61,4 @@ public class SharedDataEntryDrawer : PropertyDrawer
         return 3 * EditorGUIUtility.singleLineHeight + 2 * padding;
     }
 }
+#endif

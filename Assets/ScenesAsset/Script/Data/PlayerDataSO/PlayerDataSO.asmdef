@@ -1,11 +1,7 @@
 {
-    "name": "Editor",
+    "name": "PlayerDataSO",
     "rootNamespace": "",
-    "references": [
-        "GUID:9075b9a891eed35419119e3f77dca50a",
-        "GUID:19613a2496c082346b1f4b9b4f6aeac4",
-        "GUID:e61f26291b5dfe949ba9ac110a69a582"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

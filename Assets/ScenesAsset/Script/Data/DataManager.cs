@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static PlayerData;
+using PlayerDataSO;
 
 public class DataManager : MonoBehaviour
 {

@@ -1,15 +1,13 @@
 using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(SharedDataSO.SharedDataEntry))]
 public class SharedDataEntryDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         
-        EditorGUI.BeginProperty(position, label, property);
-
-        
+        EditorGUI.BeginProperty(position, label, property);      
         float lineHeight = EditorGUIUtility.singleLineHeight + 2;
         Rect typeRect = new Rect(position.x, position.y, position.width, lineHeight);
         Rect keyRect = new Rect(position.x, position.y + lineHeight, position.width, lineHeight);
@@ -43,10 +41,9 @@ public class SharedDataEntryDrawer : PropertyDrawer
         
         EditorGUI.EndProperty();
     }
-
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        
         return 3 * (EditorGUIUtility.singleLineHeight + 2);
     }
 }
+#endif
