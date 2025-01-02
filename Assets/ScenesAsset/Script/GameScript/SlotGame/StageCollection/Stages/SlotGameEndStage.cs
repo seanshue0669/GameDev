@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -15,7 +14,7 @@ public class SlotGameEndStage : IStage
     string UITag;
     string videoPath1;
     string videoPath2;
-    public PlayerData playerData;
+    //public PlayerData playerData;
     public int currentMoney;
 
     //private Action continueAction;
@@ -126,7 +125,7 @@ public class SlotGameEndStage : IStage
                 DataManager.Instance.playerData.SetValue("money", currentMoney * 7);
                 break;
             case "Penniless":
-                playerData.SetValue("money", 0);
+                DataManager.Instance.playerData.SetValue("money", 0);
                 break;
             case "Goat":
                 EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);

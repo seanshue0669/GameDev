@@ -23,7 +23,7 @@ public class SlotGameInitialStage : IStage
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
 
-    public PlayerData playerData;
+    //public PlayerData playerData;
     public int currentMoney;
     #endregion
 
