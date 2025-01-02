@@ -90,7 +90,7 @@ public class Interaction : MonoBehaviour
                 // 检测是否按下 E 键
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //AchievementManager.instance.Unlock("Under construction");
+                    AchievementManager.instance.Unlock("Under construction");
                     //UnityEngine.Cursor.lockState = CursorLockMode.None;
                     //sceneLoader.LoadScene("SlotScene");
                     //Debug.Log("SlotGame");
