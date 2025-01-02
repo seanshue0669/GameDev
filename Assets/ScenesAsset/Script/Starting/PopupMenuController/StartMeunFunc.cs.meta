@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: b7eaac1677bc8f042852cd11f4066bda
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SettingPopUpUI: {fileID: 2970317996205716216, guid: ea1b11e7e557e634d845ff7f50fb5b8e, type: 3}
+  - CreaterPopUpUI: {fileID: 1852983294176418732, guid: 98a0fc393033fac4bbe3904e8ed698f6, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

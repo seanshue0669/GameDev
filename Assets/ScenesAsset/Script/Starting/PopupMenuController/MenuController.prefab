@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7eaac1677bc8f042852cd11f4066bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SettingPopUpUI: {fileID: 0}
