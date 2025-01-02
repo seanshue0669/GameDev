@@ -34,3 +34,8 @@ MonoBehaviour:
     ButtonComponent: {fileID: 2508742901854878874, guid: 062912bf9bce13045b1f7a3e5bb3c78d, type: 3}
     TextComponent: {fileID: 6208317349766721088, guid: b8aba0fd6e7c7864bb2516b28f0f07e2, type: 3}
     InputFieldComponent: {fileID: 0}
+  - Key: UserMoney
+    Type: 1
+    ButtonComponent: {fileID: 2508742901854878874, guid: 062912bf9bce13045b1f7a3e5bb3c78d, type: 3}
+    TextComponent: {fileID: 229675912535306246, guid: a59ae48cff183a1498a8b97984ce013e, type: 3}
+    InputFieldComponent: {fileID: 0}

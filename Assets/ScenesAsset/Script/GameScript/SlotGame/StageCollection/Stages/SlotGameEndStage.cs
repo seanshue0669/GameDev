@@ -13,9 +13,12 @@ public class SlotGameEndStage : IStage
     private TMP_Text statusText;
     private TMP_Text resultText;
     private Button confirmButton;
+    private TMP_Text userMoney;
     string UITag;
     string videoPath1;
     string videoPath2;
+    public PlayerData playerData;
+    private int currentMoney;
 
     //private Action continueAction;
     private TaskCompletionSource<bool> buttonClickedTcs;
@@ -26,6 +29,7 @@ public class SlotGameEndStage : IStage
     {
         //Init the variable here
         UITag = "SlotGameUI";
+        currentMoney = playerData.GetValue<int>("money");
     }
     #endregion
 
@@ -41,10 +45,11 @@ public class SlotGameEndStage : IStage
         string reels2 = sharedData.GetInt("Reel2").ToString();
         string reels3 = sharedData.GetInt("Reel3").ToString();
         string result = SlotResult(reels1, reels2, reels3);
-        result = "Boom";
-        //result = "QuitGambling";
+        //result = "Boom";
+        result = "QuitGambling";
         //result = "QuitGamblingFor5s";
         await ShowResultAsync(result);
+        await ShowMoneyAsync(currentMoney.ToString());
 
         await ShowDialogAsync("Game finished!");
         await ShowDialogAsync("Would you like to restart?");
@@ -67,6 +72,7 @@ public class SlotGameEndStage : IStage
         statusText = uiComponents.CreateUIComponent<TMP_Text>("GameStatusText", canvas.transform);
         resultText = uiComponents.CreateUIComponent<TMP_Text>("ResultText", canvas.transform);
         confirmButton = uiComponents.CreateUIComponent<Button>("ConfirmButton", canvas.transform);
+        userMoney = uiComponents.CreateUIComponent<TMP_Text>("Money", canvas.transform);
         //declare the UI varable & Create UIElement
         return true;
     }
@@ -119,6 +125,9 @@ public class SlotGameEndStage : IStage
 
         switch (text)
         {
+            case "Penniless":
+                playerData.SetValue("money", 0);
+                break;
             case "QuitGambling":
                 EventSystem.Instance.TriggerEvent<int>("PlayVideo", "PlayWindow", 2);
                 await Task.Delay(10000);
@@ -144,7 +153,14 @@ public class SlotGameEndStage : IStage
         await Task.Delay(1000);
     }
 
-    public string SlotResult(string reels1, string reels2, string reels3)
+    private async Task ShowMoneyAsync(string text)
+    {
+        userMoney.text += text;
+        //your TextUI Element
+        await Task.Delay(1000);
+    }
+
+        public string SlotResult(string reels1, string reels2, string reels3)
     {
         var conditions = new[]
         {

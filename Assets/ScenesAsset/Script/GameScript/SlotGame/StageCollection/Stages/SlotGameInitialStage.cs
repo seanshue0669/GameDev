@@ -15,6 +15,7 @@ public class SlotGameInitialStage : IStage
     private TMP_Text statusText;
     private TMP_InputField inputField;
     private Button confirmButton;
+    private TMP_Text userMoney;
 
     private TaskCompletionSource<bool> phaseCompletionSource;
     private Action currentValidationAction;
@@ -22,11 +23,15 @@ public class SlotGameInitialStage : IStage
     private bool isWaiting = false;
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
+
+    public PlayerData playerData;
+    private int currentMoney;
     #endregion
 
     #region Constructor
     public SlotGameInitialStage() {
         //Init the variable here
+        currentMoney = playerData.GetValue<int>("money");
     }
     #endregion
 
@@ -37,6 +42,7 @@ public class SlotGameInitialStage : IStage
 
         RegisterButtonListeners();
         await ShowDialogAsync(instructionMessage);
+        await ShowMoneyAsync(currentMoney.ToString());
 
         // Phase 1: Input Bet Amount
         await ShowDialogAsync("Please Enter your Bet Amount:");
@@ -63,6 +69,7 @@ public class SlotGameInitialStage : IStage
         statusText = uiComponents.CreateUIComponent<TMP_Text>("GameStatusText", canvas.transform);
         inputField = uiComponents.CreateUIComponent<TMP_InputField>("BetInputField", canvas.transform);
         confirmButton = uiComponents.CreateUIComponent<Button>("ConfirmButton", canvas.transform);
+        userMoney = uiComponents.CreateUIComponent<TMP_Text>("Money", canvas.transform);
 
         if (statusText == null || inputField == null || confirmButton == null)
         {
@@ -100,11 +107,15 @@ public class SlotGameInitialStage : IStage
     private void ValidateBetAmountInput(SharedDataSO sharedData)
     {
         string input = inputField.text;
-        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount)
+        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount && betAmount <= currentMoney && betAmount > 0)
         {
             sharedData.SetInt("BetAmount", betAmount);
             statusText.text = "Bet amount accepted!";
             phaseCompletionSource?.SetResult(true);
+        }
+        else if(betAmount > currentMoney && betAmount <= 0)
+        {
+            statusText.text = $"Invalid bet! Your money is not enough!";
         }
         else
         {
@@ -141,6 +152,12 @@ public class SlotGameInitialStage : IStage
     private async Task ShowDialogAsync(string text)
     {
         statusText.text = text;
+        await Task.Delay(1000);
+    }
+
+    private async Task ShowMoneyAsync(string text)
+    {
+        userMoney.text += text;
         await Task.Delay(1000);
     }
     #endregion
