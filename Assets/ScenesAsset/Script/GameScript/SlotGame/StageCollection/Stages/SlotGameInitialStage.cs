@@ -15,7 +15,6 @@ public class SlotGameInitialStage : IStage
     private TMP_Text statusText;
     private TMP_InputField inputField;
     private Button confirmButton;
-    private TMP_Text userMoney;
 
     private TaskCompletionSource<bool> phaseCompletionSource;
     private Action currentValidationAction;
@@ -25,24 +24,24 @@ public class SlotGameInitialStage : IStage
     public InputHandler InputDelegate;
 
     public PlayerData playerData;
-    private int currentMoney;
+    public int currentMoney;
     #endregion
 
     #region Constructor
     public SlotGameInitialStage() {
         //Init the variable here
-        currentMoney = playerData.GetValue<int>("money");
+        //currentMoney = playerData.GetValue<int>("money");
     }
     #endregion
 
     #region Execute Phase Logic
     public async Task ExecuteAsync(SharedDataSO sharedData, UIComponentCollectionSO uiComponents)
     {
+        currentMoney = DataManager.Instance.playerData.GetValue<int>("money");
         if (!InitializeUI(uiComponents)) return;
 
         RegisterButtonListeners();
         await ShowDialogAsync(instructionMessage);
-        await ShowMoneyAsync(currentMoney.ToString());
 
         // Phase 1: Input Bet Amount
         await ShowDialogAsync("Please Enter your Bet Amount:");
@@ -69,7 +68,6 @@ public class SlotGameInitialStage : IStage
         statusText = uiComponents.CreateUIComponent<TMP_Text>("GameStatusText", canvas.transform);
         inputField = uiComponents.CreateUIComponent<TMP_InputField>("BetInputField", canvas.transform);
         confirmButton = uiComponents.CreateUIComponent<Button>("ConfirmButton", canvas.transform);
-        userMoney = uiComponents.CreateUIComponent<TMP_Text>("Money", canvas.transform);
 
         if (statusText == null || inputField == null || confirmButton == null)
         {
@@ -152,12 +150,6 @@ public class SlotGameInitialStage : IStage
     private async Task ShowDialogAsync(string text)
     {
         statusText.text = text;
-        await Task.Delay(1000);
-    }
-
-    private async Task ShowMoneyAsync(string text)
-    {
-        userMoney.text += text;
         await Task.Delay(1000);
     }
     #endregion

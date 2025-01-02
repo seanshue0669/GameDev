@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using System.Collections.Generic;
 
 public class SlotGameEndStage : IStage
 {
@@ -13,12 +12,11 @@ public class SlotGameEndStage : IStage
     private TMP_Text statusText;
     private TMP_Text resultText;
     private Button confirmButton;
-    private TMP_Text userMoney;
     string UITag;
     string videoPath1;
     string videoPath2;
     public PlayerData playerData;
-    private int currentMoney;
+    public int currentMoney;
 
     //private Action continueAction;
     private TaskCompletionSource<bool> buttonClickedTcs;
@@ -29,7 +27,6 @@ public class SlotGameEndStage : IStage
     {
         //Init the variable here
         UITag = "SlotGameUI";
-        currentMoney = playerData.GetValue<int>("money");
     }
     #endregion
 
@@ -38,6 +35,8 @@ public class SlotGameEndStage : IStage
     {
         if (!InitializeUI(uiComponents)) return;
         RegisterButtonListeners();
+
+        currentMoney = DataManager.Instance.playerData.GetValue<int>("money");
 
         await ShowDialogAsync("Showing Result!");
 
@@ -49,7 +48,6 @@ public class SlotGameEndStage : IStage
         result = "QuitGambling";
         //result = "QuitGamblingFor5s";
         await ShowResultAsync(result);
-        await ShowMoneyAsync(currentMoney.ToString());
 
         await ShowDialogAsync("Game finished!");
         await ShowDialogAsync("Would you like to restart?");
@@ -72,7 +70,6 @@ public class SlotGameEndStage : IStage
         statusText = uiComponents.CreateUIComponent<TMP_Text>("GameStatusText", canvas.transform);
         resultText = uiComponents.CreateUIComponent<TMP_Text>("ResultText", canvas.transform);
         confirmButton = uiComponents.CreateUIComponent<Button>("ConfirmButton", canvas.transform);
-        userMoney = uiComponents.CreateUIComponent<TMP_Text>("Money", canvas.transform);
         //declare the UI varable & Create UIElement
         return true;
     }
@@ -125,42 +122,52 @@ public class SlotGameEndStage : IStage
 
         switch (text)
         {
+            case "Jackpot":
+                DataManager.Instance.playerData.SetValue("money", currentMoney * 7);
+                break;
             case "Penniless":
                 playerData.SetValue("money", 0);
+                break;
+            case "Goat":
+                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
+                break;
+            case "NoSlotGamesAnymore":
+                break;
+            case "Toilet":
+                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
                 break;
             case "QuitGambling":
                 EventSystem.Instance.TriggerEvent<int>("PlayVideo", "PlayWindow", 2);
                 await Task.Delay(10000);
                 break;
+            case "Triple":
+                DataManager.Instance.playerData.SetValue("money", currentMoney * 3);
+                break;
+            case "HalfMoney":
+                DataManager.Instance.playerData.SetValue("money", currentMoney / 2);
+                break;
+            case "TemporaryGoat":
+                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
+                break;
+            case "Boom":
+                EventSystem.Instance.TriggerEvent<int>("EffectSpawn", "Boom", 1);
+                break;
+            case "ToiletSeat":
+                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
+                break;
             case "QuitGamblingFor5s":
                 EventSystem.Instance.TriggerEvent<int>("PlayVideo", "PlayWindow", 1);
                 await Task.Delay(5000);
                 break;
-            case "Goat":
-                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
-                    break;
-            case "TemporaryGoat":
-                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
-                    break;
-            case "Toilet":
-                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
-                    break;
-            case "Boom":
-                EventSystem.Instance.TriggerEvent<int>("EffectSpawn", "Boom", 1);
-                    break;
+            case "Double":
+                DataManager.Instance.playerData.SetValue("money", currentMoney * 2);
+                break;
         }
 
         await Task.Delay(1000);
     }
 
-    private async Task ShowMoneyAsync(string text)
-    {
-        userMoney.text += text;
-        //your TextUI Element
-        await Task.Delay(1000);
-    }
-
-        public string SlotResult(string reels1, string reels2, string reels3)
+    public string SlotResult(string reels1, string reels2, string reels3)
     {
         var conditions = new[]
         {

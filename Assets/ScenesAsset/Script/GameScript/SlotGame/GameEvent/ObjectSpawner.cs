@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Threading.Tasks;
 using System.Collections;
 
 public class ObjectSpawner : MonoBehaviour
