@@ -29,7 +29,6 @@ public class SlotGameInitialStage : IStage
     #region Constructor
     public SlotGameInitialStage() {
         //Init the variable here
-        //currentMoney = playerData.GetValue<int>("money");
     }
     #endregion
 

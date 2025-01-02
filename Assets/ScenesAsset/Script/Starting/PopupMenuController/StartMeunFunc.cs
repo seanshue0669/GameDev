@@ -1,24 +1,10 @@
 using UnityEngine;
 
-public class StartMeunFunc:MonoBehaviour
+public class StartMeunFunc
 {
-    [SerializeField]
-    public GameObject settingsUI;
-    public GameObject CreaterUI;
-
-    public void SettingsUIController(bool p_open)
+    public void HideUI(string p_Name)
     {
-        Debug.Log("Show");
-        if(p_open)
-            settingsUI.SetActive(true);
-        else
-            settingsUI.SetActive(false);
+        
     }
-    public void CreaterUIController(bool p_open)
-    {
-        if(p_open)
-            CreaterUI.SetActive(true);
-        else
-            CreaterUI.SetActive(false);
-    }
+    
 }
