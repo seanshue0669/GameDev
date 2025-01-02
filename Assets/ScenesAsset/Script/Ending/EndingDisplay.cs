@@ -7,10 +7,12 @@ public class EndingDisplay : MonoBehaviour
     public GameObject Ending1;
     public GameObject Ending2;
     public GameObject Ending3;
+    public GameObject Ending4;
     private GameObject Ending;
 
     private int richEnding = 5000;
     private int poorEnding = 0;
+    private int equal = 1000;
 
 
     private void Start()
@@ -27,11 +29,17 @@ public class EndingDisplay : MonoBehaviour
             Ending.SetActive(true);
             AchievementManager.instance.Unlock("Be poor");
         }
-        else
+        else if (DataManager.Instance.playerData.GetValue<int>("money") == equal)
         {
             Ending = Ending3;
             Ending.SetActive(true);
             AchievementManager.instance.Unlock("Financially responsible");
+        }
+        else
+        {
+            Ending = Ending4;
+            Ending.SetActive(true);
+            AchievementManager.instance.Unlock("A boring outcome");
         }
     }
     void Update()

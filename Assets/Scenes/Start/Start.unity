@@ -4116,27 +4116,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.data[2].Achieved
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.data[3].Achieved
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.data[4].Achieved
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.data[5].Achieved
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[0].Key
@@ -4169,6 +4169,10 @@ PrefabInstance:
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[7].Key
       value: Under construction
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[8].Key
+      value: A boring outcome
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[0].Spoiler
@@ -4204,6 +4208,18 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[5].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[6].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[7].LockedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[8].LockedIcon
       value: 
       objectReference: {fileID: 21300000, guid: 24d0082db3d21fb4bb8470bb70b2b0ca, type: 3}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
@@ -4264,11 +4280,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[7].Description
-      value: It's not finished
+      value: It's not finished...
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[7].DisplayName
       value: Under construction
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[8].Description
+      value: The normal ending
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[8].DisplayName
+      value: A boring outcome
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[0].AchievedIcon
@@ -4294,6 +4318,18 @@ PrefabInstance:
       propertyPath: AchievementList.Array.data[5].AchievedIcon
       value: 
       objectReference: {fileID: 21300000, guid: e63b9f45c2f9fd24f8d4f7ecd8e0dc9e, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[6].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 594f35559a1816e4fb69df3d55c8c32d, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[7].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: e8af60a61cbefbf4fa640c32d3475178, type: 3}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[8].AchievedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 70d2fbd145915754b91b68ca8c7efbd9, type: 3}
     - target: {fileID: 5869893064832991961, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: m_LocalPosition.x
       value: 522
