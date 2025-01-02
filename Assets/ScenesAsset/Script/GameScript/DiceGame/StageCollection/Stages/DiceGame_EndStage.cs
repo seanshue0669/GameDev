@@ -52,7 +52,7 @@ public class DiceGame_EndStage : IStage
             if (diceResult < 7)
             {
                 win = playerBetAmount * 2;
-                DataManager.Instance.playerData.AddValue("money", win);
+                DataManager.Instance.AddAndDisplayValue("chips", win);
             }
             else
             {
@@ -64,7 +64,7 @@ public class DiceGame_EndStage : IStage
             if (diceResult >= 7)
             {
                 win = playerBetAmount * 2;
-                DataManager.Instance.playerData.AddValue("money", win);
+                DataManager.Instance.AddAndDisplayValue("chips", win);
             }
             else
             {
@@ -76,17 +76,18 @@ public class DiceGame_EndStage : IStage
             if (isEqual == 1)
             {
                 win = playerBetAmount * 7;
-                DataManager.Instance.playerData.AddValue("money", win);
+                DataManager.Instance.AddAndDisplayValue("chips", win);
             }
             else
             {
                 win = 0;
             }
         }
+
         await ShowDialogAsync("The Dice Result is " + diceResult);
 
-        await ShowDialogAsync("The Dice Result is "+ TranslateResult(diceResult) + "\nPlaying Again?");
 
+        await ShowDialogAsync("The Dice Result is "+ TranslateResult(diceResult) + "\nPlaying Again?)");
         await WaitForPhaseCompletionAsync();
         await ShowDialogAsync("Preepare Next Round!");
         EventSystem.Instance.TriggerEvent("DiceGameEvent", "StopSpawn", 0);

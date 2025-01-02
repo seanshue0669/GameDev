@@ -37,12 +37,15 @@ public class DiceGame_InitialStage : IStage
     public async Task ExecuteAsync(SharedDataSO sharedData, UIComponentCollectionSO uiComponents)
     {
         if (!InitializeUI(uiComponents)) return;
+
+        EventSystem.Instance.TriggerEvent("Assetdisplay", "display", 0);
+
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "FindObject", 1);
         EventSystem.Instance.TriggerEvent<string>("DiceGameEvent", "RollDice", "1 1");
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCamera", 0);
         RegisterButtonListeners();
         await ShowDialogAsync(instructionMessage);
-        maxBetAmount =DataManager.Instance.playerData.GetValue<int>("money");
+        maxBetAmount =DataManager.Instance.playerData.GetValue<int>("chips");
         // Phase 1: Input Bet Amount
         await DisableOptionButton();
         await ShowDialogAsync("Please Enter your Bet Amount:");
@@ -139,7 +142,7 @@ public class DiceGame_InitialStage : IStage
         if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount)
         {
             sharedData.SetInt("BetAmount", betAmount);
-            DataManager.Instance.playerData.SubValue("money", betAmount);
+            DataManager.Instance.SubAndDisplayValue("chips", betAmount);
             Debug.Log("bet amount");
             phaseCompletionSource?.SetResult(true);
         }
