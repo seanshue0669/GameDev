@@ -49,3 +49,13 @@ MonoBehaviour:
     ButtonComponent: {fileID: 5952759017896647391, guid: 07dad8841214aef42bdccfcad7470cfa, type: 3}
     TextComponent: {fileID: 0}
     InputFieldComponent: {fileID: 0}
+  - Key: continue
+    Type: 0
+    ButtonComponent: {fileID: 6699010179354645091, guid: d293f72079d853b4abd86f206443dce8, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
+  - Key: quit
+    Type: 0
+    ButtonComponent: {fileID: 4973796399946401374, guid: 267d16b80223b9248a6adb03851c28c6, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}

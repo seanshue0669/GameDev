@@ -17,14 +17,19 @@ MonoBehaviour:
   - Key: BetAmount
     Type: 1
     StringValue: 
-    IntValue: 0
+    IntValue: 100
     FloatValue: 0
   - Key: BetOption
     Type: 0
-    StringValue: smaller
+    StringValue: equal
     IntValue: 20
     FloatValue: 0
   - Key: Result
+    Type: 1
+    StringValue: Smaller
+    IntValue: 5
+    FloatValue: 0
+  - Key: IsEqual
     Type: 1
     StringValue: Smaller
     IntValue: 0

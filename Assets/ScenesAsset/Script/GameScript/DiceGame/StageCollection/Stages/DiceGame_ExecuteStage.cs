@@ -44,8 +44,6 @@ public class DiceGame_ExecuteStage : IStage
         int diceOneResult = UnityEngine.Random.Range(0,7);//0->stand 7->alot of dice
         int diceTwoResult = UnityEngine.Random.Range(0,7);
         string passingOperation = diceOneResult.ToString()+" "+diceTwoResult.ToString();
-        //>! should be remove
-        Debug.Log($"Dice:{passingOperation}");
         //Rolling Event
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCup",0);
         await Task.Delay(1000);
@@ -57,9 +55,16 @@ public class DiceGame_ExecuteStage : IStage
         {
             sharedData.SetInt("Result", -1);
             EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "SpawnDice", 2);
+            sharedData.SetInt("IsEqual", 0);
+        }
+        else if(diceOneResult == diceTwoResult)
+        {
+            sharedData.SetInt("Result", diceOneResult + diceTwoResult);
+            sharedData.SetInt("IsEqual", 1);
         }
         else
             sharedData.SetInt("Result", diceOneResult + diceTwoResult);
+            sharedData.SetInt("IsEqual", 0);
 
         // Moving
         await Task.Delay(1000);
@@ -125,8 +130,7 @@ public class DiceGame_ExecuteStage : IStage
 
     private async Task ShowDialogAsync(string text)
     {
-        //statusText.text = text;
-        //your TextUI Element
+        statusText.text = text;
         await Task.Delay(1000);
     }
     #endregion

@@ -1,10 +1,9 @@
-using System;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using System.Collections.Generic;
+using UnityEditor;
 
 public class SlotGameEndStage : IStage
 {
@@ -16,6 +15,7 @@ public class SlotGameEndStage : IStage
     string UITag;
     string videoPath1;
     string videoPath2;
+    public int currentMoney;
 
     //private Action continueAction;
     private TaskCompletionSource<bool> buttonClickedTcs;
@@ -35,6 +35,8 @@ public class SlotGameEndStage : IStage
         if (!InitializeUI(uiComponents)) return;
         RegisterButtonListeners();
 
+        currentMoney = DataManager.Instance.playerData.GetValue<int>("money");
+
         await ShowDialogAsync("Showing Result!");
 
         string reels1 = sharedData.GetInt("Reel1").ToString();
@@ -42,9 +44,8 @@ public class SlotGameEndStage : IStage
         string reels3 = sharedData.GetInt("Reel3").ToString();
         string result = SlotResult(reels1, reels2, reels3);
         result = "Boom";
-        //result = "QuitGambling";
         //result = "QuitGamblingFor5s";
-        await ShowResultAsync(result);
+        await ShowResultAsync(result, sharedData);
 
         await ShowDialogAsync("Game finished!");
         await ShowDialogAsync("Would you like to restart?");
@@ -112,33 +113,61 @@ public class SlotGameEndStage : IStage
         await Task.Delay(1000);
     }
 
-    private async Task ShowResultAsync(string text)
+    private async Task ShowResultAsync(string text, SharedDataSO sharedData)
     {
         resultText.text = text;
         //your TextUI Element
 
         switch (text)
         {
-            case "QuitGambling":
-                EventSystem.Instance.TriggerEvent<int>("PlayVideo", "PlayWindow", 2);
-                await Task.Delay(10000);
+            case "Jackpot":
+                DataManager.Instance.playerData.SetValue("money", currentMoney * 7);
                 break;
-            case "QuitGamblingFor5s":
-                EventSystem.Instance.TriggerEvent<int>("PlayVideo", "PlayWindow", 1);
-                await Task.Delay(5000);
+            case "Penniless":
+                DataManager.Instance.playerData.SetValue("money", 0);
                 break;
             case "Goat":
                 EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
-                    break;
-            case "TemporaryGoat":
-                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
-                    break;
+                DataManager.Instance.playerData.SubValue("money", sharedData.GetInt("BetAmount"));
+                break;
+            case "NoSlotGamesAnymore":
+                DataManager.Instance.playerData.SubValue("money", sharedData.GetInt("BetAmount"));
+                break;
             case "Toilet":
                 EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
-                    break;
+                DataManager.Instance.playerData.SubValue("money", sharedData.GetInt("BetAmount"));
+                break;
+            case "QuitGambling":
+                EventSystem.Instance.TriggerEvent<int>("PlayVideo", "PlayWindow", 2);
+                DataManager.Instance.playerData.SubValue("money", sharedData.GetInt("BetAmount"));
+                await Task.Delay(10000);
+                break;
+            case "Triple":
+                DataManager.Instance.playerData.SetValue("money", currentMoney * 3);
+                break;
+            case "HalfMoney":
+                DataManager.Instance.playerData.SetValue("money", currentMoney / 2);
+                break;
+            case "TemporaryGoat":
+                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
+                DataManager.Instance.playerData.SubValue("money", sharedData.GetInt("BetAmount"));
+                break;
             case "Boom":
                 EventSystem.Instance.TriggerEvent<int>("EffectSpawn", "Boom", 1);
-                    break;
+                DataManager.Instance.playerData.SubValue("money", sharedData.GetInt("BetAmount"));
+                break;
+            case "ToiletSeat":
+                EventSystem.Instance.TriggerEvent<int>("ObjectSpawn", "Goat", 1);
+                DataManager.Instance.playerData.SubValue("money", sharedData.GetInt("BetAmount"));
+                break;
+            case "QuitGamblingFor5s":
+                EventSystem.Instance.TriggerEvent<int>("PlayVideo", "PlayWindow", 1);
+                DataManager.Instance.playerData.SubValue("money", sharedData.GetInt("BetAmount"));
+                await Task.Delay(5000);
+                break;
+            case "Double":
+                DataManager.Instance.playerData.SetValue("money", currentMoney * 2);
+                break;
         }
 
         await Task.Delay(1000);

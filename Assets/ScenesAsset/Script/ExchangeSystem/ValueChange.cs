@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 
-
 namespace UnityEngine
 {
     public class ValueChange : MonoBehaviour
@@ -68,49 +67,20 @@ namespace UnityEngine
             {
                 Debug.LogError("cant find exchange ui!!!????");
             }
+
             EventSystem.Instance.RegisterEvent<int>("Exchange", "callUI", Initialize);
 
-            selling = FindChildComponent<Button>(canvasObject.transform, "Selling");
-            exchangeChips = FindChildComponent<Button>(canvasObject.transform, "ExchangeChips");
-            exchangeMoney = FindChildComponent<Button>(canvasObject.transform, "ExchangeMoney");
-            exit = FindChildComponent<Button>(canvasObject.transform, "exit");
+            selling = TransformExtensions.FindChildComponent<Button>(canvasObject.transform, "Selling");
+            exchangeChips = TransformExtensions.FindChildComponent<Button>(canvasObject.transform, "ExchangeChips");
+            exchangeMoney = TransformExtensions.FindChildComponent<Button>(canvasObject.transform, "ExchangeMoney");
+            exit = TransformExtensions.FindChildComponent<Button>(canvasObject.transform, "exit");
 
-            dropdown = FindChildComponent<TMP_Dropdown>(canvasObject.transform, "Question/Dropdown"); // 替換 "DropdownName" 為實際名稱
-            uiText = FindChildComponent<TMP_Text>(canvasObject.transform, "Question/value"); // 替換 "UITextName" 為實際名稱
-            inputMoney = FindChildComponent<TMP_InputField>(canvasObject.transform, "InputMoney"); // 替換 "InputMoneyName" 為實際名稱
-            inputChips = FindChildComponent<TMP_InputField>(canvasObject.transform, "InputChips"); // 替換 "InputChipsName" 為實際名稱
-
+            dropdown = TransformExtensions.FindChildComponent<TMP_Dropdown>(canvasObject.transform, "Question/Dropdown"); // 替換 "DropdownName" 為實際名稱
+            uiText = TransformExtensions.FindChildComponent<TMP_Text>(canvasObject.transform, "Question/value"); // 替換 "UITextName" 為實際名稱
+            inputMoney = TransformExtensions.FindChildComponent<TMP_InputField>(canvasObject.transform, "InputMoney"); // 替換 "InputMoneyName" 為實際名稱
+            inputChips = TransformExtensions.FindChildComponent<TMP_InputField>(canvasObject.transform, "InputChips"); // 替換 "InputChipsName" 為實際名稱
 
             canvasObject.GetComponent<Canvas>().enabled = false;
-        }
-
-        public static T FindChildComponent<T>(Transform parent, string path) where T : Component
-        {
-            if (parent == null)
-            {
-                Debug.LogError("Parent Transform is null!");
-                return null;
-            }
-
-            Transform child = parent.Find(path);
-            if (child != null)
-            {
-                T component = child.GetComponent<T>();
-                if (component != null)
-                {
-                    return component;
-                }
-                else
-                {
-                    Debug.LogError($"子物件 '{path}' 沒有找到組件 {typeof(T)}！");
-                    return null;
-                }
-            }
-            else
-            {
-                Debug.LogError($"無法在 '{parent.name}' 下找到子物件 '{path}'！");
-                return null;
-            }
         }
 
         #endregion
@@ -294,8 +264,8 @@ namespace UnityEngine
 
                 if (chips <= DataManager.Instance.playerData.GetValue<int>("money"))
                 {
-                    DataManager.Instance.playerData.SubValue("money", chips);
-                    DataManager.Instance.playerData.AddValue("chips", chips);
+                    DataManager.Instance.SubAndDisplayValue("money", chips);
+                    DataManager.Instance.AddAndDisplayValue("chips", chips);
                 }
             }
 
@@ -310,8 +280,9 @@ namespace UnityEngine
 
                 if (money <= DataManager.Instance.playerData.GetValue<int>("chips"))
                 {
-                    DataManager.Instance.playerData.SubValue("chips", money);
-                    DataManager.Instance.playerData.AddValue("money", money);
+                    DataManager.Instance.SubAndDisplayValue("chips", money);
+                    DataManager.Instance.AddAndDisplayValue("money", money);
+                    
                 }
             }
 

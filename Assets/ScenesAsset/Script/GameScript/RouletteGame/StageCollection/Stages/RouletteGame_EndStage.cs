@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RouletteGameEndStage : IStage
 {
@@ -18,6 +20,9 @@ public class RouletteGameEndStage : IStage
         20, 22, 24, 26, 28, 29, 31, 33, 35
     };
 
+    private Button quitButton;
+    private Button continueButton;
+
     // UI Components
     private TMP_Text statusText;
 
@@ -27,14 +32,29 @@ public class RouletteGameEndStage : IStage
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
 
+    private Action currentValidationAction;
+    private Action[] currentInput;
+
+    private bool isValid;
+
     // UI Tags
     private string UITag = "RouletteGameUI";
     #endregion
+
+    public RouletteGameEndStage()
+    {
+        currentInput = new Action[10];
+        isValid = false;
+    }
+
 
     #region Execute Phase Logic
     public async Task ExecuteAsync(SharedDataSO sharedData, UIComponentCollectionSO uiComponents)
     {
         if (!InitializeUI(uiComponents)) return;
+
+        quitButton.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(false);
 
         int betType = sharedData.GetInt("type");
         int betAmount = sharedData.GetInt("BetAmount");
@@ -50,7 +70,7 @@ public class RouletteGameEndStage : IStage
             {
                 int winnings = betAmount * 2;
 
-                DataManager.Instance.playerData.AddValue("chips", winnings);
+                DataManager.Instance.AddAndDisplayValue("chips", winnings);
 
                 await ShowDialogAsync($"Congratulation!You won {winnings}$");
             }
@@ -65,12 +85,30 @@ public class RouletteGameEndStage : IStage
             float tmp = betAmount;
             int winnings = (int)(tmp * payoutMultiplier+0.5);
 
-            DataManager.Instance.playerData.AddValue("chips", winnings);
+            DataManager.Instance.AddAndDisplayValue("chips", winnings);
 
             await ShowDialogAsync($"Yay! You’ve just won 1.5 times your money—no strings attached!");
 
             await ShowDialogAsync($"Congratulation!You won {winnings}$");
         }
+
+        await ShowDialogAsync($"Would you like conitinuing betting?");
+
+        quitButton.gameObject.SetActive(true);
+        continueButton.gameObject.SetActive(true);
+
+        RegisterButtonListeners();
+        currentValidationAction = () => NoneValidation();
+
+        currentInput[0] = () => QuitOnClick();
+        currentInput[1] = () => ContinueOnClick();
+
+        InputDelegate = null;
+        await WaitForPhaseCompletionAsync();
+
+        quitButton.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(false);
+        RemoveButtonListener();
 
         CleanupUI();
     }
@@ -119,6 +157,9 @@ public class RouletteGameEndStage : IStage
         // 創建或獲取UI組件
         statusText = uiComponents.CreateUIComponent<TMP_Text>("GameStatusText", canvas.transform);
 
+        quitButton = uiComponents.CreateUIComponent<Button>("quit", canvas.transform);
+        continueButton = uiComponents.CreateUIComponent<Button>("continue", canvas.transform);
+
 
         if (statusText == null)
         {
@@ -132,10 +173,63 @@ public class RouletteGameEndStage : IStage
     private void CleanupUI()
     {
         GameObject.Destroy(statusText.gameObject);
+        GameObject.Destroy(continueButton.gameObject);
+        GameObject.Destroy(quitButton.gameObject);
     }
     #endregion
 
+    #region Button Logic
+    private void RegisterButtonListeners()
+    {
+        RemoveButtonListener();
+
+        quitButton.onClick.AddListener(() => OnClick(0));
+        continueButton.onClick.AddListener(() => OnClick(1));
+    }
+
+    private void RemoveButtonListener()
+    {
+        quitButton.onClick.RemoveAllListeners();
+        continueButton.onClick.RemoveAllListeners();
+    }
+
+    private void OnClick(int i)
+    {
+        if (phaseCompletionSource != null && !phaseCompletionSource.Task.IsCompleted)
+        {
+            currentValidationAction?.Invoke();
+
+            if (isValid)
+            {
+                currentInput[i]?.Invoke();
+            }
+        }
+    }
+
+    private void QuitOnClick()
+    {
+        phaseCompletionSource?.SetResult(true);
+    }
+
+    private void ContinueOnClick()
+    {
+        phaseCompletionSource?.SetResult(true);
+    }
+
+    void NoneValidation()
+    {
+        isValid = true;
+    }
+
+    #endregion
+
     #region Support Functions
+
+    private async Task WaitForPhaseCompletionAsync()
+    {
+        phaseCompletionSource = new TaskCompletionSource<bool>();
+        await phaseCompletionSource.Task;
+    }
 
     public async Task InputAsync()
     {

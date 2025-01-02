@@ -7,7 +7,7 @@ public class RouletteGameInitializer : MonoBehaviour
 {
     private void Awake()
     {
-        rouletteballthrowout.Instance.Init();
-        RouletteSpinListener.Instance.Init();
+        //rouletteballthrowout.Instance.Init();
+        //RouletteSpinListener.Instance.Init();
     }
 }

@@ -17,6 +17,8 @@ TagManager:
   - ExchangeUI
   - SlotGameUI
   - SettingsPopUp
+  - RouletteObject
+  - AssetUI
   layers:
   - Default
   - TransparentFX

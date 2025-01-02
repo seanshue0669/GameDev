@@ -22,6 +22,8 @@ public class SlotGameInitialStage : IStage
     private bool isWaiting = false;
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
+
+    public int currentMoney;
     #endregion
 
     #region Constructor
@@ -33,6 +35,7 @@ public class SlotGameInitialStage : IStage
     #region Execute Phase Logic
     public async Task ExecuteAsync(SharedDataSO sharedData, UIComponentCollectionSO uiComponents)
     {
+        currentMoney = DataManager.Instance.playerData.GetValue<int>("money");
         if (!InitializeUI(uiComponents)) return;
 
         RegisterButtonListeners();
@@ -100,11 +103,15 @@ public class SlotGameInitialStage : IStage
     private void ValidateBetAmountInput(SharedDataSO sharedData)
     {
         string input = inputField.text;
-        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount)
+        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount && betAmount <= currentMoney && betAmount > 0)
         {
             sharedData.SetInt("BetAmount", betAmount);
             statusText.text = "Bet amount accepted!";
             phaseCompletionSource?.SetResult(true);
+        }
+        else if(betAmount > currentMoney && betAmount <= 0)
+        {
+            statusText.text = $"Invalid bet! Your money is not enough!";
         }
         else
         {
