@@ -43,6 +43,7 @@ public class DiceGame_EndStage : IStage
         playerBetAmount = sharedData.GetInt("BetAmount");
         diceResult = sharedData.GetInt("Result");
 
+
         await ShowDialogAsync("The Dice Result is "+ TranslateResult(diceResult)+ "\nPlaying Again?)");
         await WaitForPhaseCompletionAsync();
         await ShowDialogAsync("Preepare Next Round!");

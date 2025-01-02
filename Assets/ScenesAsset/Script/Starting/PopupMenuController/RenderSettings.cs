@@ -51,14 +51,14 @@ public class RenderSettings : MonoBehaviour
     {
         SSR = p_Option;
         ToggleRenderFeature("Lim SSR", SSR);
-        RefreshRendererData();
+        ForceRenderPipelineUpdate();
     }
 
     public void ChangeSSAO(bool p_Option)
     {
         SSAO = p_Option;
         ToggleRenderFeature("Screen Space Ambient Occlusion", SSAO);
-        RefreshRendererData();
+        ForceRenderPipelineUpdate();
     }
 
     public void ChangePPC(bool p_Option)

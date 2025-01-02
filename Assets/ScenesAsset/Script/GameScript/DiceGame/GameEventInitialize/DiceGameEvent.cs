@@ -4,8 +4,21 @@ using UnityEngine;
 
 namespace UnityEngine
 {
-    public class DiceGameEventInitiler : MonoBehaviour
+    public class DiceGameEvent : MonoBehaviour
     {
+        private static DiceGameEvent instance;
+
+        public static DiceGameEvent Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DiceGameEvent();
+                }
+                return instance;
+            }
+        }
         [SerializeField]
         // Gambling objects
         public GameObject Cup;
@@ -21,18 +34,21 @@ namespace UnityEngine
         public Transform postitionEnd;
 
         private bool spwaning= false;
+
+        public bool isInit = false;
         // Duration for smooth movement
         [SerializeField] public float duration = 1.0f;
 
 
-        void Awake()
+        public void InitEvent()
         {
+            EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "FindObject", FindObject);
             EventSystem.Instance.RegisterEvent<string>("DiceGameEvent", "RollDice", RollingDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCup", MoveCup);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCamera", MoveCamera);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "SpawnDice", SpawnDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "StopSpawn", StopSpawn);
-            Debug.Log("Reg Rolling Event");
+            Debug.Log("Reg Rolling Event");            
         }
         #region register function
         void RollingDice(string p_DiceCase)
@@ -77,9 +93,31 @@ namespace UnityEngine
             StartCoroutine(SpawnDiceCoroutine(p_lifeTime));
         }       
         #endregion
+        
+        void FindObject()
+        {
+            mainCam = GameObject.Find("Camera");
+            Cup = GameObject.Find("dice_cup");
 
+            postionUP = GameObject.Find("UP").transform;
+            postionDOWN = GameObject.Find("Down").transform;
+            postitionStart = GameObject.Find("Cam_start").transform;
+            postitionEnd = GameObject.Find("Cam_end").transform;
+
+        }
 
         #region support fuction
+        private void FindObject(int p)
+        {
+            mainCam = GameObject.Find("Camera");
+            Cup = GameObject.Find("dice_cup");
+
+            postionUP = GameObject.Find("UP").transform;
+            postionDOWN = GameObject.Find("Down").transform;
+            postitionStart = GameObject.Find("Cam_start").transform;
+            postitionEnd = GameObject.Find("Cam_end").transform;
+
+        }
         private IEnumerator SmoothMove(Transform p_objectToMove, Vector3 p_targetPosition)
         {
             Vector3 startPosition = p_objectToMove.position;
