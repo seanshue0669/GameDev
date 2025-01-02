@@ -9,7 +9,7 @@ public class DiceGame_InitialStage : IStage
     #region Fields and Properties
     private readonly string instructionMessage = "Welcome To Dice Game";
     private int maxBetAmount ;
-    private readonly int minBetAmount = 1;
+    private readonly int minBetAmount = 0;
 
     //UI
     private TMP_Text statusText;

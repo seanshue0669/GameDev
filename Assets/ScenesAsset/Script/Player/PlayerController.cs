@@ -24,7 +24,7 @@ public class move : MonoBehaviour
         DataManager.Instance.playerData.SetValue("canMoving", true);
 
         controller = GetComponent<CharacterController>();
-        //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()

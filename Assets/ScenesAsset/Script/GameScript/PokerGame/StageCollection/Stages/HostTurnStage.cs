@@ -147,24 +147,24 @@ public class HostTurnStage : IStage
         }
         else if (sharedData.GetInt("playerHasFive") == 1)
         {
-            DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount") * 5);
+            DataManager.Instance.AddAndDisplayValue("chips", sharedData.GetInt("BetAmount") * 5);
             await ShowDialogAsync("You got a five card win!!!");
         }
 
         else if ((playerScore > hostScore && playerScore == otherpointLimit) || (playerScore == otherpointLimit && hostBust == 1))
         {
-            DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount") * 3);
+            DataManager.Instance.AddAndDisplayValue("chips", sharedData.GetInt("BetAmount") * 3);
             await ShowDialogAsync("You got a black jack win!!!");
         }
 
         else if (playerScore > hostScore || (playerBust == 0 && hostBust == 1))
         {
-            DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount") * 2);
+            DataManager.Instance.AddAndDisplayValue("chips", sharedData.GetInt("BetAmount") * 2);
             await ShowDialogAsync("You win!!");
         }
         else
         {
-            DataManager.Instance.playerData.AddValue("chips", sharedData.GetInt("BetAmount"));
+            DataManager.Instance.AddAndDisplayValue("chips", sharedData.GetInt("BetAmount"));
             await ShowDialogAsync("It's a tie");
         }
 

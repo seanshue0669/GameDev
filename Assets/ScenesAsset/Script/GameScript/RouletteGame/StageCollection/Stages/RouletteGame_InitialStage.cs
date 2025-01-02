@@ -8,8 +8,7 @@ public class RouletteGameInitialStage : IStage
 {
     #region Fields and Properties
     private readonly string instructionMessage = "Welcome To Roulette Game";
-    private readonly int minBetAmount = 1;
-    private readonly int maxBetAmount = 1000;
+    private readonly int minBetAmount = 0;
 
     //UI
     private TMP_Text statusText;
@@ -231,7 +230,7 @@ public class RouletteGameInitialStage : IStage
     {
         isValid = false;
         string input = inputField.text;
-        int maxBet = Math.Min(maxBetAmount, DataManager.Instance.playerData.GetValue<int>("chips"));
+        int maxBet = DataManager.Instance.playerData.GetValue<int>("chips");
 
         if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBet) 
         {
