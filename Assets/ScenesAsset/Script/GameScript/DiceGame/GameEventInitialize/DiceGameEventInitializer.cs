@@ -12,7 +12,7 @@ namespace UnityEngine
         [Header("Game Objects")]
         public GameObject Cup;
         public GameObject DicePrefab;
-        public GameObject mainCam;
+        public Camera mainCam;
 
         [Header("Position Transforms")]
         public Transform positionUP;
@@ -41,7 +41,6 @@ namespace UnityEngine
             }
             RegisterEvents();
         }
-
         #region Event Registration
         private void RegisterEvents()
         {
@@ -74,22 +73,15 @@ namespace UnityEngine
 
         private void MoveCamera(int p_Options)
         {
-            mainCam = Camera.main.gameObject;
-            if (!mainCam)
-            {
-                Debug.LogError("Main Camera is not assigned.");
-                return;
-            }
-
             if (p_Options == 0)
             {
-                mainCam.transform.position = positionStart.position;
-                mainCam.transform.rotation = positionStart.rotation;
+                Camera.main.transform.position = positionStart.position;
+                Camera.main.transform.rotation = positionStart.rotation;
             }
-            else if (p_Options == 1)
+            if (p_Options == 1)
             {
-                mainCam.transform.position = positionEnd.position;
-                mainCam.transform.rotation = positionEnd.rotation;
+                Camera.main.transform.position = positionEnd.position;
+                Camera.main.transform.rotation = positionEnd.rotation;
             }
         }
 
@@ -154,6 +146,7 @@ namespace UnityEngine
         {
             Quaternion targetRotation = faceValue switch
             {
+                0 => Quaternion.Euler(45, 0, 45),
                 1 => Quaternion.Euler(0, 0, 0),
                 2 => Quaternion.Euler(0, 0, 90),
                 3 => Quaternion.Euler(90, 0, 0),
