@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UIElements;
+using TMPro;
+using UnityEngine.UI;
 
 public class RouletteSpinListener : MonoBehaviour
 {
     private static rouletteballthrowout _instance;
     public static rouletteballthrowout Instance => _instance ??= new rouletteballthrowout();
 
-    private Transform rouletteWheel;  // 轉盤本體
-    private Transform rouletteBall;   // 球的中心父物件
-    private Rigidbody rb;             // 球本身的 Rigidbody
+    public Transform rouletteWheel; 
+    public Transform rouletteBall;  
+    public Transform ballSelf;
+    public Rigidbody rb;             
 
     private bool isSpinning = false;
 
@@ -59,7 +61,7 @@ public class RouletteSpinListener : MonoBehaviour
     // 追蹤累計的 Y 軸旋轉角度
     private float totalBallY = 0f;
 
-    private void Start()
+    void Awake()
     {
         // 註冊自訂事件
         EventSystem.Instance.RegisterEvent<int>("Roulette", "spin", Spinning);
@@ -67,14 +69,17 @@ public class RouletteSpinListener : MonoBehaviour
 
     private void Spinning(int winningNumber)
     {
-        rouletteWheel = GameObject.Find("Roulette.002").transform;
-        rouletteBall = GameObject.Find("ballcenter").transform;
-
-        rb = GameObject.Find("ball").GetComponent<Rigidbody>();
-        if (rb == null)
+        GameObject FindObject = GameObject.FindWithTag("RouletteObject");
+        if (FindObject == null)
         {
-            Debug.LogError("Ball 沒有 Rigidbody 組件");
+            Debug.LogError("cant find RouletteObject!!!????");
         }
+
+        rouletteWheel = TransformExtensions.FindChildComponent<Transform>(FindObject.transform, "Roulette.002");
+        rouletteBall = TransformExtensions.FindChildComponent<Transform>(FindObject.transform, "ballcenter");
+
+        ballSelf = TransformExtensions.FindChildComponent<Transform>(FindObject.transform, "ballcenter/ball");
+        rb = TransformExtensions.FindChildComponent<Rigidbody>(FindObject.transform, "ballcenter/ball");
 
         // 一開始為了「假物理」，關掉球重力
         rb.isKinematic = true;
@@ -86,9 +91,10 @@ public class RouletteSpinListener : MonoBehaviour
         isSpinning = true;
 
         // 重置球的位置
-        GameObject.Find("ball").transform.localPosition = new Vector3(0.294522166f, -0.127312273f, -0.652947962f);
-        rouletteWheel.transform.localEulerAngles = new Vector3(-90f,0f,0f);
-        rouletteBall.transform.localEulerAngles = Vector3.zero;
+        //GameObject.Find("ball").transform.localPosition = new Vector3(0.294522166f, -0.127312273f, -0.652947962f);
+        ballSelf.localPosition = new Vector3(0.294522166f, -0.127312273f, -0.652947962f);
+        rouletteWheel.localEulerAngles = new Vector3(-90f,0f,0f);
+        rouletteBall.localEulerAngles = Vector3.zero;
 
         // Step1: 假旋轉 4 秒；Step2: 只轉球 0.5 秒
         StartCoroutine(SpinningCoroutine(4f, winningNumber));

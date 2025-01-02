@@ -119,6 +119,82 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &8060612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8060615}
+  - component: {fileID: 8060616}
+  - component: {fileID: 8060614}
+  - component: {fileID: 8060613}
+  m_Layer: 0
+  m_Name: RouletteGameInitializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &8060613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b93a7a37115caa4ba954dc11dba617a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballSelf: {fileID: 2074003279}
+  rb: {fileID: 2074003280}
+--- !u!114 &8060614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1ea3d044342274fabffe43403146da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rouletteWheel: {fileID: 1087112686}
+  rouletteBall: {fileID: 1359261140}
+  ballSelf: {fileID: 2074003279}
+  rb: {fileID: 2074003280}
+--- !u!4 &8060615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.4518366, y: -19.189554, z: -1.39148}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8060616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444ac542d09ef5a43a03e695f5eb1500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &192027490
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roulette
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1061a4a17a261704480402d281ad8573, type: 3}
+      propertyPath: m_TagString
+      value: RouletteObject
+      objectReference: {fileID: 0}
     - target: {fileID: 3704975952252305886, guid: 1061a4a17a261704480402d281ad8573, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -452,12 +532,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1359261140}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1061a4a17a261704480402d281ad8573, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1087112690}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1061a4a17a261704480402d281ad8573, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1087112691}
     - targetCorrespondingSourceObject: {fileID: -8287775214797390888, guid: 1061a4a17a261704480402d281ad8573, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1087112693}
@@ -465,9 +539,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1087112692}
   m_SourcePrefab: {fileID: 100100000, guid: 1061a4a17a261704480402d281ad8573, type: 3}
---- !u!1 &1087112686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1061a4a17a261704480402d281ad8573, type: 3}
+--- !u!4 &1087112686 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3704975952252305886, guid: 1061a4a17a261704480402d281ad8573, type: 3}
   m_PrefabInstance: {fileID: 1087112685}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1087112687 stripped
@@ -485,30 +559,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8287775214797390888, guid: 1061a4a17a261704480402d281ad8573, type: 3}
   m_PrefabInstance: {fileID: 1087112685}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1087112690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087112686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b93a7a37115caa4ba954dc11dba617a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1087112691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087112686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca1ea3d044342274fabffe43403146da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1087112692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1014,3 +1064,4 @@ SceneRoots:
   - {fileID: 611686694}
   - {fileID: 1886842579}
   - {fileID: 1087112685}
+  - {fileID: 8060615}
