@@ -74,6 +74,7 @@ namespace UnityEngine
 
         private void MoveCamera(int p_Options)
         {
+            mainCam = Camera.main.gameObject;
             if (!mainCam)
             {
                 Debug.LogError("Main Camera is not assigned.");
