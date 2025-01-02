@@ -44,6 +44,8 @@ public class RouletteGameInitialStage : IStage
     {
         if (!InitializeUI(uiComponents)) return;
 
+        DataManager.Instance.playerData.SetValue("isRouletteSpinning", false);
+
         EventSystem.Instance.TriggerEvent("Assetdisplay", "display", 0);
 
         inputField.gameObject.SetActive(false);
@@ -82,6 +84,8 @@ public class RouletteGameInitialStage : IStage
 
         InputDelegate = null;
         await WaitForPhaseCompletionAsync();
+
+        DataManager.Instance.playerData.SetValue("isRouletteSpinning", true);
 
         inputField.gameObject.SetActive(false);
         confirmButton.gameObject.SetActive(false);

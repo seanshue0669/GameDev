@@ -11,5 +11,6 @@ public class playerdataInitializer : MonoBehaviour
         DataManager.Instance.playerData.SetValue("house", true);
         DataManager.Instance.playerData.SetValue("kidney", true);
         DataManager.Instance.playerData.SetValue("dignity", true);
+        DataManager.Instance.playerData.SetValue("isRouletteSpinning", false);
     }
 }
