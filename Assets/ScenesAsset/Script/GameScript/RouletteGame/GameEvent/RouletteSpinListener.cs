@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class RouletteSpinListener : MonoBehaviour
 {
-    private static rouletteballthrowout _instance;
-    public static rouletteballthrowout Instance => _instance ??= new rouletteballthrowout();
+    private static RouletteSpinListener _instance;
+    public static RouletteSpinListener Instance => _instance ??= new RouletteSpinListener();
 
     public Transform rouletteWheel; 
     public Transform rouletteBall;  
@@ -63,7 +63,17 @@ public class RouletteSpinListener : MonoBehaviour
 
     void Awake()
     {
-        // 註冊自訂事件
+        if(_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         EventSystem.Instance.RegisterEvent<int>("Roulette", "spin", Spinning);
     }
 
@@ -204,20 +214,5 @@ public class RouletteSpinListener : MonoBehaviour
         rb.useGravity = true;
 
         isSpinning = false;
-    }
-
-    // 若需要可保留此函式計算落點，但本需求只在 Step2 做球旋轉，不使用位置插值
-    private Vector3 CalculateBallPositionByNumber(int number)
-    {
-        float rawAngle = 0f;
-        if (numberAngleMap.ContainsKey(number))
-            rawAngle = numberAngleMap[number];
-
-        float angleRad = rawAngle * Mathf.Deg2Rad;
-        float radius = 0.3f;
-        float x = radius * Mathf.Cos(angleRad);
-        float z = radius * Mathf.Sin(angleRad);
-
-        return new Vector3(x, 0.12f, z);
     }
 }
