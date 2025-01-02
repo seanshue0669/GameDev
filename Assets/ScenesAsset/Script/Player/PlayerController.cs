@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.UIElements;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class move : MonoBehaviour
 {
+    public Transform cameraHolder;
     private float rotate_x;
     private float rotate_y;
 
@@ -48,7 +50,9 @@ public class move : MonoBehaviour
 
         var rotate = Quaternion.Euler(rotate_y, rotate_x, 0);   //(以x軸轉動rotate_y,以y軸轉動rotate_x,0)
 
-        transform.rotation = rotate;
+        transform.rotation = Quaternion.Euler(0, rotate_x, 0);
+
+        cameraHolder.localRotation = Quaternion.Euler(rotate_y, 0, 0);
     }
 
     void character_movement()
