@@ -8,7 +8,7 @@ public class DiceGame_InitialStage : IStage
 {
     #region Fields and Properties
     private readonly string instructionMessage = "Welcome To Dice Game";
-    private readonly int maxBetAmount = 1000;
+    private int maxBetAmount ;
     private readonly int minBetAmount = 1;
 
     //UI
@@ -42,7 +42,7 @@ public class DiceGame_InitialStage : IStage
         EventSystem.Instance.TriggerEvent<int>("DiceGameEvent", "MoveCamera", 0);
         RegisterButtonListeners();
         await ShowDialogAsync(instructionMessage);
-
+        maxBetAmount =DataManager.Instance.playerData.GetValue<int>("money");
         // Phase 1: Input Bet Amount
         await DisableOptionButton();
         await ShowDialogAsync("Please Enter your Bet Amount:");
@@ -148,7 +148,6 @@ public class DiceGame_InitialStage : IStage
             statusText.text = $"Invalid bet! Enter a value between {minBetAmount} and {maxBetAmount}.";
         }
     }
-
     private void ValidateOptionInput()
     {
         if (!string.IsNullOrEmpty(betOptions))
