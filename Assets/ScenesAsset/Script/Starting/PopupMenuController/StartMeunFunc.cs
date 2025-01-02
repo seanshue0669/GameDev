@@ -6,11 +6,6 @@ public class StartMeunFunc:MonoBehaviour
     public GameObject settingsUI;
     public GameObject CreaterUI;
 
-    public void Start()
-    {
-        //settingsUI = GameObject.Find("Settings");
-        //CreaterUI = GameObject.Find("Creater");
-    }
     public void SettingsUIController(bool p_open)
     {
         Debug.Log("Show");
