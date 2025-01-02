@@ -34,6 +34,8 @@ public class PokerInitialStage : IStage
     {
         if (!InitializeUI(uiComponents)) return;
 
+        EventSystem.Instance.TriggerEvent("Assetdisplay", "display", 0);
+
         for (int i = 0; i < sharedData.GetInt("drawnCard"); i++)
         {
             await Task.Delay(1);
@@ -127,7 +129,7 @@ public class PokerInitialStage : IStage
         if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount && DataManager.Instance.playerData.GetValue<int>("chips") > 0)
         {
             sharedData.SetInt("BetAmount", betAmount);
-            DataManager.Instance.playerData.SubValue("chips", betAmount);
+            DataManager.Instance.SubAndDisplayValue("chips", betAmount);
             statusText.text = "Bet amount accepted!";
             phaseCompletionSource?.SetResult(true);
         }

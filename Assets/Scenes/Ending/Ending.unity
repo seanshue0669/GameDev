@@ -513,6 +513,7 @@ MonoBehaviour:
   Ending1: {fileID: 1159467132}
   Ending2: {fileID: 1691102508}
   Ending3: {fileID: 973414489}
+  Ending4: {fileID: 258510412}
 --- !u!1 &265644846
 GameObject:
   m_ObjectHideFlags: 0
