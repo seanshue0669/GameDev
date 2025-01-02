@@ -9,7 +9,7 @@ public class EndingDisplay : MonoBehaviour
     public GameObject Ending3;
     private GameObject Ending;
 
-    private int richEnding = 2000;
+    private int richEnding = 5000;
     private int poorEnding = 0;
 
 

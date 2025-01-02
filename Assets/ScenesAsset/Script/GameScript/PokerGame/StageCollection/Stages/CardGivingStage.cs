@@ -156,7 +156,7 @@ public class CardGivingStage : IStage
 
         // Finalize
 
-        await ShowDialogAsync("All inputs are completed!");
+        //await ShowDialogAsync("All inputs are completed!");
         CleanupUI();
     }
     #endregion

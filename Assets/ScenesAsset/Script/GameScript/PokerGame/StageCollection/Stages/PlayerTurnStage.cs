@@ -160,7 +160,7 @@ public class PlayerTurnStage : IStage
 
         // Finalize
 
-        await ShowDialogAsync("All inputs are completed!");
+        //await ShowDialogAsync("All inputs are completed!");
         CleanupUI();
     }
     #endregion
