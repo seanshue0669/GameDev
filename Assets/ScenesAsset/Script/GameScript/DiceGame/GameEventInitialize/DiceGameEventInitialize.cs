@@ -1,137 +1,183 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace UnityEngine
 {
-    public class DiceGameEventInitiler : MonoBehaviour
+    public class DiceGameEventInitializer : MonoBehaviour
     {
-        [SerializeField]
-        // Gambling objects
+        // Singleton pattern for GameRoot (do not touch)
+        private static DiceGameEventInitializer _instance;
+        public static DiceGameEventInitializer Instance { get { return _instance; } }
+
+        [Header("Game Objects")]
         public GameObject Cup;
         public GameObject DicePrefab;
-        private GameObject Dice1;
-        private GameObject Dice2;
         public GameObject mainCam;
-        // Position objects
-        [SerializeField] 
-        public Transform postionUP;
-        public Transform postionDOWN;
-        public Transform postitionStart;
-        public Transform postitionEnd;
 
-        private bool spwaning= false;
-        // Duration for smooth movement
-        [SerializeField] public float duration = 1.0f;
+        [Header("Position Transforms")]
+        public Transform positionUP;
+        public Transform positionDOWN;
+        public Transform positionStart;
+        public Transform positionEnd;
 
+        private GameObject dice1;
+        private GameObject dice2;
+        private bool spawning = false;
+
+        [Header("Settings")]
+        public float duration = 1.0f; // Duration for smooth movement
 
         void Awake()
+        {
+            if (_instance == null)
+            {
+                _instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+            RegisterEvents();
+        }
+
+        #region Event Registration
+        private void RegisterEvents()
         {
             EventSystem.Instance.RegisterEvent<string>("DiceGameEvent", "RollDice", RollingDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCup", MoveCup);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "MoveCamera", MoveCamera);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "SpawnDice", SpawnDice);
             EventSystem.Instance.RegisterEvent<int>("DiceGameEvent", "StopSpawn", StopSpawn);
-            Debug.Log("Reg Rolling Event");
         }
-        #region register function
-        void RollingDice(string p_DiceCase)
+        #endregion
+
+        #region Event Handlers
+        private void RollingDice(string p_DiceCase)
         {
-            // Implementation for RollingDice
-            Dice1 = GameObject.Find("dice1");
-            Dice2 = GameObject.Find("dice2");
-            Debug.Log("Rolling Dice 1&2");
+            dice1 = GameObject.Find("dice1");
+            dice2 = GameObject.Find("dice2");
+            if (!dice1 || !dice2)
+            {
+                Debug.LogError("Dice objects are not assigned or instantiated.");
+                return;
+            }
+
+            Debug.Log("Rolling Dice 1 & 2");
             string[] parts = p_DiceCase.Split(' ');
             int dice1Value = int.Parse(parts[0]);
             int dice2Value = int.Parse(parts[1]);
-            RotateDice(Dice1.transform, dice1Value);
-            RotateDice(Dice2.transform, dice2Value);
+            RotateDice(dice1.transform, dice1Value);
+            RotateDice(dice2.transform, dice2Value);
         }
-        void MoveCamera(int p_Options)
+
+        private void MoveCamera(int p_Options)
         {
+            if (!mainCam)
+            {
+                Debug.LogError("Main Camera is not assigned.");
+                return;
+            }
+
             if (p_Options == 0)
             {
-                mainCam.transform.position = postitionStart.position;
-                mainCam.transform.rotation = postitionStart.rotation;
+                mainCam.transform.position = positionStart.position;
+                mainCam.transform.rotation = positionStart.rotation;
             }
             else if (p_Options == 1)
             {
-                mainCam.transform.position = postitionEnd.position;
-                mainCam.transform.rotation = postitionEnd.rotation;
+                mainCam.transform.position = positionEnd.position;
+                mainCam.transform.rotation = positionEnd.rotation;
             }
         }
-        void MoveCup(int p_Options)
+
+        private void MoveCup(int p_Options)
         {
+            Cup = GameObject.Find("dice_cup");
+            positionUP = GameObject.Find("UP").transform;
+            positionDOWN = GameObject.Find("Down").transform;
+            positionStart = GameObject.Find("Cam_start").transform;
+            positionEnd = GameObject.Find("Cam_end").transform;
+            if (!Cup || !positionUP || !positionDOWN)
+            {
+                Debug.LogError("Cup or position transforms are not assigned.");
+                return;
+            }
+
             if (p_Options == 1)
             {
-                StartCoroutine(SmoothMove(Cup.transform, postionUP.position));
+                StartCoroutine(SmoothMove(Cup.transform, positionUP.position));
             }
             else if (p_Options == 0)
             {
-                StartCoroutine(SmoothMove(Cup.transform, postionDOWN.position));
+                StartCoroutine(SmoothMove(Cup.transform, positionDOWN.position));
             }
         }
-        void SpawnDice(int p_lifeTime)
+
+        private void SpawnDice(int p_lifeTime)
         {
-            spwaning = true;
+            if (!DicePrefab || !positionDOWN)
+            {
+                Debug.LogError("DicePrefab or positionDOWN is not assigned.");
+                return;
+            }
+
+            spawning = true;
             StartCoroutine(SpawnDiceCoroutine(p_lifeTime));
-        }       
+        }
+
+        private void StopSpawn(int _)
+        {
+            spawning = false;
+        }
         #endregion
 
-
-        #region support fuction
-        private IEnumerator SmoothMove(Transform p_objectToMove, Vector3 p_targetPosition)
+        #region Helper Functions
+        private IEnumerator SmoothMove(Transform objectToMove, Vector3 targetPosition)
         {
-            Vector3 startPosition = p_objectToMove.position;
+            Vector3 startPosition = objectToMove.position;
             float elapsedTime = 0f;
 
             while (elapsedTime < duration)
             {
-                p_objectToMove.position = Vector3.Lerp(startPosition, p_targetPosition, elapsedTime / duration);
+                objectToMove.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-            // Ensure the object reaches the target position
-            p_objectToMove.position = p_targetPosition;
+
+            objectToMove.position = targetPosition;
         }
-        
+
         private void RotateDice(Transform diceTransform, int faceValue)
         {
-            Quaternion targetRotation = Quaternion.identity;
-            switch (faceValue)
+            Quaternion targetRotation = faceValue switch
             {
-                case 0: targetRotation = Quaternion.Euler(45, 0, 45);break;
-                case 1: targetRotation = Quaternion.Euler(0, 0, 0); break;
-                case 2: targetRotation = Quaternion.Euler(0, 0, 90); break;
-                case 3: targetRotation = Quaternion.Euler(90, 0, 0); break;
-                case 4: targetRotation = Quaternion.Euler(-90, 0, 0); break;
-                case 5: targetRotation = Quaternion.Euler(0, 0, -90); break;
-                case 6: targetRotation = Quaternion.Euler(180, 0, 0); break;
-                //Special Case
-                case 7: targetRotation = Quaternion.Euler(45, 0, 45); break;
+                1 => Quaternion.Euler(0, 0, 0),
+                2 => Quaternion.Euler(0, 0, 90),
+                3 => Quaternion.Euler(90, 0, 0),
+                4 => Quaternion.Euler(-90, 0, 0),
+                5 => Quaternion.Euler(0, 0, -90),
+                6 => Quaternion.Euler(180, 0, 0),
+                _ => Quaternion.identity
+            };
 
-                default: targetRotation = Quaternion.Euler(0, 0, 0); break;
-            }
             Debug.Log($"Rotating {diceTransform.name} to face {faceValue}");
             diceTransform.rotation = targetRotation;
         }
+
         private IEnumerator SpawnDiceCoroutine(int p_lifeTime)
         {
-            while (spwaning)
+            while (spawning)
             {
-                GameObject newDice = Instantiate(DicePrefab, postionDOWN.position, Quaternion.identity);
+                GameObject newDice = Instantiate(DicePrefab, positionDOWN.position, Quaternion.identity);
                 newDice.name = "Dice";
-                newDice.transform.position = postionDOWN.position;
                 int randomFace = Random.Range(1, 7);
                 RotateDice(newDice.transform, randomFace);
                 Destroy(newDice, p_lifeTime);
                 Debug.Log($"Spawned Dice with Face {randomFace}. It will be destroyed in {p_lifeTime} seconds.");
                 yield return new WaitForSeconds(0.01f);
             }
-        }
-        private void StopSpawn(int _p)
-        {
-            spwaning = false;
         }
         #endregion
     }
