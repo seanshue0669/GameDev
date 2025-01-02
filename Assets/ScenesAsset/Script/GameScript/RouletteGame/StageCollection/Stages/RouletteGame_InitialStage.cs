@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +9,7 @@ public class RouletteGameInitialStage : IStage
     #region Fields and Properties
     private readonly string instructionMessage = "Welcome To Roulette Game";
     private readonly int minBetAmount = 1;
-    private int maxBetAmount = 1000;
+    private readonly int maxBetAmount = 1000;
 
     //UI
     private TMP_Text statusText;
@@ -226,16 +225,20 @@ public class RouletteGameInitialStage : IStage
     {
         isValid = false;
         string input = inputField.text;
-        maxBetAmount = Math.Min(maxBetAmount, DataManager.Instance.playerData.GetValue<int>("chips"));
+        int maxBet = Math.Min(maxBetAmount, DataManager.Instance.playerData.GetValue<int>("chips"));
 
-        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount) 
+        if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBet) 
         {
             statusText.text = "Bet amount accepted!";
             isValid = true;
         }
+        else if(maxBet==0)
+        {
+            statusText.text = "You have no chips";
+        }
         else
         {
-            statusText.text = $"Invalid bet! Enter a value between {minBetAmount} and {maxBetAmount}.";
+            statusText.text = $"Invalid bet! Enter a value between {minBetAmount} and {maxBet}.";
         }
     }
 
