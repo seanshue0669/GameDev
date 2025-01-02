@@ -28,7 +28,6 @@ public class RouletteGameInitialStage : IStage
     private bool isValid;
     private string betOptions;
     private bool isWaiting = false;
-    private int currentCoin;
 
     public delegate Task InputHandler();
     public InputHandler InputDelegate;
@@ -85,6 +84,8 @@ public class RouletteGameInitialStage : IStage
 
         inputField.gameObject.SetActive(false);
         confirmButton.gameObject.SetActive(false);
+
+        DataManager.Instance.playerData.SubValue("chips", sharedData.GetInt("BetAmount"));
 
         await ShowDialogAsync($"You bet {sharedData.GetInt("BetAmount")}$");
 
@@ -225,7 +226,7 @@ public class RouletteGameInitialStage : IStage
     {
         isValid = false;
         string input = inputField.text;
-        maxBetAmount = Math.Min(maxBetAmount, DataManager.Instance.playerData.GetValue<int>("coin"));
+        maxBetAmount = Math.Min(maxBetAmount, DataManager.Instance.playerData.GetValue<int>("chips"));
 
         if (int.TryParse(input, out int betAmount) && betAmount >= minBetAmount && betAmount <= maxBetAmount) 
         {
