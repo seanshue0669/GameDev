@@ -34,11 +34,11 @@ public class PokerInitialStage : IStage
     {
         if (!InitializeUI(uiComponents)) return;
 
-        /*for (int i = 0; i < sharedData.GetInt("drawnCard"); i++)
+        for (int i = 0; i < sharedData.GetInt("drawnCard"); i++)
         {
             await Task.Delay(1);
             EventSystem.Instance.TriggerEvent("BJgame", "DestroyCards", sharedData.GetInt("drawnCard"));
-        }*/
+        }
         sharedData.SetInt("playerScore", 0);
         sharedData.SetInt("hostScore", 0);
         sharedData.SetInt("drawnCard", 0);
@@ -52,7 +52,7 @@ public class PokerInitialStage : IStage
         await ShowDialogAsync(instructionMessage);
 
         // Phase 1: Input Bet Amount
-        await ShowDialogAsync("Please Enter your Bet Amount:");
+        statusText.text = "Please Enter your Bet Amount:";
         currentValidationAction = () => ValidateBetAmountInput(sharedData);
         InputDelegate = null;
         await WaitForPhaseCompletionAsync();
@@ -66,7 +66,7 @@ public class PokerInitialStage : IStage
         // Finalize
         //sharedData.SetString("BetOption", betOptions);
         //await ShowDialogAsync($"You Chose'{betOptions}'");
-        await ShowDialogAsync("All inputs are completed!");
+        //await ShowDialogAsync("All inputs are completed!");
         CleanupUI();
     }
     #endregion

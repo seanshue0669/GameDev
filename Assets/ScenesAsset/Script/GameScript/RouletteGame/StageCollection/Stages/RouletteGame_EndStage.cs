@@ -94,6 +94,8 @@ public class RouletteGameEndStage : IStage
 
         await ShowDialogAsync($"Would you like conitinuing betting?");
 
+        DataManager.Instance.playerData.SetValue("isRouletteSpinning", false);
+
         quitButton.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
 
@@ -110,6 +112,7 @@ public class RouletteGameEndStage : IStage
         continueButton.gameObject.SetActive(false);
         RemoveButtonListener();
 
+        await ShowDialogAsync($"");
         CleanupUI();
     }
 
@@ -208,6 +211,7 @@ public class RouletteGameEndStage : IStage
 
     private void QuitOnClick()
     {
+        EventSystem.Instance.TriggerEvent("Roulette", "quit", 0);
         phaseCompletionSource?.SetResult(true);
     }
 

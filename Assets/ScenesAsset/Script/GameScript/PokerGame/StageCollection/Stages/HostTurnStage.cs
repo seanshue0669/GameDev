@@ -140,7 +140,7 @@ public class HostTurnStage : IStage
         int playerBust = sharedData.GetInt("playerBust");
         int hostBust = sharedData.GetInt("hostBust");
 
-        if (playerBust == 1 || (playerScore < hostScore && hostBust == 0))
+        if (playerBust == 1 || (playerScore < hostScore && hostBust == 0) && sharedData.GetInt("playerHasFive") == 0)
         {
 
             await ShowDialogAsync("You lose...");
@@ -181,7 +181,7 @@ public class HostTurnStage : IStage
 
         // Finalize
 
-        await ShowDialogAsync("All inputs are completed!");
+        //await ShowDialogAsync("All inputs are completed!");
         CleanupUI();
     }
     #endregion

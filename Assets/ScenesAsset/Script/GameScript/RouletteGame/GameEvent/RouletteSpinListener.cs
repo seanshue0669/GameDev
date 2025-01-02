@@ -79,6 +79,7 @@ public class RouletteSpinListener : MonoBehaviour
 
     private void Spinning(int winningNumber)
     {
+
         GameObject FindObject = GameObject.FindWithTag("RouletteObject");
         if (FindObject == null)
         {
@@ -214,5 +215,6 @@ public class RouletteSpinListener : MonoBehaviour
         rb.useGravity = true;
 
         isSpinning = false;
+        
     }
 }

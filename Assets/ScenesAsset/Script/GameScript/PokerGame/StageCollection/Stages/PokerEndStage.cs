@@ -35,7 +35,8 @@ public class PokerEndStage : IStage
         if (!InitializeUI(uiComponents)) return;
 
         RegisterButtonListeners();
-        await ShowDialogAsync(instructionMessage);
+        //await ShowDialogAsync(instructionMessage);
+        statusText.text = instructionMessage;
 
         // Phase 1: Clean up Data
 
