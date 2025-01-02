@@ -4125,11 +4125,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.size
-      value: 6
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: States.Array.data[2].Achieved
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: States.Array.data[3].Achieved
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: States.Array.data[4].Achieved
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: States.Array.data[5].Achieved
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[0].Key
@@ -4154,6 +4170,14 @@ PrefabInstance:
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[5].Key
       value: That's it...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[6].Key
+      value: Le Host
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[7].Key
+      value: Under construction
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[0].Spoiler
@@ -4238,6 +4262,22 @@ PrefabInstance:
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[5].DisplayName
       value: That's it...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[6].Description
+      value: Be the host
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[6].DisplayName
+      value: Le Host
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[7].Description
+      value: It's not finished
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: AchievementList.Array.data[7].DisplayName
+      value: Under construction
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[0].AchievedIcon
