@@ -5582,6 +5582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807a9e76bb06b284fb621e104c8b86bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraHolder: {fileID: 330585546}
   walkSpeed: 3
   runSpeed: 5
   gravity: 10

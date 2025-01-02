@@ -15,13 +15,13 @@ MonoBehaviour:
   Data:
   - Key: money
     Type: 0
-    IntValue: 46556
+    IntValue: 49606
     BoolValue: 0
     FloatValue: 0
     StringValue: 
   - Key: chips
     Type: 0
-    IntValue: 51
+    IntValue: 3180
     BoolValue: 0
     FloatValue: 0
     StringValue: 
@@ -34,18 +34,18 @@ MonoBehaviour:
   - Key: house
     Type: 1
     IntValue: 66
-    BoolValue: 1
+    BoolValue: 0
     FloatValue: 0
     StringValue: 
   - Key: kidney
     Type: 1
     IntValue: 66
-    BoolValue: 1
+    BoolValue: 0
     FloatValue: 0
     StringValue: 
   - Key: dignity
     Type: 1
     IntValue: 66
-    BoolValue: 1
+    BoolValue: 0
     FloatValue: 0
     StringValue: 
