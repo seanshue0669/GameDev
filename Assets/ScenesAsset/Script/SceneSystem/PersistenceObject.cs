@@ -1,12 +1,22 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PersistenceObject : MonoBehaviour
 {
-    [System.Obsolete]
-    private void Awake()
-    {
+    private static HashSet<string> persistedObjects = new HashSet<string>();
 
-        DontDestroyOnLoad(gameObject);
-        //Debug.Log(gameObject.name);
+    void Awake()
+    {
+        string objectID = gameObject.name;
+
+        if (persistedObjects.Contains(objectID))
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            persistedObjects.Add(objectID);
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }
