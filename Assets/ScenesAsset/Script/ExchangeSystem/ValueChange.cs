@@ -77,7 +77,7 @@ namespace UnityEngine
 
         public void Initialize(int tmp)
         {
-
+            GetComponent<AudioSource>().Play(0); // play dave sound
             Debug.Log("Enter Initialize");
 
             if (canvasObject == null)
