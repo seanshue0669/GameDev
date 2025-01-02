@@ -83,6 +83,12 @@ public class CardGivingStage : IStage
                 playerScore += scoreTransfer(playerCard);
             cardName += nameTransfer(playerCard);
 
+            if (playerScore > pointLimit && playerHasA != 0)                //check if player has A
+            {
+                playerScore -= 10;
+                playerHasA--;
+            }
+
             Debug.Log(cardName);
             Debug.Log(playerScore);
 
@@ -115,6 +121,12 @@ public class CardGivingStage : IStage
             else
                 hostScore += scoreTransfer(hostCard);
             cardName += nameTransfer(hostCard);
+
+            if (hostScore > otherpointLimit && hostHasA != 0)                //check if player has A
+            {
+                hostScore -= 10;
+                hostHasA--;
+            }
 
             Debug.Log(cardName);
             Debug.Log(hostScore);
@@ -266,7 +278,7 @@ public class CardGivingStage : IStage
                 return 3090;
 
             case 'M':
-                pointLimit += 2;
+                //pointLimit += 2;
                 return 1 - 1;
 
 

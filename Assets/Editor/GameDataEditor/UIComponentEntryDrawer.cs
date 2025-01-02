@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(UIComponentCollectionSO.UIComponentEntry))]
 public class UIComponentEntryDrawer : PropertyDrawer
 {
@@ -69,3 +69,4 @@ public class UIComponentEntryDrawer : PropertyDrawer
         return 3 * (EditorGUIUtility.singleLineHeight + 2);
     }
 }
+#endif

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d8b387d8b1c3d644bae399b0103c7232
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151624
+  packageName: Achievement System
+  packageVersion: 1.0
+  assetPath: Assets/AchievementSystem/Editor/CET.cs
+  uploadId: 371754

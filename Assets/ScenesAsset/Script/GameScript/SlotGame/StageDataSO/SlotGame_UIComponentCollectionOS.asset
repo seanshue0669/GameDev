@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b3708c77fae0042bb74001488b5333, type: 3}
+  m_Name: SlotGame_UIComponentCollectionOS
+  m_EditorClassIdentifier: 
+  m_gameName: SlotGame
+  uiComponents:
+  - Key: GameStatusText
+    Type: 1
+    ButtonComponent: {fileID: 0}
+    TextComponent: {fileID: 6774463932431401825, guid: 38075a4ba0ea47d4a9bc36603b0ff79e, type: 3}
+    InputFieldComponent: {fileID: 0}
+  - Key: BetInputField
+    Type: 2
+    ButtonComponent: {fileID: 0}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 8071063168747366292, guid: 72e517bb0a835ce4082b39b6e9f4f35b, type: 3}
+  - Key: ConfirmButton
+    Type: 0
+    ButtonComponent: {fileID: 2508742901854878874, guid: 6254aeff790ba174d84222063b586125, type: 3}
+    TextComponent: {fileID: 0}
+    InputFieldComponent: {fileID: 0}
+  - Key: ResultText
+    Type: 1
+    ButtonComponent: {fileID: 2508742901854878874, guid: 062912bf9bce13045b1f7a3e5bb3c78d, type: 3}
+    TextComponent: {fileID: 6208317349766721088, guid: b8aba0fd6e7c7864bb2516b28f0f07e2, type: 3}
+    InputFieldComponent: {fileID: 0}

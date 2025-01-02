@@ -9,6 +9,7 @@ namespace Scene
         PokerScene,
         SlotScene,
         WheelScene,
+        Ending,
         Deflaut
     }
 }

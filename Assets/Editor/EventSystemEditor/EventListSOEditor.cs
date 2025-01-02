@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace EventSO
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(EventListSO))]
     public class EventListSOEditor : Editor
     {
@@ -327,4 +328,5 @@ namespace EventSO
             }
         }
     }
+#endif
 }

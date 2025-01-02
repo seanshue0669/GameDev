@@ -19,3 +19,18 @@ MonoBehaviour:
   - CategoryName: PokerEvent
     Events:
     - {fileID: 11400000, guid: 68d2f0f38b90b6447a2e75bb3d1869f1, type: 2}
+  - CategoryName: RouletteEvent
+    Events:
+    - {fileID: 11400000, guid: 72fb39e5b6557744987be790af2537d3, type: 2}
+  - CategoryName: ExchangeEvent
+    Events:
+    - {fileID: 11400000, guid: 506ca578a8f986347bf3820af90d4167, type: 2}
+  - CategoryName: DiceEvent
+    Events:
+    - {fileID: 11400000, guid: 4c6cec47723119e439f3c65258d7c85b, type: 2}
+  - CategoryName: SlotEvent
+    Events:
+    - {fileID: 11400000, guid: 3dafce4626d5f5f47adda7ddf28d6b65, type: 2}
+    - {fileID: 11400000, guid: bc9ee7af00367aa4a811408504823a44, type: 2}
+    - {fileID: 11400000, guid: c6f104918982db548bbe185f89ac4afd, type: 2}
+    - {fileID: 11400000, guid: fea2f879f55bd57488a7b706578b19fc, type: 2}
