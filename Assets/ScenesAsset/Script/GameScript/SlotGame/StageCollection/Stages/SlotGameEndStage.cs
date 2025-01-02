@@ -14,7 +14,6 @@ public class SlotGameEndStage : IStage
     string UITag;
     string videoPath1;
     string videoPath2;
-    //public PlayerData playerData;
     public int currentMoney;
 
     //private Action continueAction;
@@ -43,8 +42,7 @@ public class SlotGameEndStage : IStage
         string reels2 = sharedData.GetInt("Reel2").ToString();
         string reels3 = sharedData.GetInt("Reel3").ToString();
         string result = SlotResult(reels1, reels2, reels3);
-        //result = "Boom";
-        result = "QuitGambling";
+        result = "Boom";
         //result = "QuitGamblingFor5s";
         await ShowResultAsync(result);
 
