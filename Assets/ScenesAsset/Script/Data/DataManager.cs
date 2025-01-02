@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 using PlayerDataSO;
 
 public class DataManager : MonoBehaviour
@@ -21,12 +19,7 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public delegate void OnDataChanged();
-    public event OnDataChanged DataChanged;
-
     public PlayerData playerData;
-
-    private string saveFilePath;
 
     private void Awake()
     {
