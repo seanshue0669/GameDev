@@ -45,18 +45,45 @@ public class DiceGame_EndStage : IStage
         diceResult = sharedData.GetInt("Result");
         isEqual = sharedData.GetInt("IsEqual");
 
-        if (playerOptions == "smaller" && diceResult < 7)
-            DataManager.Instance.playerData.AddValue("money", playerBetAmount * 2);
-        else if(playerOptions == "smaller" && diceResult >= 7)
-            DataManager.Instance.playerData.SubValue("money", playerBetAmount * 2);
-        else if (playerOptions == "bigger" && diceResult >= 7)
-            DataManager.Instance.playerData.AddValue("money", playerBetAmount * 2);
-        else if (playerOptions == "bigger" && diceResult < 7)
-            DataManager.Instance.playerData.SubValue("money", playerBetAmount * 2);
-        else if (playerOptions == "equal" && isEqual == 1)
-            DataManager.Instance.playerData.AddValue("money", playerBetAmount * 7);
-        else if (playerOptions == "equal" && isEqual == 0)
-            DataManager.Instance.playerData.SubValue("money", playerBetAmount * 7);
+        int win = 0;
+
+        if (playerOptions == "smaller")
+        {
+            if (diceResult < 7)
+            {
+                win = playerBetAmount * 2;
+                DataManager.Instance.playerData.AddValue("money", win);
+            }
+            else
+            {
+                win = 0;
+            }
+        }
+        else if (playerOptions == "bigger")
+        {
+            if (diceResult >= 7)
+            {
+                win = playerBetAmount * 2;
+                DataManager.Instance.playerData.AddValue("money", win);
+            }
+            else
+            {
+                win = 0;
+            }
+        }
+        else if (playerOptions == "equal")
+        {
+            if (isEqual == 1)
+            {
+                win = playerBetAmount * 7;
+                DataManager.Instance.playerData.AddValue("money", win);
+            }
+            else
+            {
+                win = 0;
+            }
+        }
+        await ShowDialogAsync("The Dice Result is " + diceResult);
 
         await ShowDialogAsync("The Dice Result is "+ TranslateResult(diceResult) + "\nPlaying Again?");
 
