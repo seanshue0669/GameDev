@@ -15,7 +15,7 @@ MonoBehaviour:
   Data:
   - Key: money
     Type: 0
-    IntValue: 430
+    IntValue: 46556
     BoolValue: 0
     FloatValue: 0
     StringValue: 
@@ -28,6 +28,24 @@ MonoBehaviour:
   - Key: canMoving
     Type: 1
     IntValue: 51
+    BoolValue: 1
+    FloatValue: 0
+    StringValue: 
+  - Key: house
+    Type: 1
+    IntValue: 66
+    BoolValue: 1
+    FloatValue: 0
+    StringValue: 
+  - Key: kidney
+    Type: 1
+    IntValue: 66
+    BoolValue: 1
+    FloatValue: 0
+    StringValue: 
+  - Key: dignity
+    Type: 1
+    IntValue: 66
     BoolValue: 1
     FloatValue: 0
     StringValue: 

@@ -50,15 +50,14 @@ public class RouletteGameEndStage : IStage
             // §ó·s¥Î¤á¾lÃB
             if (isWin)
             {
-                int winnings = betAmount;
+                int winnings = betAmount * 2;
 
-                DataManager.Instance.playerData.AddValue("coin", winnings);
+                DataManager.Instance.playerData.AddValue("chips", winnings);
 
                 await ShowDialogAsync($"Congratulation!You won {winnings}$");
             }
             else
             {
-                DataManager.Instance.playerData.SubValue("coin", betAmount);
                 await ShowDialogAsync($"Sorry, You loss {betAmount}$");
             }
         }
@@ -68,7 +67,7 @@ public class RouletteGameEndStage : IStage
             float tmp = betAmount;
             int winnings = (int)(tmp * payoutMultiplier+0.5);
 
-            DataManager.Instance.playerData.AddValue("coin", winnings);
+            DataManager.Instance.playerData.AddValue("chips", winnings);
 
             await ShowDialogAsync($"Yay! You¡¦ve just won 1.5 times your money¡Xno strings attached!");
 
