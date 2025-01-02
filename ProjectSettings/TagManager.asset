@@ -13,7 +13,6 @@ TagManager:
   - spawnedCards
   - RouletteGameUI
   - RouletteGame
-  - RouletteGame
   - ExchangeUI
   - SlotGameUI
   - SettingsPopUp
