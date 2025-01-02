@@ -1,12 +1,24 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class RenderSettings : MonoBehaviour
 {
-    private static RenderSettings _instance;
-    public static RenderSettings Instance;
+    private static RenderSettings instance;
+
+    public static RenderSettings Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new RenderSettings();
+            }
+            return instance;
+        }
+    }
 
     // Settings Properties
     [SerializeField]
@@ -18,25 +30,13 @@ public class RenderSettings : MonoBehaviour
     public UniversalRenderPipelineAsset urpAsset;
     public UniversalRendererData rendererData;
     public PostProcessData postProcessData;
-    // Tracking
-    private List<ScriptableRendererFeature> m_DisabledRenderFeatures = new List<ScriptableRendererFeature>();
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        Debug.Log($"GI:{GI}");
-        Debug.Log($"SSR :{SSR}");
-        Debug.Log($"SSAO:{SSAO}");
-        Debug.Log($"PPC :{PostProcess}");
+        Debug.Log($"GI: {GI}");
+        Debug.Log($"SSR: {SSR}");
+        Debug.Log($"SSAO: {SSAO}");
+        Debug.Log($"PPC: {PostProcess}");
     }
 
     #region Call Methods
@@ -50,14 +50,15 @@ public class RenderSettings : MonoBehaviour
     public void ChangeSSR(bool p_Option)
     {
         SSR = p_Option;
-        ToggleRenderFeature("Lim SSR", SSR);
+        ToggleRenderFeature("LimSSR", SSR);
+        ToggleRenderFeature("DepthPyramid", SSR);
         RefreshRendererData();
     }
 
     public void ChangeSSAO(bool p_Option)
     {
         SSAO = p_Option;
-        ToggleRenderFeature("Screen Space Ambient Occlusion", SSAO);
+        ToggleRenderFeature("ScreenSpaceAmbientOcclusion", SSAO);
         RefreshRendererData();
     }
 
@@ -73,7 +74,7 @@ public class RenderSettings : MonoBehaviour
     {
         if (rendererData == null || rendererData.rendererFeatures == null)
         {
-            Debug.LogError("Renderer Data or Renderer Features is Null！");
+            Debug.LogError("Renderer Data or Renderer Features is Null!");
             return;
         }
 
@@ -82,50 +83,21 @@ public class RenderSettings : MonoBehaviour
             if (feature != null && feature.name == featureName)
             {
                 feature.SetActive(enable);
-                Debug.Log($"{featureName} {(enable ? "Enable" : "Disable")}");
+                Debug.Log($"{featureName} {(enable ? "Enabled" : "Disabled")}");
                 return;
             }
         }
-        Debug.LogWarning($"Renderer Feature {featureName} unFind！");
+        Debug.LogWarning($"Renderer Feature {featureName} not found!");
     }
 
-    private void DisableRenderFeature<T>() where T : ScriptableRendererFeature
-    {
-        if (rendererData == null || rendererData.rendererFeatures == null)
-        {
-            Debug.LogError("Renderer Data or Renderer Features is Null！");
-            return;
-        }
-
-        foreach (var feature in rendererData.rendererFeatures)
-        {
-            if (feature is T)
-            {
-                feature.SetActive(false);
-                m_DisabledRenderFeatures.Add(feature);
-                Debug.Log($"Renderer Feature {typeof(T).Name} Disable");
-                return;
-            }
-        }
-        Debug.LogWarning($"Renderer Feature {typeof(T).Name} unFind！");
-    }
-
-    [System.Obsolete]
-    private void ForceRenderPipelineUpdate()
-    {       
-        var currentPipeline = GraphicsSettings.renderPipelineAsset;
-        GraphicsSettings.renderPipelineAsset = null;
-        GraphicsSettings.renderPipelineAsset = currentPipeline;
-
-        Debug.Log("渲染管線已重新初始化");
-    }
     private void RefreshRendererData()
     {
         if (rendererData != null)
         {
             rendererData.SetDirty();
-            Debug.Log("Renderer Data 已刷新");
         }
     }
+
+
     #endregion
 }
