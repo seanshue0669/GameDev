@@ -84,14 +84,15 @@ public class Interaction : MonoBehaviour
                 if (interactText != null)
                 {
                     interactText.gameObject.SetActive(true);
-                    interactText.text = "Press E to play SlotGame";
+                    interactText.text = "Buy DLC to play More Game!!!!!";
                 }
 
                 // 检测是否按下 E 键
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    UnityEngine.Cursor.lockState = CursorLockMode.None;
-                    sceneLoader.LoadScene("SlotScene");
+                    //AchievementManager.instance.Unlock("Under construction");
+                    //UnityEngine.Cursor.lockState = CursorLockMode.None;
+                    //sceneLoader.LoadScene("SlotScene");
                     //Debug.Log("SlotGame");
                 }
                 return; // 如果有命中，结束 Update
