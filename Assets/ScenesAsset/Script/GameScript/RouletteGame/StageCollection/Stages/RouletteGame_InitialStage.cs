@@ -44,6 +44,8 @@ public class RouletteGameInitialStage : IStage
     {
         if (!InitializeUI(uiComponents)) return;
 
+        EventSystem.Instance.TriggerEvent("Assetdisplay", "display", 0);
+
         inputField.gameObject.SetActive(false);
         confirmButton.gameObject.SetActive(false);
 
@@ -84,7 +86,7 @@ public class RouletteGameInitialStage : IStage
         inputField.gameObject.SetActive(false);
         confirmButton.gameObject.SetActive(false);
 
-        DataManager.Instance.playerData.SubValue("chips", sharedData.GetInt("BetAmount"));
+        DataManager.Instance.SubAndDisplayValue("chips", sharedData.GetInt("BetAmount"));
 
         await ShowDialogAsync($"You bet {sharedData.GetInt("BetAmount")}$");
 

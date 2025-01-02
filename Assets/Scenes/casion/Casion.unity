@@ -6584,6 +6584,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7310865244358308946, guid: 9f2ac0a5cae774748bc04d2ab8250edc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -18.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7974,8 +7978,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -295.3, y: 144.9}
-  m_SizeDelta: {x: -603.69, y: -319.77}
+  m_AnchoredPosition: {x: -295.3, y: 160.46}
+  m_SizeDelta: {x: -603.69, y: -350.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1285248516
 MonoBehaviour:
@@ -18740,3 +18744,7 @@ SceneRoots:
   - {fileID: 1180671670}
   - {fileID: 159175915}
   - {fileID: 405270711}
+  - {fileID: 751333654}
+  - {fileID: 1467836893}
+  - {fileID: 1475587261}
+  - {fileID: 1786663456}

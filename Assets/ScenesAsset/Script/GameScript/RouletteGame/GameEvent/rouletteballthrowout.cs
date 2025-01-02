@@ -8,8 +8,22 @@ public class rouletteballthrowout : MonoBehaviour
     public Transform ballSelf;
 
     public Rigidbody rb;
+
+    private bool isRegistered = true;
+
     void Awake()
     {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         EventSystem.Instance.RegisterEvent<float>("Roulette", "throwout", ApplyForce);
     }
 
