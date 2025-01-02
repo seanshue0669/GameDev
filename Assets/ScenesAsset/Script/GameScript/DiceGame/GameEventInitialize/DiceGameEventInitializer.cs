@@ -132,11 +132,6 @@ namespace UnityEngine
             spawning = false;
         }
         #endregion
-        
-        void FindObject()
-        {
-            mainCam = GameObject.Find("Camera");
-            Cup = GameObject.Find("dice_cup");
 
         #region Helper Functions
         private IEnumerator SmoothMove(Transform objectToMove, Vector3 targetPosition)
