@@ -954,7 +954,7 @@ GameObject:
       objectReference: {fileID: 0}
     - target: {fileID: 5517084583599921069, guid: 429963f601bbbf14aba4e5feddfcea69, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5517084583599921069, guid: 429963f601bbbf14aba4e5feddfcea69, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2184,6 +2184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2049134132889457740, guid: 9f2ac0a5cae774748bc04d2ab8250edc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3523791446653322370, guid: 9f2ac0a5cae774748bc04d2ab8250edc, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2270,6 +2274,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3564361798776680832, guid: 9f2ac0a5cae774748bc04d2ab8250edc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817195880997074588, guid: 9f2ac0a5cae774748bc04d2ab8250edc, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
