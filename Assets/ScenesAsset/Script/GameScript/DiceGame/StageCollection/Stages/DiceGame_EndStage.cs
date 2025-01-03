@@ -34,6 +34,12 @@ public class DiceGame_EndStage : IStage
     #endregion
 
     #region Execute Phase Logic
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sharedData"></param>
+    /// <param name="uiComponents"></param>
+    /// <returns></returns>
     public async Task ExecuteAsync(SharedDataSO sharedData, UIComponentCollectionSO uiComponents)
     {
         if (!InitializeUI(uiComponents)) return;

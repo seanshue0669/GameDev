@@ -854,11 +854,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: CasionSiimulater
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 800e1cf25d7cdc01
   metroApplicationDescription: Casion_Siimulater
   wsaImages: {}
   metroTileShortName: Casion_Siimulater
