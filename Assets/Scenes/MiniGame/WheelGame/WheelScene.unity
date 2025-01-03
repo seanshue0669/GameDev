@@ -128,9 +128,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8060615}
-  - component: {fileID: 8060616}
   - component: {fileID: 8060614}
   - component: {fileID: 8060613}
+  - component: {fileID: 8060617}
+  - component: {fileID: 8060616}
   m_Layer: 0
   m_Name: RouletteGameInitializer
   m_TagString: Untagged
