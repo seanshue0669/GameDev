@@ -44,7 +44,7 @@ public class PokerGameEvent : MonoBehaviour
 
         isPlayer = true;
     }
-
+    
     private void CreateCard(string card)
     {
         GameObject cardModel;
@@ -52,8 +52,9 @@ public class PokerGameEvent : MonoBehaviour
         {
             if (card == Objects[i].name)
             {
-                
+
                 cardModel = Objects[i];
+                //cardModel = GameObject.Find("CardPile" + card);
                 if (card == "Card_FunnyMemory")
                 {
                     cardPosPlayer.y = 0f;
