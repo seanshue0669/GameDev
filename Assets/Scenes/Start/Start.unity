@@ -3372,6 +3372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1342995226}
   - component: {fileID: 1342995225}
+  - component: {fileID: 1342995227}
   m_Layer: 0
   m_Name: PlayerDataInitializer
   m_TagString: Untagged
@@ -3406,6 +3407,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1342995227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342995224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0022ccdcd69a94c4c8e3078c38b164c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1368609398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4124,7 +4137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.data[2].Achieved
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.data[3].Achieved
@@ -4137,6 +4150,14 @@ PrefabInstance:
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: States.Array.data[5].Achieved
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: States.Array.data[6].Achieved
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
+      propertyPath: States.Array.data[7].Achieved
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991960, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
       propertyPath: AchievementList.Array.data[0].Key

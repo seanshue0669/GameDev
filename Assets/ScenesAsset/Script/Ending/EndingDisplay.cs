@@ -12,7 +12,7 @@ public class EndingDisplay : MonoBehaviour
 
     private int richEnding = 5000;
     private int poorEnding = 0;
-    private int equal = 1000;
+    private int equal = 100;
 
 
     private void Start()
